@@ -35,6 +35,15 @@
 
 				<li class="nav-item mr-4 li">
 					<a class="nav-link a-class" href="{{path('voyages')}}">Nos horaires</a>
+
+					<div class="dropdown-menu bgColor bgMini" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item text-light  a-class" >
+							lundi au jeudi 11h00 à 00h00 <p>
+							vendredi au dimanche 17h00 à 00h00
+						</a>
+				
+					</div>
+					
 					<?php
 date_default_timezone_set('Europe/Paris'); //evite le decalage horraire
  
