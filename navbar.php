@@ -34,7 +34,7 @@
 				</li>
 
 				<li class="nav-item mr-4 li">
-					<a class="nav-link a-class" href="{{path('voyages')}}">Nos horaires</a>
+				<a class="nav-link dropdown-toggle a-class" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Nos horaires</a>
 
 					<div class="dropdown-menu bgColor bgMini" aria-labelledby="navbarDropdown">
 						<a class="dropdown-item text-light  a-class" >
