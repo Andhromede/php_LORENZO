@@ -1,5 +1,9 @@
-    <?php include("header.php")?>
-        <?php include("navbar.php")?>
+<?php
+require_once("MyData/data.php");
+    $titre=$titreAccueil;
+        include_once $linkHeader;
+        include_once $linkNavBar;
+?>
 
           <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
               <div class="carousel-inner">

@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="css/carte.css">
   <link rel="stylesheet" href="css/navbar.css">
 
-  <title>carte</title>
+  <title><?= $titre ?? "Accueilllesssss" ?></title>
   <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
 
 </head>
