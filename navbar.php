@@ -35,6 +35,34 @@
 
 				<li class="nav-item mr-4 li">
 					<a class="nav-link a-class" href="{{path('voyages')}}">Nos horaires</a>
+					<?php
+date_default_timezone_set('Europe/Paris'); //evite le decalage horraire
+ 
+        /*HEURE D OUVERTURE ET FEMETURE*/
+function isWebsiteOpen()
+{
+    $heure = date('Gi');
+ 
+    // de 11h00 à 23h59
+    if($heure >= 1100 && $heure < 2359)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+ 
+if(isWebsiteOpen() === true)
+{
+    echo "<font color='#4CD4B0'>ouvert</font>";
+}
+else
+{
+    echo "<font color='#F24D16'>fermé</font>";
+}
+?>
 				</li>
 
 				<li class="nav-item mr-4 li">
