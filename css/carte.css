@@ -1,7 +1,4 @@
-/*********** Margin tout la navbar ***********/
-    .mt-navbar{
-        margin-top: 4em;
-    }
+
 
 
 /*********** liens ***********/
@@ -12,9 +9,14 @@
         box-shadow: 3px 3px 3px 2px  rgb(27, 27, 27);
     }
 
+    .w-18em{
+        width: 18em;
+    }
 
-
-
+    .imgSize{
+        width: 250px;
+        height: 200px;
+    }
 
 
 
