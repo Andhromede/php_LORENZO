@@ -41,10 +41,13 @@ date_default_timezone_set('Europe/Paris'); //evite le decalage horraire
         /*HEURE D OUVERTURE ET FEMETURE*/
 function isWebsiteOpen()
 {
+	//date ('Gi') --> heure --> ex : 1500 = 15h00min
+    //date('N') --> jour --> ex : 5 = jeudi
+
     $heure = date('Gi');
  
-    // de 11h00 à 23h59
-    if($heure >= 1100 && $heure < 2359)
+   
+	if(date('Gi') >= 11 && date('Gi') < 2359 || date('N') >= 5 && date('Gi') >= 1700 && date('Gi') < 2359)
     {
         return true;
     }
