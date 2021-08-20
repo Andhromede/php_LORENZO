@@ -37,7 +37,7 @@
 				<a class="nav-link dropdown-toggle a-class" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Nos horaires</a>
 
 					<div class="dropdown-menu bgColor bgMini" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item text-light  a-class" >
+						<a class="dropdown-item text-light  a-class" href="#">
 							lundi au jeudi 11h00 à 00h00 <p>
 							vendredi au dimanche 17h00 à 00h00
 						</a>
