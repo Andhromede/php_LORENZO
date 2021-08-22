@@ -151,7 +151,13 @@
                     </div>
                 </div>
 
+
+
+
                 <hr class="w-75">
+
+
+
 
             <!-- LES ENTREES -->
                 <h3 class="text-center mb-4">
@@ -236,7 +242,14 @@
                     </div>
                 </div>
 
+
+
+
+
                 <hr class="w-75">
+
+
+
 
                 <!-- LES DESSERTS -->
                 <h3 class="text-center mb-4">
@@ -323,6 +336,88 @@
                         </div>
                     </div>
                 </div>
+
+
+
+
+                
+
+
+
+
+                <!-- LES BOISSONS -->
+                <h3 class="text-center mb-4">
+                    LES BOISSONS
+                </h3>
+
+                <!-- ligne 1 -->
+                <div class="col-12 d-flex mb-5">
+                    <div class="card col-3 px-3 mx-auto">
+                        <img class="card-img-top imgSize mx-auto py-3" src="img/boissons/sodas.jpg" alt="Card image cap">
+                        
+                        <div class="card-body text-center">
+                            <h5 class="card-title font-weight-bolder">Sodas</h5>
+                            <p class="card-text">Coca-Cola, Fanta, IceTea, Oasis, Jus d'orange, Jus de pomme, Perrier, Vitel.</p>
+                            <div class="row">
+                                <div class=" col-5 card-title font-weight-bolder pxNeg text-center">33cl <br>2€</div>
+                                <div class=" col-7 card-title font-weight-bolder pxNeg text-center">1,5L <br>3,50€</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card col-3 px-3 mx-auto">
+                        <img class="card-img-top imgSize mx-auto py-3" src="img/boissons/bieres2.jpg" alt="Card image cap">
+                        
+                        <div class="card-body text-center">
+                            <h5 class="card-title font-weight-bolder">Bières</h5>
+                            <p class="card-text">Heineken, Desperado, Pelforth ambré, Tourtelle twist (sans alcool).</p>
+                            <div class="card-title font-weight-bolder pxNeg text-center">33cl  <br>3,00€</div>
+                        </div>
+                    </div>
+
+                    <div class="card col-3 px-3 mx-auto">
+                        <img class="card-img-top imgSize mx-auto py-3" src="img/boissons/rose.jpg" alt="Card image cap">
+                        
+                        <div class="card-body text-center">
+                            <h5 class="card-title font-weight-bolder">Vins</h5>
+                            <p class="card-text">Côtes de Provences<br>ou<br>Beaujolais Villages.</p>
+                            <div class="row">
+                                <div class=" col-5 card-title font-weight-bolder pxNeg text-center heighTxt">Rosé 9,50€</div>
+                                <div class=" col-7 card-title font-weight-bolder pxNeg text-center">Rouge 9,80€</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+               
+               
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
             </div> 
         
