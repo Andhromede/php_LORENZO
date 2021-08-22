@@ -14,12 +14,14 @@
     }
 
     .imgSize{
-        width: 250px;
-        height: 200px;
+        width: 200px;
+        height: 180px;
     }
 
 
-
+/* .card{
+    border: none !important;
+} */
 
 
 
