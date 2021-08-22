@@ -7,7 +7,7 @@
 
     <div class="container-fluid mt-affichage">
 
-        <!-- Bandeau gris -->
+        <!--------------------------- BANDEAU GRIS --------------------------->
         <div class="row bg-secondary text-light justify-content-center py-2">
             <div href="" class="col-1 text-center h5 lien">ENTREES</div>
             <div href="" class="col-1 text-center h5 lien">PIZZAS</div>
@@ -15,10 +15,11 @@
             <div href="" class="col-1 text-center h5 lien">BOISSONS</div>
         </div>
 
-
+        
         <div class="row mt-5">
+
+        <!--------------------------- SECTION DE GAUCHE --------------------------->    
             <div class="col-8">
-                
             <!-- PIZZAS CLASSIQUES -->
                 <h3 class="text-center mb-4">
                     LES PIZZAS
@@ -151,10 +152,10 @@
                     </div>
                 </div>
 
-
-
-
                 <hr class="w-75">
+
+
+
 
 
 
@@ -242,11 +243,10 @@
                     </div>
                 </div>
 
-
-
-
-
                 <hr class="w-75">
+
+
+
 
 
 
@@ -340,11 +340,6 @@
 
 
 
-                
-
-
-
-
                 <!-- LES BOISSONS -->
                 <h3 class="text-center mb-4">
                     LES BOISSONS
@@ -388,49 +383,19 @@
                         </div>
                     </div>
                 </div>
-
-               
-               
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
             </div> 
         
-            <!-- Section de droite -->
-            <div class="col-4">
-                <div>
-                  
+
+        <!--------------------------- SECTION DE DROITE --------------------------->
+            <div class="col-4 mt-5">
+                <div class="">
+                    test
                 </div>
             </div>
+
+
+
         </div>
-
-
-
     </div>
 
 
