@@ -21,7 +21,7 @@
                 
             <!-- PIZZAS CLASSIQUES -->
                 <h3 class="text-center mb-4">
-                    LES PIZZAS CLASSIQUES
+                    LES PIZZAS
                 </h3>
 
                 <!-- ligne 1 -->
@@ -31,9 +31,11 @@
                         
                         <div class="card-body text-center">
                             <h5 class="card-title font-weight-bolder">Margherita</h5>
-                            <h5 class="card-title font-weight-bolder">9,50€</h5>
                             <p class="card-text">Sauce tomate à l'origan, mozzarella et basilic frais.</p>
-                            <a href="" class="btn btn-success">Détails</a>
+                            <div class="row">
+                                <div class=" col-5 card-title font-weight-bolder pxNeg text-center">Large 12,50€</div>
+                                <div class=" col-7 card-title font-weight-bolder pxNeg text-center">Medium 9,50€</div>
+                            </div>
                         </div>
                     </div>
 
@@ -42,9 +44,11 @@
                         
                         <div class="card-body text-center">
                             <h5 class="card-title font-weight-bolder">Royale</h5>
-                            <h5 class="card-title font-weight-bolder">10,90€</h5>
                             <p class="card-text">Sauce tomate à l'origan, jambon, mozzarella et champignons frais.</p>
-                            <a href="" class="btn btn-success">Détails</a>
+                            <div class="row">
+                                <div class=" col-5 card-title font-weight-bolder pxNeg text-center">Large 12,90€</div>
+                                <div class=" col-7 card-title font-weight-bolder pxNeg text-center">Medium 10,90€</div>
+                            </div>
                         </div>
                     </div>
 
@@ -53,19 +57,14 @@
                         
                         <div class="card-body text-center">
                             <h5 class="card-title font-weight-bolder">Orientale</h5>
-                            <h5 class="card-title font-weight-bolder">12,50€</h5>
                             <p class="card-text">Sauce tomate à l'origan, mozzarella, merguez et champignons frais.</p>
-                            <a href="#" class="btn btn-success">Détails</a>
+                            <div class="row">
+                                <div class=" col-5 card-title font-weight-bolder pxNeg text-center heighTxt">Large 14,50€</div>
+                                <div class=" col-7 card-title font-weight-bolder pxNeg text-center">Medium 12,50€</div>
+                            </div>
                         </div>
                     </div>
                 </div>
-
-                <hr class="w-75">
-                
-            <!-- PIZZAS FROMAGES -->
-                <h3 class="text-center mb-4">
-                    LES PIZZAS AUX FROMAGES
-                </h3>
 
                 <!-- ligne 2 -->
                 <div class="col-12 d-flex mb-5">
@@ -74,9 +73,11 @@
                         
                         <div class="card-body text-center">
                             <h5 class="card-title font-weight-bolder">Ch'ti</h5>
-                            <h5 class="card-title font-weight-bolder">12,50€</h5>
                             <p class="card-text">Crème fraiche, mozzarella, maroilles et lard fumé.</p>
-                            <a href="" class="btn btn-success">Détails</a>
+                            <div class="row">
+                                <div class=" col-5 card-title font-weight-bolder pxNeg text-center">Large 14,50€</div>
+                                <div class=" col-7 card-title font-weight-bolder pxNeg text-center">Medium 12,50€</div>
+                            </div>
                         </div>
                     </div>
 
@@ -85,9 +86,12 @@
                         
                         <div class="card-body text-center">
                             <h5 class="card-title font-weight-bolder">4 Fromages</h5>
-                            <h5 class="card-title font-weight-bolder">13,80€</h5>
                             <p class="card-text">Crème fraiche, mozzarella, emmental, fromage de chèvre, gorgonzola.</p>
-                            <a href="" class="btn btn-success">Détails</a>
+                            <div class="row">
+                                <div class=" col-5 card-title font-weight-bolder pxNeg text-center">Large 15,90€</div>
+                                <div class=" col-7 card-title font-weight-bolder pxNeg text-center">Medium 13,90€</div>
+                            </div>
+                            <!-- <a href="" class="btn btn-success">Détails</a> -->
                         </div>
                     </div>
 
@@ -96,19 +100,14 @@
                         
                         <div class="card-body text-center">
                             <h5 class="card-title font-weight-bolder">Montagnarde</h5>
-                            <h5 class="card-title font-weight-bolder">13,50€</h5>
                             <p class="card-text">Crème fraiche, mozzarella, jambon cru, fromage à raclette et champignons frais.</p>
-                            <a href="#" class="btn btn-success">Détails</a>
+                            <div class="row">
+                                <div class=" col-5 card-title font-weight-bolder pxNeg text-center">Large 15,50€</div>
+                                <div class=" col-7 card-title font-weight-bolder pxNeg text-center">Medium 13,50€</div>
+                            </div>
                         </div>
                     </div>
                 </div>
-
-                <hr class="w-75">
-
-            <!-- PIZZAS ORIGINALES -->
-                <h3 class="text-center mb-4">
-                    LES PIZZAS ORIGINALES
-                </h3>
 
                 <!-- ligne 3 -->
                 <div class="col-12 d-flex mb-5">
@@ -117,9 +116,11 @@
                         
                         <div class="card-body text-center">
                             <h5 class="card-title font-weight-bolder">Végé.</h5>
-                            <h5 class="card-title font-weight-bolder">11,50€</h5>
                             <p class="card-text">Sauce tomate à l'origan, mozzarella, champignons, oignons rouges, poivrons verts, tomages fraiches et olives noires .</p>
-                            <a href="" class="btn btn-success">Détails</a>
+                            <div class="row">
+                                <div class=" col-5 card-title font-weight-bolder pxNeg text-center">Large 13,50€</div>
+                                <div class=" col-7 card-title font-weight-bolder pxNeg text-center">Medium 11,50€</div>
+                            </div>
                         </div>
                     </div>
 
@@ -128,9 +129,11 @@
                         
                         <div class="card-body text-center">
                             <h5 class="card-title font-weight-bolder">Oceane</h5>
-                            <h5 class="card-title font-weight-bolder">15,30€</h5>
                             <p class="card-text">Sauce tomate a l'origan, mozarella, moules, crevettes, calamars, poivrons.</p>
-                            <a href="" class="btn btn-success">Détails</a>
+                            <div class="row">
+                                <div class=" col-5 card-title font-weight-bolder pxNeg text-center">Large 17,30€</div>
+                                <div class=" col-7 card-title font-weight-bolder pxNeg text-center">Medium 15,30€</div>
+                            </div>
                         </div>
                     </div>
 
@@ -139,9 +142,11 @@
                         
                         <div class="card-body text-center">
                             <h5 class="card-title font-weight-bolder">Parmesane</h5>
-                            <h5 class="card-title font-weight-bolder">12,40€</h5>
                             <p class="card-text">crème fraiche, mozzarella, jambon de parme, champignons, noix, parmesan.</p>
-                            <a href="#" class="btn btn-success">Détails</a>
+                            <div class="row">
+                                <div class=" col-5 card-title font-weight-bolder pxNeg text-center">Large 14,40€</div>
+                                <div class=" col-7 card-title font-weight-bolder pxNeg text-center">Medium 12,40€</div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -160,9 +165,8 @@
                         
                         <div class="card-body text-center">
                             <h5 class="card-title font-weight-bolder">Salade César</h5>
-                            <h5 class="card-title font-weight-bolder">9,50€</h5>
                             <p class="card-text">Salade romaine, filets de poulets rotis, tomates cerises, oeufs dur, copeaux de parmesan, sauce cesar.</p>
-                            <a href="" class="btn btn-success">Détails</a>
+                            <div class="text-center card-title font-weight-bolder pxNeg text-center">12,50€</div>
                         </div>
                     </div>
 
@@ -171,9 +175,8 @@
                         
                         <div class="card-body text-center">
                             <h5 class="card-title font-weight-bolder">Salade méditerranéenne</h5>
-                            <h5 class="card-title font-weight-bolder">10,80€</h5>
                             <p class="card-text">Salade, avocat, tomates, oignons rouges, poulet roti, sauce vinaigre balsamique.</p>
-                            <a href="" class="btn btn-success">Détails</a>
+                            <div class="text-center card-title font-weight-bolder pxNeg text-center">10,80€</div>
                         </div>
                     </div>
 
@@ -181,10 +184,12 @@
                         <img class="card-img-top imgSize mx-auto py-3" src="img/entrees/oignons.jpg" alt="Card image cap">
                         
                         <div class="card-body text-center">
-                            <h5 class="card-title font-weight-bolder">Oignons Rings x4</h5>
-                            <h5 class="card-title font-weight-bolder">2,80€</h5>
+                            <h5 class="card-title font-weight-bolder">Oignons Rings</h5>
                             <p class="card-text">Un classique américain, des rondelles d'oignons frits.</p>
-                            <a href="#" class="btn btn-success">Détails</a>
+                            <div class="row">
+                                <div class=" col-6 card-title font-weight-bolder pxNeg text-center">par 4 2,80€</div>
+                                <div class=" col-6 card-title font-weight-bolder pxNeg text-center">par 9 5,50€</div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -195,10 +200,12 @@
                         <img class="card-img-top imgSize mx-auto py-3" src="img/entrees/nuggets2.jpg" alt="Card image cap">
                         
                         <div class="card-body text-center">
-                            <h5 class="card-title font-weight-bolder">Nuggets x5</h5>
-                            <h5 class="card-title font-weight-bolder">5,20€</h5>
+                            <h5 class="card-title font-weight-bolder">Nuggets</h5>
                             <p class="card-text">Des filets de poulets pannées et frits.</p>
-                            <a href="" class="btn btn-success">Détails</a>
+                            <div class="row">
+                                <div class=" col-6 card-title font-weight-bolder pxNeg text-center">par 4 3,90€</div>
+                                <div class=" col-6 card-title font-weight-bolder pxNeg text-center">par 9 7,80€</div>
+                            </div>
                         </div>
                     </div>
 
@@ -206,10 +213,12 @@
                         <img class="card-img-top imgSize mx-auto py-3" src="img/entrees/painAil3.jpg" alt="Card image cap">
                         
                         <div class="card-body text-center">
-                            <h5 class="card-title font-weight-bolder">Pain à l'ail x1</h5>
-                            <h5 class="card-title font-weight-bolder">4,90€</h5>
+                            <h5 class="card-title font-weight-bolder">Pain à l'ail</h5>
                             <p class="card-text">Du pain froté à l'ail et au persil, fouré à la mozarella puis gratinée.</p>
-                            <a href="" class="btn btn-success">Détails</a>
+                            <div class="row">
+                                <div class=" col-6 card-title font-weight-bolder pxNeg text-center">à l'unité 3,50€</div>
+                                <div class=" col-6 card-title font-weight-bolder pxNeg text-center">par 2 5,50€</div>
+                            </div>
                         </div>
                     </div>
 
@@ -217,10 +226,12 @@
                         <img class="card-img-top imgSize mx-auto py-3" src="img/entrees/tartine.jpg" alt="Card image cap">
                         
                         <div class="card-body text-center">
-                            <h5 class="card-title font-weight-bolder">Bruschetta Tomate mozza x2</h5> 
-                            <h5 class="card-title font-weight-bolder">5,80€</h5>
+                            <h5 class="card-title font-weight-bolder">Bruschetta Tomate mozza</h5> 
                             <p class="card-text">Deux grande tranche de gratinées, recouvertes de tomates fraiches et de mozzarella.</p>
-                            <a href="#" class="btn btn-success">Détails</a>
+                            <div class="row">
+                                <div class=" col-6 card-title font-weight-bolder pxNeg text-center">à l'unité 3,50€</div>
+                                <div class=" col-6 card-title font-weight-bolder pxNeg text-center">par 2 5,50€</div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -241,7 +252,6 @@
                             <h5 class="card-title font-weight-bolder">Tiramisu</h5>
                             <h5 class="card-title font-weight-bolder">3,50€</h5>
                             <p class="card-text">Crème gourmande a la mascarpone, biscuits cuillère, café et cacao.</p>
-                            <a href="" class="btn btn-success">Détails</a>
                         </div>
                     </div>
 
@@ -252,7 +262,6 @@
                             <h5 class="card-title font-weight-bolder">Panna Cotta</h5>
                             <h5 class="card-title font-weight-bolder">2,80€</h5>
                             <p class="card-text">Un classique italien à base de crème et de lait gélifié accompagné d'un coulis de fruits rouge, de caramel ou de chocolat</p>
-                            <a href="" class="btn btn-success">Détails</a>
                         </div>
                     </div>
 
@@ -260,10 +269,12 @@
                         <img class="card-img-top imgSize mx-auto py-3" src="img/desserts/canelloni2.jpg" alt="Card image cap">
                         
                         <div class="card-body text-center">
-                            <h5 class="card-title font-weight-bolder">Cannoli Sicilien x2</h5>
-                            <h5 class="card-title font-weight-bolder">4,90€</h5>
+                            <h5 class="card-title font-weight-bolder">Cannoli Sicilien</h5>
                             <p class="card-text">Tuile italienne fourrée d'une crème à la ricotta aromatisé au citron.</p>
-                            <a href="#" class="btn btn-success">Détails</a>
+                            <div class="row">
+                                <div class=" col-6 card-title font-weight-bolder pxNeg text-center">par 2 4,90€</div>
+                                <div class=" col-6 card-title font-weight-bolder pxNeg text-center">par 4 8,00€</div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -274,10 +285,13 @@
                         <img class="card-img-top imgSize mx-auto py-3" src="img/desserts/brownie.jpg" alt="Card image cap">
                         
                         <div class="card-body text-center">
-                            <h5 class="card-title font-weight-bolder">Brownie x1</h5>
-                            <h5 class="card-title font-weight-bolder">3,50€</h5>
+                            <h5 class="card-title font-weight-bolder">Brownie</h5>
                             <p class="card-text">Le classique américain au chocolat et aux noisettes.</p>
-                            <a href="" class="btn btn-success">Détails</a>
+                            <div class="row">
+                                <div class=" col-6 card-title font-weight-bolder pxNeg text-center">à l'unité 3,50€</div>
+                                <div class=" col-6 card-title font-weight-bolder pxNeg text-center">par 3 7,00€</div>
+                            </div>
+                            <!-- <a href="" class="btn btn-success">Détails</a> -->
                         </div>
                     </div>
 
@@ -285,10 +299,13 @@
                         <img class="card-img-top imgSize mx-auto py-3" src="img/desserts/glaces2.jpg" alt="Card image cap">
                         
                         <div class="card-body text-center">
-                            <h5 class="card-title font-weight-bolder">Pot de glace 100ml</h5>
-                            <h5 class="card-title font-weight-bolder">3,00€</h5>
+                            <h5 class="card-title font-weight-bolder">Pot de glace</h5>
                             <p class="card-text">Crème glacée au choix : Vanille, Chocolat, Cookie, Caramel beurre salé, Pecan ou Dulce De Leche</p>
-                            <a href="" class="btn btn-success">Détails</a>
+                            <div class="row">
+                                <div class=" col-6 card-title font-weight-bolder pxNeg text-center">100ml 3,00€</div>
+                                <div class=" col-6 card-title font-weight-bolder pxNeg text-center">200ml 5,50€</div>
+                            </div>
+                            <!-- <a href="" class="btn btn-success">Détails</a> -->
                         </div>
                     </div>
 
@@ -296,10 +313,13 @@
                         <img class="card-img-top imgSize mx-auto py-3" src="img/desserts/cookie.jpg" alt="Card image cap">
                         
                         <div class="card-body text-center">
-                            <h5 class="card-title font-weight-bolder">Cookie x1</h5>
-                            <h5 class="card-title font-weight-bolder">2€</h5>
+                            <h5 class="card-title font-weight-bolder">Cookie</h5>
                             <p class="card-text">Parfum au choix : tout chocolat, pétites de chocolat, cranberrie et chocolat blanc ou vanille aux éclats de noisettes.</p>
-                            <a href="#" class="btn btn-success">Détails</a>
+                            <div class="row">
+                                <div class=" col-6 card-title font-weight-bolder pxNeg text-center">à l'unité 2,00€</div>
+                                <div class=" col-6 card-title font-weight-bolder pxNeg text-center">par 3 5,00€</div>
+                            </div>
+                            <!-- <a href="#" class="btn btn-success">Détails</a> -->
                         </div>
                     </div>
                 </div>
