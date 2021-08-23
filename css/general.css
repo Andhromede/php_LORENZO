@@ -18,12 +18,3 @@ body{
     border: black 1px solid;
 } */
 
-.maps{
-    overflow: hidden;
-    width: 420px;
-    position: relative;
-}
-
-.test{
-    margin-top: 100px;
-}

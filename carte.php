@@ -1,7 +1,6 @@
 <?php   
     $titre ="carte";
     include_once("header.php");
-    // include("navbar.php");
     include_once("navbar.php");
 ?>
 
@@ -374,7 +373,7 @@
                 </h3>
 
             <!-- horraires -->
-                <div class="row mt-5">
+                <div class="row mt-4">
                     <b class="col-3">
                         <div class="">Lundi :</div>
                         <div class="">Mardi :</div>
@@ -395,11 +394,12 @@
                         <div class="">FERME.</div>
                     </b>
 
-                    <h3 class="test">
+                    <h3 class="mt-100px ml-3">
                         <u>OU SOMMES NOUS ?</u> 
                     </h3>
 
-                    <div class="maps mt-3"><iframe width="420" height="420" src="https://maps.google.com/maps?width=420&amp;height=420&amp;hl=en&amp;q=20%20rue%20du%20luxembourg%2C%20roubaix+(Titre)&amp;ie=UTF8&amp;t=&amp;z=11&amp;iwloc=B&amp;output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><div style="position: absolute;width: 80%;bottom: 10px;left: 0;right: 0;margin-left: auto;margin-right: auto;color: #000;text-align: center;"><small style="line-height: 1.8;font-size: 2px;background: #fff;">Powered by <a href="https://embedgooglemaps.com/en/">embedgooglemaps FR</a> & <a href="https://kasinoutansvensklicens.nu/">https://kasinoutansvensklicens.nu/</a></small></div><style>#gmap_canvas img{max-width:none!important;background:none!important}</style></div><br />
+                    <div class="maps mt-4"><iframe width="420" height="420" src="https://maps.google.com/maps?width=420&amp;height=420&amp;hl=en&amp;q=20%20rue%20du%20luxembourg%2C%20roubaix+(Titre)&amp;ie=UTF8&amp;t=&amp;z=13&amp;iwloc=B&amp;output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><div class="iframe"><small style="line-height: 1.8;font-size: 2px;background: #fff;">Powered by <a href="https://embedgooglemaps.com/fr/">https://embedgooglemaps.com/fr/</a> & <a href="https://onlinecasinoutanspelpaus.se/">https://onlinecasinoutanspelpaus.se/</a></small></div><style>#gmap_canvas img{max-width:none!important;background:none!important}</style></div><br />
+                    <!-- <div class="maps mt-4"><iframe width="420" height="420" src="https://maps.google.com/maps?width=420&amp;height=420&amp;hl=en&amp;q=20%20rue%20du%20luxembourg%2C%20roubaix+(Titre)&amp;ie=UTF8&amp;t=&amp;z=11&amp;iwloc=B&amp;output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><div style="position: absolute;width: 80%;bottom: 10px;left: 0;right: 0;margin-left: auto;margin-right: auto;color: #000;text-align: center;"><small style="line-height: 1.8;font-size: 2px;background: #fff;">Powered by <a href="https://embedgooglemaps.com/en/">embedgooglemaps FR</a> & <a href="https://kasinoutansvensklicens.nu/">https://kasinoutansvensklicens.nu/</a></small></div><style>#gmap_canvas img{max-width:none!important;background:none!important}</style></div><br /> -->
                 </div>
             </div>
 
