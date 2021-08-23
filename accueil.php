@@ -4,23 +4,23 @@
           <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
               <div class="carousel-inner">
                   <div class="carousel-item active">
-                    <img src="img\carou acceuil\paysage italie.jpg" class="d-block w-100" alt="..." style="width:690px;height:412px">
+                    <img src="img\carou acceuil\paysage italie.jpg" class="d-block w-100" alt="..." style="width:100%;height:100%">
                   </div>
                 
                   <div class="carousel-item">
-                    <img src="img\carou acceuil\Meat-Lovers-Pizza.jpg" class="d-block w-100" alt="..." style="width:690px;height:412px">
+                    <img src="img\carou acceuil\Meat-Lovers-Pizza.jpg" class="d-block w-100" alt="..." style="width:100%;height:100%">
                   </div>
                 
                   <div class="carousel-item">
-                    <img src="img\carou acceuil\vegetarienne.jpg" class="d-block w-100" alt="..." style="width:690px;height:412px">
+                    <img src="img\carou acceuil\vegetarienne.jpg" class="d-block w-100" alt="..." style="width:100%;height:100%">
                   </div>
                 
                   <div class="carousel-item">
-                    <img src="img\carou acceuil\most-expensive-pizza.jpg" class="d-block w-100" alt="..." style="width:690px;height:412px">
+                    <img src="img\carou acceuil\most-expensive-pizza.jpg" class="d-block w-100" alt="..." style="width:100%;height:100%">
                   </div>
                 
                   <div class="carousel-item">
-                    <img src="img\carou acceuil\hawaii.jpg" class="d-block w-100" alt="..." style="width:690px;height:412px">
+                    <img src="img\carou acceuil\hawaii.jpg" class="d-block w-100" alt="..." style="width:100%;height:100%">
                   </div>
                 
                </div>
