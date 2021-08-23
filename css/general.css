@@ -7,3 +7,23 @@ body{
 .mt-affichage{
     margin-top: 4.65em;
 }
+
+.sizeTxt{
+    min-height: 120px !important;
+}
+
+/* .cardWidth{
+    padding-left: -2em;
+    padding-right: -2em;
+    border: black 1px solid;
+} */
+
+.maps{
+    overflow: hidden;
+    width: 420px;
+    position: relative;
+}
+
+.test{
+    margin-top: 100px;
+}
