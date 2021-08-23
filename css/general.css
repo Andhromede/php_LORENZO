@@ -3,18 +3,24 @@ body{
     font-family: 'Halant', serif;
 }
 
-/*********** Margin tout la navbar ***********/
-.mt-affichage{
+.affichage
+{
     margin-top: 4.65em;
 }
 
-.sizeTxt{
-    min-height: 120px !important;
-}
+.contact
+{
+font-weight: bold ;
+font-size: 3em;
+text-align: center;
 
-/* .cardWidth{
-    padding-left: -2em;
-    padding-right: -2em;
-    border: black 1px solid;
-} */
+}
+.contact > .contactTitre
+{
+    font-family: Arial;
+}
+.contact .sousContactTitre
+{
+    font-family: 'Courier New';
+}
 

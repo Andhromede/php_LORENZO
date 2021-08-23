@@ -1,4 +1,7 @@
 
+	<?php
+		require_once("MyData/data.php");
+	?>
 	<nav class="navbar navbar-expand-lg bgColor navbar-dark container-fluid fixed-top">
 		<span class="navbar-brand title font-weight-bolder" href="#">Pizzeria Lorenzo</span>
 		<span class="separateur ml-5"></span>
@@ -12,7 +15,9 @@
 			<ul class="navbar-nav ml-5">
 
 				<li class="nav-item mr-4 li">
-					<a class="nav-link a-class " href="accueil.php">Accueil</a>
+
+					<a class="nav-link a-class " href='<?php $linkAccueil ?>'>Accueil</a>
+
 				</li>
 
 				<li class="nav-item dropdown li mr-4">
@@ -30,11 +35,13 @@
 				</li>
 
 				<li class="nav-item mr-4 li">
-					<a class="nav-link a-class" href="">Nous contacter</a>
+
+					<a class="nav-link a-class" href="contact.php">Nous contacter</a>
 				</li>
 
 				<li class="nav-item mr-4 li">
-					<a class="nav-link a-class" href="">Nos horaires</a>
+					<a class="nav-link a-class" href="horaire.php">Nos horaires</a>
+
 				</li>
 
 				<li class="nav-item mr-4 li">

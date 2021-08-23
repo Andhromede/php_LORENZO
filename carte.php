@@ -1,8 +1,10 @@
-<?php   
-    $titre ="carte";
-    include_once("header.php");
-    include_once("navbar.php");
-?>
+
+  <?php 
+      $titre = "Carte";
+      include_once("header.php");
+      include_once("navbar.php");
+   ?>
+
 
     <div class="container-fluid mt-affichage">
 

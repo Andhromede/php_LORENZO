@@ -1,8 +1,10 @@
 <?php
-$titre = "Accueil";
-include_once("header.php");
-include_once("navbar.php");
+     require_once("MyData/data.php");
+     $titre=$titreAccueil;
+     include_once $linkHeader;
+     include_once $linkNavBar;
 ?>
+
 
 <body>
 
@@ -11,6 +13,7 @@ include_once("navbar.php");
                 <div class="carousel-item active sizeImg">
                     <img src="img\caroussel\champis.jpg" class="d-block w-100 mt-affichage" alt="...">
                 </div>
+
                 
                 <div class="carousel-item sizeImg">
                     <img src="img\caroussel\chorizo3.jpg" class="d-block w-100 mt-affichage" alt="...">
