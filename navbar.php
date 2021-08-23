@@ -33,16 +33,18 @@
 					<a class="nav-link a-class" href="{{path('voyages')}}">Nous contacter</a>
 				</li>
 
-				<li class="nav-item mr-4 li">
-				<a class="nav-link dropdown-toggle a-class" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Nos horaires</a>
+				<li class="nav-item dropdown li mr-4">
+					<a class="nav-link dropdown-toggle a-class" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Nos horaires
+					</a>
 
 					<div class="dropdown-menu bgColor bgMini" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item text-light  a-class" href="#">
-							lundi au jeudi 11h00 à 00h00 <p>
-							vendredi au dimanche 17h00 à 00h00
-						</a>
-				
+						<a class="dropdown-item text-light  a-class" href="{{path('mesVoyages')}}">du lundi au jeudi de 11h00 à 00h00</a>
+						<!-- <div class="dropdown-divider"></div> -->
+						<a class="dropdown-item text-light a-class" href="{{path('creationVoyage')}}">du vendredi au dimanche de 17h00 à 00h00</a>
+						
 					</div>
+				</li>
 					
 					<?php
 date_default_timezone_set('Europe/Paris'); //evite le decalage horraire
