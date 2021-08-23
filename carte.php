@@ -53,8 +53,8 @@
                             $chemin = $data['cheminImage'];
                     ?> 
 
-                        <div class="card col-3 mx-4 mb-5">
-                            <img class="card-img-top imgSize mx-auto py-3" src="<?= $chemin ?>" alt="Card image cap">
+                        <div class="card col-3 mx-4 mb-5 borderRond">
+                            <img class="card-img-top imgSize mx-auto py-3 " src="<?= $chemin ?>" alt="Card image cap">
                             
                             <div class="card-body text-center">
                                 <h5 class="card-title font-weight-bolder size50Px"><?= $nomProduit ?></h5>
@@ -101,7 +101,7 @@
                             $chemin = $data['cheminImage'];
                     ?> 
 
-                    <div class="card col-3 mx-4 mb-5">
+                    <div class="card col-3 mx-4 mb-5 borderRond">
                         <img class="card-img-top imgSize mx-auto py-3" src="<?= $chemin ?>" alt="Card image cap">
                         
                         <div class="card-body text-center">
@@ -150,7 +150,7 @@
                             $chemin = $data['cheminImage'];
                     ?> 
 
-                    <div class="card col-3 mx-4 mb-5">
+                    <div class="card col-3 mx-4 mb-5 borderRond">
                         <img class="card-img-top imgSize mx-auto py-3" src="<?= $chemin ?>" alt="Card image cap">
                         
                         <div class="card-body text-center">
@@ -198,7 +198,7 @@
                             $chemin = $data['cheminImage'];
                     ?> 
 
-                    <div class="card col-3 mx-4 mb-5">
+                    <div class="card col-3 mx-4 mb-5 borderRond">
                         <img class="card-img-top imgSize mx-auto py-3" src="<?= $chemin ?>" alt="Card image cap">
                         
                         <div class="card-body text-center">
