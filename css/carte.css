@@ -1,4 +1,4 @@
-/*********** liens ***********/
+/*********** liens survolés ***********/
     .lien:hover{
         background-color: rgb(241, 241, 241);
         color: black;
@@ -6,21 +6,19 @@
         box-shadow: 3px 3px 3px 2px  rgb(27, 27, 27);
     }
 
-    .w-18em{
-        width: 18em;
-    }
-
+/*********** taille des photos ***********/
     .imgSize{
         width: 200px;
         height: 180px;
     }
 
+/*********** padding text cards ***********/
     .pxNeg{
         padding-left: -2em !important;
         padding-right: -2em !important;
     }
 
-
+/*********** API ***********/
     .maps{
         overflow: hidden;
         width: 420px;
@@ -39,35 +37,38 @@
         text-align: center;
     }
 
+/*********** margin sur titres cards  ***********/
     .mt-100px{
         margin-top: 100px;
     }
 
-    .size180Px{
-        min-height: 130px !important;
-    }
-
-    .size100Px{
-        min-height: 110px !important;
-    }
-
+/*********** hauteur titre cards ***********/
     .size50Px{
         min-height: 50px !important;
     }
 
+/*********** hauteur descriptifs pizza  ***********/
+    .size180Px{
+        min-height: 130px !important;
+    }
+
+/*********** hauteur descriptifs entrées ***********/
+    .size100Px{
+        min-height: 110px !important;
+    }
+
+/*********** hauteur nom produits ***********/
+    .size50Px{
+        min-height: 50px !important;
+    }
+
+/*********** couleur bg section gauche ***********/
     .bg-gris{
         background-color: rgb(190, 190, 190);
     }
 
-
-
-
-
-
-
-
-
-
-
-
+/*********** arrondis coins des cartes ***********/
+    .borderRond{
+        border-radius: 10px;
+    }
 

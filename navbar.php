@@ -16,7 +16,8 @@
 
 				<li class="nav-item mr-4 li">
 
-					<a class="nav-link a-class " href='<?php $linkAccueil ?>'>Accueil</a>
+					<!-- <a class="nav-link a-class " href='<?php $linkAccueil ?>'>Accueil</a> -->
+					<a class="nav-link a-class " href='accueil.php'>Accueil</a>
 
 				</li>
 

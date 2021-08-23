@@ -1,18 +1,21 @@
+/*********** general ***********/  
     body{
         --grisNavbar:#343B3E;
         font-family: 'Halant', serif;
     }
 
+/*********** margin sous navbar ***********/
     .affichage{
         margin-top: 4.65em;
     }
 
+/*********** Page contact ***********/
     .contact{
-    font-weight: bold ;
-    font-size: 3em;
-    text-align: center;
-
+        font-weight: bold ;
+        font-size: 3em;
+        text-align: center;
     }
+    
     .contact > .contactTitre{
         font-family: Arial;
     }
