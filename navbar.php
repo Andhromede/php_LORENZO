@@ -12,25 +12,25 @@
 			<ul class="navbar-nav ml-5">
 
 				<li class="nav-item mr-4 li">
-					<a class="nav-link a-class " href="{{path('recherchesVoyages')}}">Accueil</a>
+					<a class="nav-link a-class " href="accueil.php">Accueil</a>
 				</li>
 
 				<li class="nav-item dropdown li mr-4">
-					<a class="nav-link dropdown-toggle a-class" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+					<a class="nav-link dropdown-toggle a-class" href="carte.php" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						Notre carte
 					</a>
 
 					<div class="dropdown-menu bgColor bgMini" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item text-light  a-class" href="{{path('mesVoyages')}}">Notre entrées</a>
+						<a class="dropdown-item text-light  a-class" href="">Entrées</a>
 						<!-- <div class="dropdown-divider"></div> -->
-						<a class="dropdown-item text-light a-class" href="{{path('creationVoyage')}}">Nos pizzas</a>
-						<a class="dropdown-item text-light a-class" href="#">Nos dessert</a>
-						<a class="dropdown-item text-light a-class" href="#">Nos boissons</a>
+						<a class="dropdown-item text-light a-class" href="">Pizzas</a>
+						<a class="dropdown-item text-light a-class" href="">Dessert</a>
+						<a class="dropdown-item text-light a-class" href="">Boissons</a>
 					</div>
 				</li>
 
 				<li class="nav-item mr-4 li">
-					<a class="nav-link a-class" href="{{path('voyages')}}">Nous contacter</a>
+					<a class="nav-link a-class" href="">Nous contacter</a>
 				</li>
 
 				<li class="nav-item dropdown li mr-4">
@@ -77,10 +77,12 @@ else
     echo "<font color='#F24D16'>fermé</font>";
 }
 ?>
+				<li class="nav-item mr-4 li">
+					<a class="nav-link a-class" href="">Nos horaires</a>
 				</li>
 
 				<li class="nav-item mr-4 li">
-					<a class="nav-link a-class" href="#">Ou sommes nous?</a>
+					<a class="nav-link a-class" href="">Ou sommes nous?</a>
 				</li>
 
 			</ul>

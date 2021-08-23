@@ -2,3 +2,19 @@ body{
     --grisNavbar:#343B3E;
     font-family: 'Halant', serif;
 }
+
+/*********** Margin tout la navbar ***********/
+.mt-affichage{
+    margin-top: 4.65em;
+}
+
+.sizeTxt{
+    min-height: 120px !important;
+}
+
+/* .cardWidth{
+    padding-left: -2em;
+    padding-right: -2em;
+    border: black 1px solid;
+} */
+
