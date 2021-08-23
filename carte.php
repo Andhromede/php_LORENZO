@@ -361,7 +361,7 @@
                     </div>
 
                     <div class="card col-3 px-3 mx-auto">
-                        <img class="card-img-top imgSize mx-auto py-3" src="img/boissons/bieres2.jpg" alt="Card image cap">
+                        <img class="card-img-top imgSize mx-auto py-3" src="img/boissons/bieres.jpg" alt="Card image cap">
                         
                         <div class="card-body text-center">
                             <h5 class="card-title font-weight-bolder">Bières</h5>
@@ -371,7 +371,7 @@
                     </div>
 
                     <div class="card col-3 px-3 mx-auto">
-                        <img class="card-img-top imgSize mx-auto py-3" src="img/boissons/rose.jpg" alt="Card image cap">
+                        <img class="card-img-top imgSize mx-auto py-3" src="img/boissons/vins.jpg" alt="Card image cap">
                         
                         <div class="card-body text-center">
                             <h5 class="card-title font-weight-bolder">Vins</h5>
