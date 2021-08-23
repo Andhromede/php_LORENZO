@@ -56,7 +56,7 @@ function isWebsiteOpen()
     $heure = date('Gi');
  
    
-	if(date('Gi') >= 11 && date('Gi') < 2359 || date('N') >= 5 && date('Gi') >= 1700 && date('Gi') < 2359)
+	if(date('Gi') >= 1100 && date('Gi') < 2359 || date('N') >= 5 && date('Gi') >= 1700 && date('Gi') < 2359)
     {
         return true;
     }
