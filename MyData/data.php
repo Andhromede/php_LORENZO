@@ -35,5 +35,10 @@ $sousTitrePourNousContacter = "Contactez-nous en complétant le formualire :";
 $descriptionPourNousContacter = "N’hésitez pas à nous contacter pour toute question, nous apporter une idée, nous laisser un commentaire, une information utile nous permettant d’améliorer notre qualité de service, vos avis nous intéresses.
 Nous répondront dans les plus brefs délais.";
 
+$admin = "Administrateur";
+$moderateur = "Moderateur";
+$user = "Utilisateur";
+
+
 ?>
 
