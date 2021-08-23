@@ -2,7 +2,27 @@
   <?php 
       $titre = "Carte";
       include_once("header.php");
-      include_once("navbar.php");
+    //   include_once("navbar.php");
+
+
+    // CONNEXION A LA BDD
+    function connexion(){
+        try {
+            $dbh = new PDO('mysql:host=localhost;dbname=pizza', 'root', '');
+             
+        } catch (PDOException $e) {
+            print "Erreur !: " . $e->getMessage() . "<br/>";
+            die();
+        }return($dbh);
+    // $dbh = null;
+
+    // $dbh->query("SELECT * from 'produits' ");
+    }
+
+
+
+
+
    ?>
 
 
@@ -27,21 +47,44 @@
                 </h3>
                 
                 <div class="row mb-5 justify-content-center">
-                    <!-- ligne 1 -->    
-                    <div class="card col-3 mx-4 mb-5">
-                        <img class="card-img-top imgSize mx-auto py-3" src="img/pizzas/base.jpg" alt="Card image cap">
-                        
-                        <div class="card-body text-center">
-                            <h5 class="card-title font-weight-bolder">Margherita</h5>
-                            <p class="card-text sizeTxt">Sauce tomate à l'origan, mozzarella et basilic frais.</p>
-                            <div class="row">
-                                <div class=" col-5 card-title font-weight-bolder pxNeg text-center">Large <br> 12,50€</div>
-                                <div class=" col-7 card-title font-weight-bolder pxNeg text-center">Medium <br> 9,50€</div>
-                            </div>
-                        </div>
-                    </div>
 
-                    <div class="card col-3 mx-4 mb-5">
+                    <?php 
+                    try {
+                        $dbh = new PDO('mysql:host=localhost;dbname=pizza', 'root', '', array(
+                            PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"
+                        ));
+                        $produit = "SELECT `nomProduit`, `taille`, `prix`, `descriptif`, `cheminImage`, `categorie_id` FROM `produit` WHERE `categorie_id` = 1 ";
+                        // echo "connexion ok";
+                        
+                    } catch (PDOException $e) {
+                        print "Erreur !: " . $e->getMessage() . "<br/>";
+                        die();
+                    }
+
+                    foreach($dbh->query($produit) as $data) {
+                        $nomProduit = $data['nomProduit'];
+                        $taille = $data['taille'];
+                        $prix = $data['prix'];
+                        $descriptif = $data['descriptif'];
+                        $chemin = $data['cheminImage'];
+                    ?> 
+
+                        <div class="card col-3 mx-4 mb-5">
+                            <img class="card-img-top imgSize mx-auto py-3" src="<?= $chemin ?>" alt="Card image cap">
+                            
+                            <div class="card-body text-center">
+                                <h5 class="card-title font-weight-bolder"><?= $nomProduit ?></h5>
+                                <h5 class="card-title"><?= $descriptif ?></h5>
+                                <div class="row">
+                                    <div class=" col-5 card-title font-weight-bolder pxNeg text-center"><?= $taille .'<br>'. $prix ?></div>
+                                </div>
+                            </div>
+                        </div> 
+                    <?php 
+                    } 
+                    ?>
+
+                    <!-- <div class="card col-3 mx-4 mb-5">
                         <img class="card-img-top imgSize mx-auto py-3" src="img/pizzas/Royale.jpg" alt="Card image cap">
                         
                         <div class="card-body text-center">
@@ -65,10 +108,10 @@
                                 <div class=" col-7 card-title font-weight-bolder pxNeg text-center">Medium <br> 12,50€</div>
                             </div>
                         </div>
-                    </div>
+                    </div> 
 
 
-                    <!-- ligne 2 -->
+                    
                     <div class="card col-3 mx-4 mb-5">
                         <img class="card-img-top imgSize mx-auto py-3" src="img/pizzas/maroilles.jpg" alt="Card image cap">
                         
@@ -108,7 +151,7 @@
                         </div>
                     </div>
 
-                    <!-- ligne 3 -->
+                    
                     <div class="card col-3 mx-4 mb-5">
                         <img class="card-img-top imgSize mx-auto py-3" src="img/pizzas/vege4.jpg" alt="Card image cap">
                         
@@ -146,7 +189,7 @@
                                 <div class=" col-7 card-title font-weight-bolder pxNeg text-center">Medium <br> 12,40€</div>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
 
                 <hr class="w-75">
@@ -411,4 +454,4 @@
     </div>
 
 
-<?php include("footer.php") ?>
+<?php include("footer.php"); ?>
