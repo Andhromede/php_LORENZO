@@ -40,6 +40,50 @@
 					<a class="nav-link a-class" href="contact.php">Nous contacter</a>
 				</li>
 
+				<li class="nav-item dropdown li mr-4">
+					<a class="nav-link dropdown-toggle a-class" href="" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Nos horaires
+					</a>
+
+					<div class="dropdown-menu bgColor bgMini" aria-labelledby="navbarDropdown">
+						<a class="dropdown-item text-light  a-class" href="{{path('mesVoyages')}}">du lundi au jeudi de 11h00 à 00h00</a>
+						<!-- <div class="dropdown-divider"></div> -->
+						<a class="dropdown-item text-light a-class" href="{{path('creationVoyage')}}">du vendredi au dimanche de 17h00 à 00h00</a>
+						
+					</div>
+				</li>
+					
+					<?php
+date_default_timezone_set('Europe/Paris'); //evite le decalage horraire
+ 
+        /*HEURE D OUVERTURE ET FEMETURE*/
+function isWebsiteOpen()
+{
+	//date ('Gi') --> heure --> ex : 1500 = 15h00min
+    //date('N') --> jour --> ex : 5 = jeudi
+
+    $heure = date('Gi');
+ 
+   
+	if(date('Gi') >= 1100 && date('Gi') < 2359 || date('N') >= 5 && date('Gi') >= 1700 && date('Gi') < 2359)
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+ 
+if(isWebsiteOpen() === true)
+{
+    echo "<font color='#4CD4B0'>ouvert</font>";
+}
+else
+{
+    echo "<font color='#F24D16'>fermé</font>";
+}
+?>
 				<li class="nav-item mr-4 li">
 					<a class="nav-link a-class" href="horaire.php">Nos horaires</a>
 

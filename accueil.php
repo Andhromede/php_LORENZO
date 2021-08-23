@@ -1,3 +1,4 @@
+
 <?php
      require_once("MyData/data.php");
      $titre=$titreAccueil;
@@ -14,21 +15,26 @@
                     <img src="img\caroussel\champis.jpg" class="d-block w-100 mt-affichage" alt="...">
                 </div>
 
+
                 
-                <div class="carousel-item sizeImg">
-                    <img src="img\caroussel\chorizo3.jpg" class="d-block w-100 mt-affichage" alt="...">
-                </div>
+                  <div class="carousel-item">
+                    <img src="img\carou acceuil\Meat-Lovers-Pizza.jpg" class="d-block w-100" alt="..." style="width:100%;height:100%">
+                  </div>
                 
-                <div class="carousel-item sizeImg">
-                    <img src="img/pizzas/jambon.jpg" class="d-block w-100 mt-affichage" alt="...">
-                </div>
+                  <div class="carousel-item">
+                    <img src="img\carou acceuil\vegetarienne.jpg" class="d-block w-100" alt="..." style="width:100%;height:100%">
+                  </div>
                 
-                <div class="carousel-item sizeImg">
-                    <img src="img\pizzas\royale.jpg" class="d-block w-100 mt-affichage" alt="...">
-                </div>
+                  <div class="carousel-item">
+                    <img src="img\carou acceuil\most-expensive-pizza.jpg" class="d-block w-100" alt="..." style="width:100%;height:100%">
+                  </div>
+                
+                  <div class="carousel-item">
+                    <img src="img\carou acceuil\hawaii.jpg" class="d-block w-100" alt="..." style="width:100%;height:100%">
+                  </div>
                 
                 <div class="carousel-item sizeImg ">
-                    <img src="img\pizzas\vege4.jpg" class="d-block w-100 mt-affichage sizeImg" alt="...">
+                    <img src="img\pizzas\vege4.jpg" class="d-block w-100 mt-affichage sizeImg" alt="..." >
                 </div>
             
                 <a class="carousel-control-prev " href="#carouselExampleControls" role="button" data-slide="prev">
