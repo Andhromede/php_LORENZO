@@ -50,3 +50,29 @@
 .mt-100px{
     margin-top: 100px;
 }
+
+.size180Px{
+    min-height: 130px !important;
+}
+
+.size100Px{
+    min-height: 110px !important;
+}
+
+.size50Px{
+    min-height: 50px !important;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

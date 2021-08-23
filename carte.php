@@ -8,15 +8,15 @@
     // CONNEXION A LA BDD
     function connexion(){
         try {
-            $dbh = new PDO('mysql:host=localhost;dbname=pizza', 'root', '');
-             
+            $dbh = new PDO('mysql:host=localhost;dbname=pizza', 'root', '', array(
+                PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"
+            ));
+  
         } catch (PDOException $e) {
             print "Erreur !: " . $e->getMessage() . "<br/>";
             die();
         }return($dbh);
-    // $dbh = null;
-
-    // $dbh->query("SELECT * from 'produits' ");
+        // $dbh = null;
     }
 
 
@@ -47,36 +47,37 @@
                 </h3>
                 
                 <div class="row mb-5 justify-content-center">
-
                     <?php 
-                    try {
-                        $dbh = new PDO('mysql:host=localhost;dbname=pizza', 'root', '', array(
-                            PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"
-                        ));
-                        $produit = "SELECT `nomProduit`, `taille`, `prix`, `descriptif`, `cheminImage`, `categorie_id` FROM `produit` WHERE `categorie_id` = 1 ";
+                        $dbh = connexion();
+                        $produit = "SELECT `nomProduit`, `prixMedium`, `prixLarge`, `descriptif`, `cheminImage`, `categorie_id` FROM `produit` WHERE `categorie_id` = 1 ";
                         // echo "connexion ok";
                         
-                    } catch (PDOException $e) {
-                        print "Erreur !: " . $e->getMessage() . "<br/>";
-                        die();
-                    }
-
-                    foreach($dbh->query($produit) as $data) {
-                        $nomProduit = $data['nomProduit'];
-                        $taille = $data['taille'];
-                        $prix = $data['prix'];
-                        $descriptif = $data['descriptif'];
-                        $chemin = $data['cheminImage'];
+                        foreach($dbh->query($produit) as $data) {
+                            $nomProduit = $data['nomProduit'];
+                            $prixMedium = $data['prixMedium'];
+                            $prixLarge = $data['prixLarge'];
+                            $descriptif = $data['descriptif'];
+                            $chemin = $data['cheminImage'];
                     ?> 
 
                         <div class="card col-3 mx-4 mb-5">
                             <img class="card-img-top imgSize mx-auto py-3" src="<?= $chemin ?>" alt="Card image cap">
                             
                             <div class="card-body text-center">
-                                <h5 class="card-title font-weight-bolder"><?= $nomProduit ?></h5>
-                                <h5 class="card-title"><?= $descriptif ?></h5>
+                                <h5 class="card-title font-weight-bolder size50Px"><?= $nomProduit ?></h5>
+                                <hr class="w-75">
+                                <p class="card-text size180Px"><?= $descriptif ?></p>
+                                <hr class="w-75">
                                 <div class="row">
-                                    <div class=" col-5 card-title font-weight-bolder pxNeg text-center"><?= $taille .'<br>'. $prix ?></div>
+                                    <?php if($prixLarge == 0){
+                                        echo('<div class="col-6 card-title font-weight-bolder pxNeg text-center">Medium <br> '.$prixMedium.'€</div>' );
+                                        }else if($prixMedium == 0){
+                                            echo('<div class="col-12 card-title font-weight-bolder pxNeg text-center">Large <br> '.$prixLarge.'€</div>' );
+                                        }else{
+                                            echo('<div class=" col-6 card-title font-weight-bolder pxNeg text-center">Medium <br> '.$prixMedium.'€</div>
+                                                <div class="col-6 card-title font-weight-bolder pxNeg text-center">Large <br> '.$prixLarge.'€</div>' );
+                                        }
+                                    ?>
                                 </div>
                             </div>
                         </div> 
@@ -84,112 +85,6 @@
                     } 
                     ?>
 
-                    <!-- <div class="card col-3 mx-4 mb-5">
-                        <img class="card-img-top imgSize mx-auto py-3" src="img/pizzas/Royale.jpg" alt="Card image cap">
-                        
-                        <div class="card-body text-center">
-                            <h5 class="card-title font-weight-bolder">Royale</h5>
-                            <p class="card-text sizeTxt">Sauce tomate à l'origan, jambon, mozzarella et champignons frais.</p>
-                            <div class="row">
-                                <div class=" col-5 card-title font-weight-bolder pxNeg text-center">Large <br> 12,90€</div>
-                                <div class=" col-7 card-title font-weight-bolder pxNeg text-center">Medium <br> 10,90€</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card col-3 mx-4 mb-5">
-                        <img class="card-img-top imgSize mx-auto py-3" src="img/pizzas/orientale.jpeg" alt="Card image cap">
-                        
-                        <div class="card-body text-center">
-                            <h5 class="card-title font-weight-bolder">Orientale</h5>
-                            <p class="card-text sizeTxt">Sauce tomate à l'origan, mozzarella, merguez et champignons frais.</p>
-                            <div class="row">
-                                <div class=" col-5 card-title font-weight-bolder pxNeg text-center heighTxt">Large <br> 14,50€</div>
-                                <div class=" col-7 card-title font-weight-bolder pxNeg text-center">Medium <br> 12,50€</div>
-                            </div>
-                        </div>
-                    </div> 
-
-
-                    
-                    <div class="card col-3 mx-4 mb-5">
-                        <img class="card-img-top imgSize mx-auto py-3" src="img/pizzas/maroilles.jpg" alt="Card image cap">
-                        
-                        <div class="card-body text-center">
-                            <h5 class="card-title font-weight-bolder">Ch'ti</h5>
-                            <p class="card-text sizeTxt">Crème fraiche, mozzarella, maroilles et lard fumé.</p>
-                            <div class="row">
-                                <div class=" col-5 card-title font-weight-bolder pxNeg text-center">Large <br> 14,50€</div>
-                                <div class=" col-7 card-title font-weight-bolder pxNeg text-center">Medium <br> 12,50€</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card col-3 mx-4 mb-5">
-                        <img class="card-img-top imgSize mx-auto py-3" src="img/pizzas/4fromages.jpg" alt="Card image cap">
-                        
-                        <div class="card-body text-center">
-                            <h5 class="card-title font-weight-bolder">4 Fromages</h5>
-                            <p class="card-text sizeTxt">Crème fraiche, mozzarella, emmental, fromage de chèvre, gorgonzola.</p>
-                            <div class="row">
-                                <div class=" col-5 card-title font-weight-bolder pxNeg text-center">Large <br> 15,90€</div>
-                                <div class=" col-7 card-title font-weight-bolder pxNeg text-center">Medium <br> 13,90€</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card col-3 mx-4 mb-5">
-                        <img class="card-img-top imgSize mx-auto py-3" src="img/pizzas/montagnarde.jpg" alt="Card image cap">
-                        
-                        <div class="card-body text-center">
-                            <h5 class="card-title font-weight-bolder">Montagnarde</h5>
-                            <p class="card-text sizeTxt">Crème fraiche, mozzarella, jambon cru, fromage à raclette et champignons frais.</p>
-                            <div class="row">
-                                <div class=" col-5 card-title font-weight-bolder pxNeg text-center heighTxt">Large <br> 15,90€</div>
-                                <div class=" col-7 card-title font-weight-bolder pxNeg text-center">Medium <br> 13,50€</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card col-3 mx-4 mb-5">
-                        <img class="card-img-top imgSize mx-auto py-3" src="img/pizzas/vege4.jpg" alt="Card image cap">
-                        
-                        <div class="card-body text-center">
-                            <h5 class="card-title font-weight-bolder">Végé.</h5>
-                            <p class="card-text sizeTxt">Sauce tomate à l'origan, mozzarella, champignons, oignons rouges, poivrons verts, tomages fraiches et olives noires .</p>
-                            <div class="row">
-                                <div class=" col-5 card-title font-weight-bolder pxNeg text-center">Large <br> 13,50€</div>
-                                <div class=" col-7 card-title font-weight-bolder pxNeg text-center">Medium <br> 11,50€</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card col-3 mx-4 mb-5">
-                        <img class="card-img-top imgSize mx-auto py-3" src="img/pizzas/mer2.jpg" alt="Card image cap">
-                        
-                        <div class="card-body text-center">
-                            <h5 class="card-title font-weight-bolder">Oceane</h5>
-                            <p class="card-text sizeTxt">Sauce tomate a l'origan, mozarella, moules, crevettes, calamars, poivrons.</p>
-                            <div class="row">
-                                <div class=" col-5 card-title font-weight-bolder pxNeg text-center">Large <br> 17,30€</div>
-                                <div class=" col-7 card-title font-weight-bolder pxNeg text-center">Medium <br> 15,30€</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card col-3 mx-4 mb-5">
-                        <img class="card-img-top imgSize mx-auto py-3" src="img/pizzas/jParme.png" alt="Card image cap">
-                        
-                        <div class="card-body text-center">
-                            <h5 class="card-title font-weight-bolder">Parmesane</h5>
-                            <p class="card-text sizeTxt">Crème fraiche, mozzarella, jambon de parme, champignons, noix, parmesan.</p>
-                            <div class="row">
-                                <div class=" col-5 card-title font-weight-bolder pxNeg text-center heighTxt">Large <br> 14,40€</div>
-                                <div class=" col-7 card-title font-weight-bolder pxNeg text-center">Medium <br> 12,40€</div>
-                            </div>
-                        </div>
-                    </div> -->
                 </div>
 
                 <hr class="w-75">
@@ -201,79 +96,46 @@
                 </h3>
 
                 <!-- ligne 1 -->
-                <div class="row mb-5 justify-content-center">   
-                    <div class="card col-3 mx-4 mb-5">
-                        <img class="card-img-top imgSize mx-auto py-3" src="img/entrees/cesar.jpg" alt="Card image cap">
+                <div class="row mb-5 justify-content-center"> 
+                    <?php 
+                        $dbh = connexion();
+                        $produit = "SELECT `nomProduit`, `prixMedium`, `prixLarge`, `descriptif`, `cheminImage`, `categorie_id` FROM `produit` WHERE `categorie_id` = 4 ";
+                        // echo "connexion ok";
                         
-                        <div class="card-body text-center">
-                            <h5 class="card-title font-weight-bolder">Salade César</h5>
-                            <p class="card-text sizeTxt">Salade romaine, filets de poulets rotis, tomates cerises, oeufs dur, copeaux de parmesan, sauce cesar.</p>
-                            <div class="text-center card-title font-weight-bolder pxNeg text-center">10,80€</div>
-                        </div>
-                    </div>
+                        foreach($dbh->query($produit) as $data) {
+                            $nomProduit = $data['nomProduit'];
+                            $prixMedium = $data['prixMedium'];
+                            $prixLarge = $data['prixLarge'];
+                            $descriptif = $data['descriptif'];
+                            $chemin = $data['cheminImage'];
+                    ?> 
 
                     <div class="card col-3 mx-4 mb-5">
-                        <img class="card-img-top imgSize mx-auto py-3" src="img/entrees/mediteraneene.jpg" alt="Card image cap">
+                        <img class="card-img-top imgSize mx-auto py-3" src="<?= $chemin ?>" alt="Card image cap">
                         
                         <div class="card-body text-center">
-                            <h5 class="card-title font-weight-bolder">Salade méditerranéenne</h5>
-                            <p class="card-text sizeTxt">Salade, avocat, tomates, oignons rouges, poulet roti, sauce vinaigre balsamique.</p>
-                            <div class="text-center card-title font-weight-bolder pxNeg text-center">10,80€</div>
-                        </div>
-                    </div>
-
-                    <div class="card col-3 mx-4 mb-5">
-                        <img class="card-img-top imgSize mx-auto py-3" src="img/entrees/oignons.jpg" alt="Card image cap">
-                        
-                        <div class="card-body text-center">
-                            <h5 class="card-title font-weight-bolder">Oignons Rings</h5>
-                            <p class="card-text sizeTxt">Un classique américain, des rondelles d'oignons frits.</p>
+                            <h5 class="card-title font-weight-bolder size50Px"><?= $nomProduit ?></h5>
+                            <hr class="w-75">
+                            <p class="card-text size100Px"><?= $descriptif ?></p>
+                            <hr class="w-75">
                             <div class="row">
-                            <div class=" col-6 card-title font-weight-bolder pxNeg text-center">par 4 <br> 2,80€</div>
-                                <div class=" col-6 card-title font-weight-bolder pxNeg text-center">par 9 <br> 5,50€</div>
+                                <?php if($prixLarge == 0){
+                                    echo('<div class="col-6 card-title font-weight-bolder pxNeg text-center">Medium <br> '.$prixMedium.'€</div>' );
+                                    }else if($prixMedium == 0){
+                                        echo('<div class="col-12 card-title font-weight-bolder pxNeg text-center">Large <br> '.$prixLarge.'€</div>' );
+                                    }else{
+                                        echo('<div class=" col-6 card-title font-weight-bolder pxNeg text-center">Medium <br> '.$prixMedium.'€</div>
+                                            <div class="col-6 card-title font-weight-bolder pxNeg text-center">Large <br> '.$prixLarge.'€</div>' );
+                                    }
+                                ?>
                             </div>
                         </div>
                     </div>
 
-                    <!-- ligne 2 -->
-                    <div class="card col-3 mx-4 mb-5">
-                        <img class="card-img-top imgSize mx-auto py-3" src="img/entrees/nuggets2.jpg" alt="Card image cap">
-                        
-                        <div class="card-body text-center">
-                            <h5 class="card-title font-weight-bolder">Nuggets</h5>
-                            <p class="card-text sizeTxt">Des filets de poulets pannées et frits.</p>
-                            <div class="row">
-                                <div class=" col-6 card-title font-weight-bolder pxNeg text-center">par 4 <br> 3,90€</div>
-                                <div class=" col-6 card-title font-weight-bolder pxNeg text-center">par 9 <br> 7,80€</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card col-3 mx-4 mb-5">
-                        <img class="card-img-top imgSize mx-auto py-3" src="img/entrees/painAil3.jpg" alt="Card image cap">
-                        
-                        <div class="card-body text-center">
-                            <h5 class="card-title font-weight-bolder">Pain à l'ail</h5>
-                            <p class="card-text sizeTxt">Du pain froté à l'ail et au persil, fouré à la mozarella puis gratinée.</p>
-                            <div class="row">
-                                <div class=" col-6 card-title font-weight-bolder pxNeg text-center">à l'unité <br> 3,50€</div>
-                                <div class=" col-6 card-title font-weight-bolder pxNeg text-center">par 2 <br> 5,50€</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card col-3 mx-4 mb-5">
-                        <img class="card-img-top imgSize mx-auto py-3" src="img/entrees/tartine.jpg" alt="Card image cap">
-                        
-                        <div class="card-body text-center">
-                            <h5 class="card-title font-weight-bolder">Bruschetta Tomate mozza</h5>
-                            <p class="card-text sizeTxt">Deux grande tranche de gratinées, recouvertes de tomates fraiches et de mozzarella.</p>
-                            <div class="row">
-                                <div class=" col-6 card-title font-weight-bolder pxNeg text-center">à l'unité <br> 3,50€</div>
-                                <div class=" col-6 card-title font-weight-bolder pxNeg text-center">par 2 <br> 5,50€</div>
-                            </div>
-                        </div>
-                    </div>
+                    <?php 
+                    } 
+                    ?>
+                    
                 </div>
 
                 <hr class="w-75">
@@ -284,80 +146,45 @@
                     LES DESSERTS
                 </h3>
 
-                <!-- ligne 1 -->
-                <div class="row mb-5 justify-content-center">   
-                    <div class="card col-3 mx-4 mb-5">
-                        <img class="card-img-top imgSize mx-auto py-3" src="img/desserts/tiramisu.jpg" alt="Card image cap">
+                <div class="row mb-5 justify-content-center"> 
+                    <?php 
+                        $dbh = connexion();
+                        $produit = "SELECT `nomProduit`, `prixMedium`, `prixLarge`, `descriptif`, `cheminImage`, `categorie_id` FROM `produit` WHERE `categorie_id` = 3 ";
+                        // echo "connexion ok";
                         
-                        <div class="card-body text-center">
-                            <h5 class="card-title font-weight-bolder">Tiramisu</h5>
-                            <p class="card-text sizeTxt">Crème gourmande a la mascarpone, biscuits cuillère, café et cacao.</p>
-                            <h5 class="card-title font-weight-bolder">3,50€</h5>
-                        </div>
-                    </div>
+                        foreach($dbh->query($produit) as $data) {
+                            $nomProduit = $data['nomProduit'];
+                            $prixMedium = $data['prixMedium'];
+                            $prixLarge = $data['prixLarge'];
+                            $descriptif = $data['descriptif'];
+                            $chemin = $data['cheminImage'];
+                    ?> 
 
                     <div class="card col-3 mx-4 mb-5">
-                        <img class="card-img-top imgSize mx-auto py-3" src="img/desserts/panacota.jpg" alt="Card image cap">
+                        <img class="card-img-top imgSize mx-auto py-3" src="<?= $chemin ?>" alt="Card image cap">
                         
                         <div class="card-body text-center">
-                            <h5 class="card-title font-weight-bolder">Panna Cotta</h5>
-                            <p class="card-text sizeTxt">Un classique italien à base de crème et de lait gélifié accompagné d'un coulis de fruits rouge, de caramel ou de chocolat</p>
-                            <h5 class="card-title font-weight-bolder">2,80€</h5>
-                        </div>
-                    </div>
-
-                    <div class="card col-3 mx-4 mb-5">
-                        <img class="card-img-top imgSize mx-auto py-3" src="img/desserts/canelloni2.jpg" alt="Card image cap">
-                        
-                        <div class="card-body text-center">
-                            <h5 class="card-title font-weight-bolder">Cannoli Sicilien</h5>
-                            <p class="card-text sizeTxt">Tuile italienne fourrée d'une crème à la ricotta aromatisé au citron.</p>
+                            <h5 class="card-title font-weight-bolder size50Px"><?= $nomProduit ?></h5>
+                            <hr class="w-75">
+                            <p class="card-text size100Px"><?= $descriptif ?></p>
+                            <hr class="w-75">
                             <div class="row">
-                                <div class=" col-6 card-title font-weight-bolder pxNeg text-center">par 2 <br> 4,90€</div>
-                                <div class=" col-6 card-title font-weight-bolder pxNeg text-center">par 4 <br> 8,00€</div>
+                                <?php if($prixLarge == 0){
+                                    echo('<div class=" col-12 card-title font-weight-bolder pxNeg text-center">2 parts <br> '.$prixMedium.'€</div>' );
+                                    }else if($prixMedium == 0){
+                                        echo('<div class=" col-12 card-title font-weight-bolder pxNeg text-center">La part <br>'.$prixLarge.'€</div>' );
+                                    }else{
+                                        echo('<div class=" col-6 card-title font-weight-bolder pxNeg text-center">La part <br> '.$prixMedium.'€</div>
+                                            <div class="col-6 card-title font-weight-bolder pxNeg text-center">2 parts <br> '.$prixLarge.'€</div>' );
+                                    }
+                                ?>
                             </div>
                         </div>
                     </div>
 
-                    <!-- ligne 2 -->
-                    <div class="card col-3 mx-4 mb-5">
-                        <img class="card-img-top imgSize mx-auto py-3" src="img/desserts/brownie.jpg" alt="Card image cap">
-                        
-                        <div class="card-body text-center">
-                            <h5 class="card-title font-weight-bolder">Brownie</h5>
-                            <p class="card-text sizeTxt">Le classique américain au chocolat et aux noisettes.</p>
-                            <div class="row">
-                                <div class=" col-6 card-title font-weight-bolder pxNeg text-center">à l'unité <br> 3,50€</div>
-                                <div class=" col-6 card-title font-weight-bolder pxNeg text-center">par 3 <br> 7,00€</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card col-3 mx-4 mb-5">
-                        <img class="card-img-top imgSize mx-auto py-3" src="img/desserts/glaces2.jpg" alt="Card image cap">
-                        
-                        <div class="card-body text-center">
-                            <h5 class="card-title font-weight-bolder">Pot de glace</h5>
-                            <p class="card-text sizeTxt">Crème glacée au choix : Vanille, Chocolat, Cookie, Caramel beurre salé, Pecan ou Dulce De Leche.</p>
-                            <div class="row">
-                                <div class=" col-6 card-title font-weight-bolder pxNeg text-center">100ml <br> 3,00€</div>
-                                <div class=" col-6 card-title font-weight-bolder pxNeg text-center">200ml <br> 5,50€</div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="card col-3 mx-4 mb-5">
-                        <img class="card-img-top imgSize mx-auto py-3" src="img/desserts/cookie.jpg" alt="Card image cap">
-                        
-                        <div class="card-body text-center">
-                            <h5 class="card-title font-weight-bolder">Cookie</h5>
-                            <p class="card-text sizeTxt">Parfum au choix : tout chocolat, pétites de chocolat, cranberrie et chocolat blanc ou vanille aux éclats de noisettes.</p>
-                            <div class="row">
-                                <div class=" col-6 card-title font-weight-bolder pxNeg text-center">à l'unité <br> 2,00€</div>
-                                <div class=" col-6 card-title font-weight-bolder pxNeg text-center">par 3 <br> 5,00€</div>
-                            </div>
-                        </div>
-                    </div>
+                    <?php 
+                    } 
+                    ?>
                 </div>
 
                 <hr class="w-75">
@@ -369,43 +196,47 @@
                 </h3>
 
                 <!-- ligne 1 -->
-                <div class="row mb-5 justify-content-center">   
+                <div class="row mb-5 justify-content-center">
+                       
+                <?php 
+                        $dbh = connexion();
+                        $produit = "SELECT `nomProduit`, `prixMedium`, `prixLarge`, `descriptif`, `cheminImage`, `categorie_id` FROM `produit` WHERE `categorie_id` = 2 ";
+                        // echo "connexion ok";
+                        
+                        foreach($dbh->query($produit) as $data) {
+                            $nomProduit = $data['nomProduit'];
+                            $prixMedium = $data['prixMedium'];
+                            $prixLarge = $data['prixLarge'];
+                            $descriptif = $data['descriptif'];
+                            $chemin = $data['cheminImage'];
+                    ?> 
+
                     <div class="card col-3 mx-4 mb-5">
-                        <img class="card-img-top imgSize mx-auto py-3" src="img/boissons/sodas.jpg" alt="Card image cap">
+                        <img class="card-img-top imgSize mx-auto py-3" src="<?= $chemin ?>" alt="Card image cap">
                         
                         <div class="card-body text-center">
-                            <h5 class="card-title font-weight-bolder">Sodas</h5>
-                            <p class="card-text sizeTxt">Coca-Cola, Fanta, IceTea, Oasis, Jus d'orange, Jus de pomme, Perrier, Vitel.</p>
-                            <h5 class="card-title font-weight-bolder">3,50€</h5>
+                            <h5 class="card-title font-weight-bolder size50Px"><?= $nomProduit ?></h5>
+                            <hr class="w-75">
+                            <p class="card-text size100Px"><?= $descriptif ?></p>
+                            <hr class="w-75">
+                            <div class="row">
+                                <?php if($prixLarge == 0){
+                                    echo('<div class="col-6 card-title font-weight-bolder pxNeg text-center">33cl / '.$prixMedium.'€</div>' );
+                                    }else if($prixMedium == 0){
+                                        echo('<div class="col-12 card-title font-weight-bolder pxNeg text-center">1L / '.$prixLarge.'€</div>' );
+                                    }else{
+                                        echo('<div class=" col-6 card-title font-weight-bolder pxNeg text-center">33cl / '.$prixMedium.'€</div>
+                                            <div class="col-6 card-title font-weight-bolder pxNeg text-center">1L / '.$prixLarge.'€</div>' );
+                                    }
+                                ?>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="card col-3 mx-4 mb-5">
-                        <img class="card-img-top imgSize mx-auto py-3" src="img/boissons/bieres.jpg" alt="Card image cap">
-                        
-                        <div class="card-body text-center">
-                            <h5 class="card-title font-weight-bolder">Bières</h5>
-                            <p class="card-text sizeTxt">Heineken, Desperado, Pelforth ambré, Tourtelle twist (sans alcool).</p>
-                            <div class="row">
-                                <div class=" col-6 card-title font-weight-bolder pxNeg text-right heighTxt">33cl</div>
-                                <div class=" col-6 card-title font-weight-bolder pxNeg text-left">3,00€</div>
-                            </div>
-                            <!-- <div class="card-title font-weight-bolder pxNeg text-center">33cl 3,00€</div> -->
-                        </div>
-                    </div>
+                    <?php 
+                    } 
+                    ?>
 
-                    <div class="card col-3 mx-4 mb-5">
-                        <img class="card-img-top imgSize mx-auto py-3" src="img/boissons/vins.jpg" alt="Card image cap">
-                        
-                        <div class="card-body text-center">
-                            <h5 class="card-title font-weight-bolder">Vins</h5>
-                            <p class="card-text sizeTxt">Côtes de Provences<br>ou<br>Beaujolais Villages.</p>
-                            <div class="row">
-                                <div class=" col-6 card-title font-weight-bolder pxNeg text-center heighTxt">Rosé <br> 9,50€</div>
-                                <div class=" col-6 card-title font-weight-bolder pxNeg text-center">Rouge <br> 9,80€</div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
             </div> 
         
@@ -429,7 +260,7 @@
                         <div class="">Dimanche :</div>
                     </b>
 
-                    <b class="col-9 text-left">
+                    <div class="col-9 text-left">
                         <div class="">FERME.</div>
                         <div class="">11h-15h / 19h-23h.</div>
                         <div class="">11h-15h / 19h-23h.</div>
@@ -437,7 +268,7 @@
                         <div class="">11h-15h / 19h-23h.</div>
                         <div class="">11h-15h30 / 19h-23h30.</div>
                         <div class="">FERME.</div>
-                    </b>
+                    </div>
 
                     <h3 class="mt-100px ml-3">
                         <u>OU SOMMES NOUS ?</u> 
