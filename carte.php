@@ -1,35 +1,29 @@
 
-  <?php 
-      $titre = "Carte";
-      include_once("header.php");
-    //   include_once("navbar.php");
+    <?php 
+        $titre = "Carte";
+        include_once("header.php");
+        include_once("navbar.php");
 
-
-    // CONNEXION A LA BDD
-    function connexion(){
-        try {
-            $dbh = new PDO('mysql:host=localhost;dbname=pizza', 'root', '', array(
-                PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"
-            ));
-  
-        } catch (PDOException $e) {
-            print "Erreur !: " . $e->getMessage() . "<br/>";
-            die();
-        }return($dbh);
-        // $dbh = null;
-    }
-
-
-
-
-
+        // CONNEXION A LA BDD
+        function connexion(){
+            try {
+                $dbh = new PDO('mysql:host=localhost;dbname=pizza', 'root', '', array(
+                    PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"
+                ));
+    
+            } catch (PDOException $e) {
+                print "Erreur !: " . $e->getMessage() . "<br/>";
+                die();
+            } return($dbh);
+            // $dbh = null;
+        }
    ?>
 
 
-    <div class="container-fluid mt-affichage">
+    <div class="container-fluid affichage">
 
         <!--------------------------- BANDEAU GRIS --------------------------->
-        <div class="row bg-secondary text-light justify-content-center py-2">
+        <div class="row bg-success text-light justify-content-center py-2">
             <div href="" class="col-1 text-center h5 lien">ENTREES</div>
             <div href="" class="col-1 text-center h5 lien">PIZZAS</div>
             <div href="" class="col-1 text-center h5 lien">DESSERTS</div>
@@ -37,12 +31,12 @@
         </div>
 
         
-        <div class="row mt-5">
+        <div class="row">
 
-        <!--------------------------- SECTION DE GAUCHE --------------------------->    
-            <div class="col-8">
-            <!-- PIZZAS -->
-                <h3 class="text-center mb-4">
+            <!--------------------------- SECTION DE GAUCHE --------------------------->    
+            <div class="col-8 bg-gris">
+                <!-- PIZZAS -->
+                <h3 class="text-center mb-4 pt-5">
                     LES PIZZAS
                 </h3>
                 
@@ -50,7 +44,6 @@
                     <?php 
                         $dbh = connexion();
                         $produit = "SELECT `nomProduit`, `prixMedium`, `prixLarge`, `descriptif`, `cheminImage`, `categorie_id` FROM `produit` WHERE `categorie_id` = 1 ";
-                        // echo "connexion ok";
                         
                         foreach($dbh->query($produit) as $data) {
                             $nomProduit = $data['nomProduit'];
@@ -82,7 +75,7 @@
                             </div>
                         </div> 
                     <?php 
-                    } 
+                    } //Fermeture du foreach 
                     ?>
 
                 </div>
@@ -90,17 +83,15 @@
                 <hr class="w-75">
 
 
-            <!-- LES ENTREES -->
+                <!-- LES ENTREES -->
                 <h3 class="text-center mb-4">
                     LES ENTREES
                 </h3>
 
-                <!-- ligne 1 -->
                 <div class="row mb-5 justify-content-center"> 
                     <?php 
                         $dbh = connexion();
                         $produit = "SELECT `nomProduit`, `prixMedium`, `prixLarge`, `descriptif`, `cheminImage`, `categorie_id` FROM `produit` WHERE `categorie_id` = 4 ";
-                        // echo "connexion ok";
                         
                         foreach($dbh->query($produit) as $data) {
                             $nomProduit = $data['nomProduit'];
@@ -133,7 +124,7 @@
                     </div>
 
                     <?php 
-                    } 
+                    } //Fermeture du foreach 
                     ?>
                     
                 </div>
@@ -141,7 +132,7 @@
                 <hr class="w-75">
 
 
-            <!-- LES DESSERTS -->
+                <!-- LES DESSERTS -->
                 <h3 class="text-center mb-5">
                     LES DESSERTS
                 </h3>
@@ -150,7 +141,6 @@
                     <?php 
                         $dbh = connexion();
                         $produit = "SELECT `nomProduit`, `prixMedium`, `prixLarge`, `descriptif`, `cheminImage`, `categorie_id` FROM `produit` WHERE `categorie_id` = 3 ";
-                        // echo "connexion ok";
                         
                         foreach($dbh->query($produit) as $data) {
                             $nomProduit = $data['nomProduit'];
@@ -183,25 +173,22 @@
                     </div>
 
                     <?php 
-                    } 
+                    } //Fermeture du foreach 
                     ?>
                 </div>
 
                 <hr class="w-75">
 
 
-             <!-- LES BOISSONS -->
+                <!-- LES BOISSONS -->
                 <h3 class="text-center mb-5">
                     LES BOISSONS
                 </h3>
 
-                <!-- ligne 1 -->
                 <div class="row mb-5 justify-content-center">
-                       
-                <?php 
+                    <?php 
                         $dbh = connexion();
                         $produit = "SELECT `nomProduit`, `prixMedium`, `prixLarge`, `descriptif`, `cheminImage`, `categorie_id` FROM `produit` WHERE `categorie_id` = 2 ";
-                        // echo "connexion ok";
                         
                         foreach($dbh->query($produit) as $data) {
                             $nomProduit = $data['nomProduit'];
@@ -234,22 +221,20 @@
                     </div>
 
                     <?php 
-                    } 
+                    } //Fermeture du foreach 
                     ?>
 
                 </div>
             </div> 
-        
 
-        <!--------------------------- SECTION DE DROITE --------------------------->
-            <div class="col-4">
-
-                <h3 class="">
+            <!--------------------------- SECTION DE DROITE --------------------------->
+            <div class="col-4 pt-5">
+                <h3 class="ml-5">
                     <u>NOS HORRAIRES</u> 
                 </h3>
 
-            <!-- horraires -->
-                <div class="row mt-4">
+                <!-- horraires -->
+                <div class="row mt-4 ml-4">
                     <b class="col-3">
                         <div class="">Lundi :</div>
                         <div class="">Mardi :</div>
@@ -270,17 +255,13 @@
                         <div class="">FERME.</div>
                     </div>
 
-                    <h3 class="mt-100px ml-3">
+                    <h3 class="mt-100px ml-4">
                         <u>OU SOMMES NOUS ?</u> 
                     </h3>
 
-                    <div class="maps mt-4"><iframe width="420" height="420" src="https://maps.google.com/maps?width=420&amp;height=420&amp;hl=en&amp;q=20%20rue%20du%20luxembourg%2C%20roubaix+(Titre)&amp;ie=UTF8&amp;t=&amp;z=13&amp;iwloc=B&amp;output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><div class="iframe"><small style="line-height: 1.8;font-size: 2px;background: #fff;">Powered by <a href="https://embedgooglemaps.com/fr/">https://embedgooglemaps.com/fr/</a> & <a href="https://onlinecasinoutanspelpaus.se/">https://onlinecasinoutanspelpaus.se/</a></small></div><style>#gmap_canvas img{max-width:none!important;background:none!important}</style></div><br />
-                    <!-- <div class="maps mt-4"><iframe width="420" height="420" src="https://maps.google.com/maps?width=420&amp;height=420&amp;hl=en&amp;q=20%20rue%20du%20luxembourg%2C%20roubaix+(Titre)&amp;ie=UTF8&amp;t=&amp;z=11&amp;iwloc=B&amp;output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><div style="position: absolute;width: 80%;bottom: 10px;left: 0;right: 0;margin-left: auto;margin-right: auto;color: #000;text-align: center;"><small style="line-height: 1.8;font-size: 2px;background: #fff;">Powered by <a href="https://embedgooglemaps.com/en/">embedgooglemaps FR</a> & <a href="https://kasinoutansvensklicens.nu/">https://kasinoutansvensklicens.nu/</a></small></div><style>#gmap_canvas img{max-width:none!important;background:none!important}</style></div><br /> -->
+                    <div class="maps mt-4 mx-auto"><iframe width="420" height="420" src="https://maps.google.com/maps?width=420&amp;height=420&amp;hl=en&amp;q=20%20rue%20du%20luxembourg%2C%20roubaix+(Titre)&amp;ie=UTF8&amp;t=&amp;z=13&amp;iwloc=B&amp;output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><div class="iframe"><small style="line-height: 1.8;font-size: 2px;background: #fff;">Powered by <a href="https://embedgooglemaps.com/fr/">https://embedgooglemaps.com/fr/</a> & <a href="https://onlinecasinoutanspelpaus.se/">https://onlinecasinoutanspelpaus.se/</a></small></div><style>#gmap_canvas img{max-width:none!important;background:none!important}</style></div><br />
                 </div>
             </div>
-
-           
-
         </div>
     </div>
 
