@@ -1,3 +1,4 @@
+
 <?php
      require_once("MyData/data.php");
      $titre=$titreAccueil;
@@ -14,21 +15,26 @@
                     <img src="img\caroussel\champis.jpg" class="d-block w-100 mt-affichage" alt="...">
                 </div>
 
+
                 
-                <div class="carousel-item sizeImg">
-                    <img src="img\caroussel\chorizo3.jpg" class="d-block w-100 mt-affichage" alt="...">
-                </div>
+                  <div class="carousel-item">
+                    <img src="img\carou acceuil\Meat-Lovers-Pizza.jpg" class="d-block w-100" alt="..." style="width:100%;height:100%">
+                  </div>
                 
-                <div class="carousel-item sizeImg">
-                    <img src="img/pizzas/jambon.jpg" class="d-block w-100 mt-affichage" alt="...">
-                </div>
+                  <div class="carousel-item">
+                    <img src="img\carou acceuil\vegetarienne.jpg" class="d-block w-100" alt="..." style="width:100%;height:100%">
+                  </div>
                 
-                <div class="carousel-item sizeImg">
-                    <img src="img\pizzas\royale.jpg" class="d-block w-100 mt-affichage" alt="...">
-                </div>
+                  <div class="carousel-item">
+                    <img src="img\carou acceuil\most-expensive-pizza.jpg" class="d-block w-100" alt="..." style="width:100%;height:100%">
+                  </div>
+                
+                  <div class="carousel-item">
+                    <img src="img\carou acceuil\hawaii.jpg" class="d-block w-100" alt="..." style="width:100%;height:100%">
+                  </div>
                 
                 <div class="carousel-item sizeImg ">
-                    <img src="img\pizzas\vege4.jpg" class="d-block w-100 mt-affichage sizeImg" alt="...">
+                    <img src="img\pizzas\vege4.jpg" class="d-block w-100 mt-affichage sizeImg" alt="..." >
                 </div>
             
                 <a class="carousel-control-prev " href="#carouselExampleControls" role="button" data-slide="prev">
@@ -43,7 +49,7 @@
             </div>
         </div>  -->
 
-    <div class="container-fluid bg-secondary mt-affichage">
+    <div class="container-fluid bg-secondary affichagee">
 
         <h3 class="text-center pt-5 text-light font-weight-bolder">QUOI DE NEUF CHEZ LORENZO ?</h3>
 
@@ -55,7 +61,7 @@
             </ol>
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="img\caroussel\champis.jpg" class="d-block w-100 mt-affichage" alt="...">
+                    <img src="img\caroussel\champis.jpg" class="d-block w-100 affichage" alt="...">
                     <div class="carousel-caption d-none d-md-block">
                         <h5>La pizza de la semaine </h5>
                         <p>La cannibale, avec son boeuf haché, et ses poulet émincé, elle saurra satisfaire tous les amateurs de viande.</p>
@@ -63,7 +69,7 @@
                 </div>
 
                 <div class="carousel-item">
-                    <img src="img\caroussel\chorizo3.jpg" class="d-block w-100 mt-affichage" alt="...">
+                    <img src="img\caroussel\chorizo3.jpg" class="d-block w-100 affichage" alt="...">
                     <div class="carousel-caption d-none d-md-block">
                         <h5>La spécialité du chef</h5>
                         <p>La pizza peperronni, avec ses saveurs italiennes c'est tout un voyage en italie !</p>
@@ -71,7 +77,7 @@
                 </div>
 
                 <div class="carousel-item">
-                    <img src="img\pizzas\mer.jpg" class="d-block w-100 mt-affichage" alt="...">
+                    <img src="img\pizzas\mer.jpg" class="d-block w-100 affichage" alt="...">
                     <div class="carousel-caption d-none d-md-block">
                         <h5>La nouveauté du mois</h5>
                         <p>L'Océane, avec ses fruits de mer frais, elle saura vous donner un avant-gout des vacances ! </p>

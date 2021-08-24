@@ -1,26 +1,26 @@
-body{
-    --grisNavbar:#343B3E;
-    font-family: 'Halant', serif;
-}
+/*********** general ***********/  
+    body{
+        --grisNavbar:#343B3E;
+        font-family: 'Halant', serif;
+    }
 
-.affichage
-{
-    margin-top: 4.65em;
-}
+/*********** margin sous navbar ***********/
+    .affichage{
+        margin-top: 4.65em;
+    }
 
-.contact
-{
-font-weight: bold ;
-font-size: 3em;
-text-align: center;
+/*********** Page contact ***********/
+    .contact{
+        font-weight: bold ;
+        font-size: 3em;
+        text-align: center;
+    }
+    
+    .contact > .contactTitre{
+        font-family: Arial;
+    }
 
-}
-.contact > .contactTitre
-{
-    font-family: Arial;
-}
-.contact .sousContactTitre
-{
-    font-family: 'Courier New';
-}
+    .contact .sousContactTitre{
+        font-family: 'Courier New';
+    }
 
