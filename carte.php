@@ -15,7 +15,7 @@
                 print "Erreur !: " . $e->getMessage() . "<br/>";
                 die();
             } return($dbh);
-            // $dbh = null;
+            
         }
    ?>
 
@@ -23,14 +23,16 @@
     <div class="container-fluid affichage">
 
         <!--------------------------- BANDEAU GRIS --------------------------->
-        <div class="row bg-success text-light justify-content-center py-2">
-            <div href="" class="col-1 text-center h5 lien">ENTREES</div>
-            <div href="" class="col-1 text-center h5 lien">PIZZAS</div>
-            <div href="" class="col-1 text-center h5 lien">DESSERTS</div>
-            <div href="" class="col-1 text-center h5 lien">BOISSONS</div>
-        </div>
-
-        
+                <div class="row bg-success text-light justify-content-center py-2">
+                    <?php 
+                        $dbh = connexion();
+                        $cat = " SELECT * FROM `categorie` ";
+                    ?>
+                    <?php foreach($dbh->query($cat) as $data): ?>
+                        <div href="" class="col-1 text-center h5 lien" id="<?= $data['id'] ?>"><?= $data['NomCategorie'] ?></div>
+                    <?php endforeach; $dbh = NULL;?>
+                    
+                </div>
         <div class="row">
 
             <!--------------------------- SECTION DE GAUCHE --------------------------->    
@@ -51,6 +53,7 @@
                             $prixLarge = $data['prixLarge'];
                             $descriptif = $data['descriptif'];
                             $chemin = $data['cheminImage'];
+                            
                     ?> 
 
                         <div class="card col-3 mx-4 mb-5 borderRond">
@@ -75,7 +78,7 @@
                             </div>
                         </div> 
                     <?php 
-                    } //Fermeture du foreach 
+                    } $dbh = NULL; //Fermeture du foreach 
                     ?>
 
                 </div>
@@ -124,7 +127,7 @@
                     </div>
 
                     <?php 
-                    } //Fermeture du foreach 
+                    } $dbh = NULL; //Fermeture du foreach 
                     ?>
                     
                 </div>
@@ -173,7 +176,7 @@
                     </div>
 
                     <?php 
-                    } //Fermeture du foreach 
+                    } $dbh = NULL; //Fermeture du foreach 
                     ?>
                 </div>
 
@@ -221,7 +224,7 @@
                     </div>
 
                     <?php 
-                    } //Fermeture du foreach 
+                    } $dbh = NULL; //Fermeture du foreach 
                     ?>
 
                 </div>
@@ -230,7 +233,7 @@
             <!--------------------------- SECTION DE DROITE --------------------------->
             <div class="col-4 pt-5">
                 <h3 class="ml-5">
-                    <u>NOS HORRAIRES</u> 
+                    <u>NOS HORAIRES</u> 
                 </h3>
 
                 <!-- horraires -->
@@ -265,5 +268,7 @@
         </div>
     </div>
 
+
+<script src="js/carte.js"></script>
 
 <?php include("footer.php"); ?>
