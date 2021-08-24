@@ -77,6 +77,7 @@ CREATE TABLE `contact` (
 CREATE TABLE `horaire` (
   `id` int(11) NOT NULL,
   `jour` varchar(20) NOT NULL,
+  `numJour` varchar(20) NOT NULL,
   `heureAM` varchar(20) DEFAULT NULL,
   `heurePM` varchar(20) DEFAULT NULL,
   `ouverture` tinyint(1) NOT NULL
@@ -86,10 +87,14 @@ CREATE TABLE `horaire` (
 -- Déchargement des données de la table `horaire`
 --
 
-INSERT INTO `horaire` (`id`, `jour`, `heureAM`, `heurePM`, `ouverture`) VALUES
-(1, 'Lundi', '11h00 - 14h30', '18h00 - 23h30', 1),
-(2, 'Mardi', '11h00 - 14h30', '18h00 - 23h30', 1),
-(3, 'Mercredi', '11h00 - 14h30', '18h00 - 23h30', 1);
+INSERT INTO `horaire` (`id`, `jour`, `numJour`, `heureAM`, `heurePM`, `ouverture`) VALUES
+(1, 'Lundi', '1','11:00 - 14:30', '18:00 - 23:30', 1),
+(2, 'Mardi', '2', '11:00 - 14:30', '18:00 - 23:30', 1),
+(3, 'Mercredi', '3', '11:00 - 14:30', '18:00 - 23:30', 1),
+(4, 'Jeudi', '4', '11:00 - 14:30', '18:00 - 23:30', 1),
+(5, 'Vendredi', '5', '11:00 - 14:30', '18:00 - 23:30', 1),
+(6, 'Samedi', '6', '11:00 - 14:30', '18:00 - 23:30', 1),
+(7, 'Dimanche', '0', '11:00 - 14:30', '18:00 - 23:30', 0);
 
 -- --------------------------------------------------------
 

@@ -2,7 +2,19 @@
 	<?php
 		require_once("MyData/data.php");
 
-		
+		 // CONNEXION A LA BDD
+		 function connexion(){
+            try {
+                $dbh = new PDO('mysql:host=localhost;dbname=pizza', 'root', '', array(
+                    PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"
+                ));
+    
+            } catch (PDOException $e) {
+                print "Erreur !: " . $e->getMessage() . "<br/>";
+                die();
+            } return($dbh);
+            
+        }
 	?>
 
 
