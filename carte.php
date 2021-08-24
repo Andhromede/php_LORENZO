@@ -29,7 +29,7 @@
                         $cat = " SELECT * FROM `categorie` ";
                     ?>
                     <?php foreach($dbh->query($cat) as $data): ?>
-                        <div href="" class="col-1 text-center h5 lien" id="<?= $data['id'] ?>"><?= $data['NomCategorie'] ?></div>
+                        <div class="col-1 text-center h5 lien" name="divBtn" id="<?= $data['id'] ?>"><?= $data['NomCategorie'] ?></div>
                     <?php endforeach; $dbh = NULL;?>
                     
                 </div>
@@ -268,7 +268,7 @@
         </div>
     </div>
 
-
-<script src="js/carte.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="js/carte.js"></script>
 
 <?php include("footer.php"); ?>
