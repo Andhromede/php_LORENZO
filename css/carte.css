@@ -64,7 +64,7 @@
 
 /*********** couleur bg section gauche ***********/
     .bg-gris{
-        background-color: rgb(190, 190, 190);
+        background-color: rgb(190, 190, 190) !important;
     }
 
 /*********** arrondis coins des cartes ***********/
