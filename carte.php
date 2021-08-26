@@ -267,39 +267,9 @@
             
         </div>
     </div>
-
-
-
-              
+   
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="js/carte.js"></script>
-
-    <script>
-        $(".Boissons").click(function() {
-            $(".divEntree, .divPizza, .divDesserts").addClass('hidden');
-            $(".divBoissons").removeClass('hidden');
-
-        });
-
-        $(".Pizza").click(function() {
-            $(".divEntree, .divBoissons, .divDesserts").addClass('hidden');
-            $(".divPizza").removeClass('hidden');
-        });
-
-        $(".Entree").click(function() {
-            $(".divPizza, .divBoissons, .divDesserts").addClass('hidden');
-            $(".divEntree").removeClass('hidden');
-        });
-
-        $(".Desserts").click(function() {
-            $(".divPizza, .divBoissons, .divEntree").addClass('hidden');
-            $(".divDesserts").removeClass('hidden');
-        });
-
-        $(".tous").click(function() {
-            $(".divPizza, .divBoissons, .divEntree, .divDesserts").addClass('show');
-        });
-    </script>  
 
     <?php include("footer.php"); 
 
