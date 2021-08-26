@@ -59,12 +59,12 @@ function convertHeure($value){
 
 
         /*HEURE D OUVERTURE ET FEMETURE*/
-function isWebsiteOpen() {
-    $heure = microtime(true);
-	$jour = date('N');
-   	$dbh = connexion();
-   	$horaires = " SELECT * FROM `horaire` ";
-	$rst = false;
+	function isWebsiteOpen() {
+		$heure = microtime(true);
+		$jour = date('N');
+		$dbh = connexion();
+		$horaires = " SELECT * FROM `horaire` ";
+		$rst = false;
 
    	foreach($dbh->query($horaires) as $data){
 		if($data['numJour'] == $jour ){
@@ -87,7 +87,7 @@ function isWebsiteOpen() {
 
 ?>
 				<li class="nav-item mr-4 li">
-					<a class="nav-link a-class" href="horaire.php">Nos horaires</a>
+					<a class="nav-link a-class" href="">Nos horaires</a>
 				</li>
 
 				<li class="nav-item mr-4 li">
