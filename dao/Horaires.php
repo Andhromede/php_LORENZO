@@ -11,6 +11,7 @@ class Horaires
     public function __construct(string $day, string $hourAM, string $hourPM, bool $open)
     {
         $this->jour = $day;
+        $this->
         $this->heureAM = $hourAM;
         $this->heurePM = $hourPM;
         $this->ouverture = $open;
