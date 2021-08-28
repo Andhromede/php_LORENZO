@@ -1,34 +1,41 @@
 <?php
 
-//Définition des constantes
-define("port", 3307);
-define("dbHost", "localhost");
-define("dbName", "pizza");
-define("username", "root");
-define("password", "");
-
-$dsn = 'mysql:dbname=' . dbName . ';host=' . dbHost . ';port=' . port . '';
+    //DEFINITION DES CONSTANTES
+    define("port", 3307);
+    define("dbHost", "localhost");
+    define("dbName", "pizza");
+    define("username", "root");
+    define("password", "");
 
 
+    // FONCTION DE CONNEXION A LA BDD
+    function connexion(){
+        $dsn = 'mysql:dbname=' . dbName . ';host=' . dbHost . ';port=' . port . '';
+            
+            try {
+                //On se connecte à la base de donnée en instanciant PDO
+                $bdd = new PDO($dsn, username, password, array(
+                    PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8", 
+                    PDO::ATTR_DEFAULT_FETCH_MODE => true
+                ));
 
-
-//On établit la connexion à la base
-try {
-
-    //On se connecte à la base de donnée en instanciant PDO
-    $bdd = new PDO($dsn, username, password);
-
-    //On définit le charset à UTF8
-    $bdd->exec("SET NAMES utf8");
-
-    //On définit la méthode de récupération (fetch) des données
-    $bdd ->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_ASSOC);
-
-} catch (PDOException $e) {
-    die('error' . $e->getMessage());
-}
+            }catch (PDOException $e) {
+                die('error' . $e->getMessage());
+            }
+            return($bdd);
+    }
 
 
 
+
+    // try {
+    //     $dbh = new PDO('mysql:host=localhost;dbname=pizza;port=3307', 'root', '', array(
+    //         PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"
+    //     ));
+
+    // } catch (PDOException $e) {
+    //     print "Erreur !: " . $e->getMessage() . "<br/>";
+    //     die();
+    // } return($dbh);
 
 ?>

@@ -3,19 +3,7 @@
         $titre = "Carte";
         include_once("header.php");
         include_once("navbar.php");
-
-        // CONNEXION A LA BDD
-        function connexion(){
-            try {
-                $dbh = new PDO('mysql:host=localhost;dbname=pizza;port=3307', 'root', '', array(
-                    PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"
-                ));
-    
-            } catch (PDOException $e) {
-                print "Erreur !: " . $e->getMessage() . "<br/>";
-                die();
-            } return($dbh);
-        }
+        require_once("db/db.php");
     ?>
 
 
@@ -26,12 +14,12 @@
             <div name="divBtn" class="font-weight-bolder btn text-center h5 lien mx-4 tous divBtn" value="tous" id="tous">Tous</div>
             <?php 
                 $dbh = connexion();
-                $cat = " SELECT * FROM `categorie` ";
+                $cat = $dbh ->query(" SELECT * FROM `categorie` ");
             
-                foreach($dbh->query($cat) as $data): ?>
+                foreach($cat as $data): ?>
                     <div name="divBtn" class="font-weight-bolder btn text-center h5 lien mx-4 <?= $data['NomCategorie']?> divBtn" value="<?= $data['NomCategorie']?>" id="_<?= $data['id'] ?>"><?= $data['NomCategorie']?></div>
-                <?php endforeach;                       //Ferme la connexion à la BDD
-                    $dbh = NULL;
+                <?php endforeach;                       
+                    $dbh = NULL; //Ferme la connexion à la BDD
                 ?> 
         </div>
 
@@ -49,9 +37,9 @@
                     <div class="row mb-5 justify-content-center">
                         <?php 
                             $dbh = connexion();
-                            $produit = "SELECT `nomProduit`, `prixMedium`, `prixLarge`, `descriptif`, `cheminImage`, `categorie_id` FROM `produit` WHERE `categorie_id` = 1 ";
+                            $produit = $dbh -> query("SELECT `nomProduit`, `prixMedium`, `prixLarge`, `descriptif`, `cheminImage`, `categorie_id` FROM `produit` WHERE `categorie_id` = 1 ");
                             
-                            foreach($dbh->query($produit) as $data) {
+                            foreach($produit as $data) {
                                 $nomProduit = $data['nomProduit'];
                                 $prixMedium = $data['prixMedium'];
                                 $prixLarge = $data['prixLarge'];
@@ -100,9 +88,9 @@
                         <div class="row mb-5 justify-content-center"> 
                             <?php 
                                 $dbh = connexion();
-                                $produit = "SELECT `nomProduit`, `prixMedium`, `prixLarge`, `descriptif`, `cheminImage`, `categorie_id` FROM `produit` WHERE `categorie_id` = 4 ";
-                                
-                                foreach($dbh->query($produit) as $data) {
+                                $produit = $dbh -> query("SELECT `nomProduit`, `prixMedium`, `prixLarge`, `descriptif`, `cheminImage`, `categorie_id` FROM `produit` WHERE `categorie_id` = 4 ");
+
+                                foreach($produit as $data) {
                                     $nomProduit = $data['nomProduit'];
                                     $prixMedium = $data['prixMedium'];
                                     $prixLarge = $data['prixLarge'];
@@ -147,9 +135,9 @@
                         <div class="row mb-5 justify-content-center"> 
                             <?php 
                                 $dbh = connexion();
-                                $produit = "SELECT `nomProduit`, `prixMedium`, `prixLarge`, `descriptif`, `cheminImage`, `categorie_id` FROM `produit` WHERE `categorie_id` = 3 ";
-                                
-                                foreach($dbh->query($produit) as $data) {
+                                $produit = $dbh -> query("SELECT `nomProduit`, `prixMedium`, `prixLarge`, `descriptif`, `cheminImage`, `categorie_id` FROM `produit` WHERE `categorie_id` = 3 ");
+
+                                foreach($produit as $data) {
                                     $nomProduit = $data['nomProduit'];
                                     $prixMedium = $data['prixMedium'];
                                     $prixLarge = $data['prixLarge'];
@@ -192,9 +180,9 @@
                         <div class="row mb-5 justify-content-center">
                             <?php 
                                 $dbh = connexion();
-                                $produit = "SELECT `nomProduit`, `prixMedium`, `prixLarge`, `descriptif`, `cheminImage`, `categorie_id` FROM `produit` WHERE `categorie_id` = 2 ";
+                                $produit = $dbh -> query("SELECT `nomProduit`, `prixMedium`, `prixLarge`, `descriptif`, `cheminImage`, `categorie_id` FROM `produit` WHERE `categorie_id` = 2 ");
                                 
-                                foreach($dbh->query($produit) as $data) {
+                                foreach($produit as $data) {
                                     $nomProduit = $data['nomProduit'];
                                     $prixMedium = $data['prixMedium'];
                                     $prixLarge = $data['prixLarge'];
@@ -237,25 +225,18 @@
 
                 <!-- horraires -->
                 <div class="row mt-4 ml-4">
-                    <b class="col-3">
-                        <div class="">Lundi :</div>
-                        <div class="">Mardi :</div>
-                        <div class="">Mercredi :</div>
-                        <div class="">Jeudi :</div>
-                        <div class="">Vendredi :</div>
-                        <div class="">Samedi :</div>
-                        <div class="">Dimanche :</div>
-                    </b>
+                    <?php 
+                        $dbh = connexion();
+                        $horaire = $dbh -> query(" SELECT * FROM `horaire` ");
+                        foreach($horaire as $data){
+                    ?> 
 
-                    <div class="col-9 text-left">
-                        <div class="">FERME.</div>
-                        <div class="">11h-15h / 19h-23h.</div>
-                        <div class="">11h-15h / 19h-23h.</div>
-                        <div class="">11h-15h / 19h-23h.</div>
-                        <div class="">11h-15h / 19h-23h.</div>
-                        <div class="">11h-15h30 / 19h-23h30.</div>
-                        <div class="">FERME.</div>
-                    </div>
+                    <div class="col-3 font-weight-bolder h5"><?= $data['jour'] ?> : </div>
+                    <div class="col-9 text-left"><?php echo(str_replace(":", "h", $data['heureAM']))?> / <?php echo(str_replace(":", "h", $data['heurePM']))?></div>
+
+                        <?php 
+                        } // Fin foreach
+                        ?>
 
                     <h3 class="mt-100px ml-4">
                         <u>OU SOMMES NOUS ?</u> 
@@ -263,6 +244,7 @@
 
                     <div class="maps mt-4 mx-auto"><iframe width="420" height="420" src="https://maps.google.com/maps?width=420&amp;height=420&amp;hl=en&amp;q=20%20rue%20du%20luxembourg%2C%20roubaix+(Titre)&amp;ie=UTF8&amp;t=&amp;z=13&amp;iwloc=B&amp;output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe><div class="iframe"><small style="line-height: 1.8;font-size: 2px;background: #fff;">Powered by <a href="https://embedgooglemaps.com/fr/">https://embedgooglemaps.com/fr/</a> & <a href="https://onlinecasinoutanspelpaus.se/">https://onlinecasinoutanspelpaus.se/</a></small></div><style>#gmap_canvas img{max-width:none!important;background:none!important}</style></div><br />
                 </div>
+                
             </div>
             
         </div>
