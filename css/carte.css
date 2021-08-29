@@ -1,7 +1,7 @@
 /*********** liens survolés ***********/
     .lien:hover{
-        background-color: rgb(241, 241, 241);
-        color: black;
+        background-color: rgb(27, 27, 27);
+        color: white;
         border-radius: 10px;
         box-shadow: 3px 3px 3px 2px  rgb(27, 27, 27);
     }
@@ -64,26 +64,35 @@
 
 /*********** couleur bg section gauche ***********/
     .bg-gris{
-        background-color: rgb(190, 190, 190) !important;
+        background-color: #1b1b1b !important;
     }
 
 /*********** arrondis coins des cartes ***********/
     .borderRond{
         border-radius: 10px;
+        border: #cda45e 3px solid;
     }
 
-.btn{
-    border-radius: 5em !important;
-    color: white;
-    font-size: 1.2em;
-    margin-top: -0.4em;
-    margin-bottom:  -0.2em;
-}
+    .btn{
+        border-radius: 5em !important;
+        color: rgb(0, 0, 0);
+        font-size: 1.2em;
+        margin-top: -0.4em;
+        margin-bottom:  -0.2em;
+    }
 
-.hidden {
-    display: none;
-}
+    .hidden {
+        display: none;
+    }
 
-.show{
-    display: block;
-}
+    .show{
+        display: block;
+    }
+
+    .bg-menuCarte{
+        background-color: #cda45e;
+    }
+
+    .bg-droite{
+        background-color: rgb(194, 194, 194);
+    }
