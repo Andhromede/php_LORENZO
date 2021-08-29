@@ -94,5 +94,11 @@
     }
 
     .bg-droite{
-        background-color: rgb(194, 194, 194);
+        /* background-color: #1B1B1B; */
+        background-color: #cda45e;
+        border-left: solid 3px white;
+    }
+
+    .colorDore{
+        color: #cda45e !important;
     }

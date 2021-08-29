@@ -117,7 +117,7 @@
                             et n'hésitons pas à tout mettre en oeuvre afin que vous puissiez passer un moment agréable et en toute sécurité !
                         </p>
 
-                        <p> 
+                        <p class="font-italic"> 
                             A compter du 9 Août et conformément à la loi du 31 mai 2021, l’accès aux restaurants, bars et cafés est soumis à la présentation obligatoire du Pass sanitaire.
                         </p>
 
@@ -156,7 +156,7 @@
 
                 <div class="section-title">
                     <h2>Lorenzo</h2>
-                    <p>Actuellement</p>
+                    <p class="colorDore">Actuellement</p>
                 </div>
 
                 <div class="row">
@@ -164,7 +164,7 @@
                         <div class="box" data-aos="zoom-in" data-aos-delay="100">
                             <span>La pizza du mois</span>
                             <h4>L'Océance</h4>
-                            <p>L'Océane, avec ses fruits de mer frais, elle saura vous donner un avant-gout des vacances.</p>
+                            <p class="colorDore">L'Océane, avec ses fruits de mer frais, elle saura vous donner un avant-gout des vacances.</p>
                         </div>
                     </div>
 
@@ -172,7 +172,7 @@
                         <div class="box" data-aos="zoom-in" data-aos-delay="200">
                             <span>Cette semaine</span>
                             <h4>L'Annibal</h4>
-                            <p>Avec son boeuf haché, ses merguez épicées et son poulet émincé, elle saurra satisfaire tous les amateurs de viande.</p>
+                            <p class="colorDore">Avec son boeuf haché, ses merguez épicées et son poulet émincé, elle saurra satisfaire tous les amateurs de viande.</p>
                         </div>
                     </div>
 
@@ -180,7 +180,7 @@
                         <div class="box" data-aos="zoom-in" data-aos-delay="300">
                             <span>La pizza du chef</span>
                             <h4>La pepperonni</h4>
-                            <p>Avec ses saveurs italiennes c'est tout un voyage au coeur de l'italie.</p>
+                            <p class="colorDore">Avec ses saveurs italiennes c'est tout un voyage au coeur de l'italie.</p>
                         </div>
                     </div>
                 </div>
@@ -194,128 +194,64 @@
 
                 <div class="section-title">
                     <h2>Lorenzo</h2>
-                    <p>Menu</p>
+                    <p class="colorDore">Menu</p>
                 </div>
 
                 <div class="row" data-aos="fade-up" data-aos-delay="100">
                     <div class="col-lg-12 d-flex justify-content-center">
                         <ul id="menu-flters">
-                            <li data-filter="*" class="filter-active">Tous</li>
-                            <li data-filter=".filter-starters">Entrées</li>
-                            <li data-filter=".filter-salads">Pizzas</li>
-                            <li data-filter=".filter-specialty">Desserts</li>
-                            <li data-filter=".filter-specialty">Boissons</li>
+
+                        <li data-filter="*" class="filter-active tous">Tous</li>
+
+                        <?php 
+                            $dbh = connexion();
+                            $categorie = $dbh -> query("SELECT * FROM `categorie` ");
+                                
+                            foreach($categorie as $cat) {
+                                $nomCat = $cat['NomCategorie'];  
+                        ?>
+
+                            <li data-filter=".filter-starters" class="<?= $nomCat ?>"><?= $nomCat ?></li>
+
+                        <?php 
+                            } $dbh = NULL; //Fermeture du foreach 
+                        ?>
+
                         </ul>
                     </div>
                 </div>
 
                 <div class="row menu-container" data-aos="fade-up" data-aos-delay="200">
-                    <div class="col-lg-6 menu-item filter-starters">
-                        <img src="img/pizzas/orientale.jpeg" class="menu-img" alt="">
-                        
-                        <div class="menu-content">
-                            <a href="#">La pizza Orientale</a><div><span>12.5€ / 14.5€</span>(Maxi)</div>
+                    <div class="row menu-container divPizza" data-aos="fade-up" data-aos-delay="200">
+
+                        <?php 
+                            $dbh = connexion();
+                            $produit = $dbh -> query("SELECT `nomProduit`, `prixMedium`, `prixLarge`, `descriptif`, `cheminImage`, `categorie_id` FROM `produit` ");
+                                
+                            foreach($produit as $data) {
+                                $nomProduit = $data['nomProduit'];
+                                $prixMedium = $data['prixMedium'];
+                                $prixLarge = $data['prixLarge'];
+                                $descriptif = $data['descriptif'];
+                                $chemin = $data['cheminImage'];    
+                        ?> 
+
+                        <div class="col-lg-6 menu-item filter-starters div<?=$cat['NomCategorie']?>">
+                            <img src="<?= $chemin ?>" class="menu-img" alt="">
+                            
+                            <div class="menu-content">
+                                <a href="#"><?= $nomProduit ?></a><div><span><?= $prixMedium ?>€ / <?= $prixLarge ?>€</span>(Maxi)</div>
+                            </div>
+                            
+                            <div class="menu-ingredients">
+                                <?= $descriptif ?>
+                            </div>
                         </div>
 
-                        <div class="menu-ingredients">
-                            Sauce tomate à l'origan, mozzarella, merguez et champignons frais.
-                        </div>
-                    </div>
+                        <?php 
+                            } $dbh = NULL; //Fermeture du foreach 
+                        ?>
 
-                    <div class="col-lg-6 menu-item filter-specialty">
-                        <img src="img/pizzas/base2.jpg" class="menu-img" alt="">
-                        
-                        <div class="menu-content">
-                            <a href="#">La pizza Margherita</a><div><span>9.5€ / 12.5€</span>(Maxi)</div>
-                        </div>
-
-                        <div class="menu-ingredients">
-                            Sauce tomate à l'origan, mozzarella et basilic frais.
-                        </div>
-                    </div>
-
-                    <div class="col-lg-6 menu-item filter-starters">
-                        <img src="img/pizzas/royale.jpg" class="menu-img" alt="">
-                        
-                        <div class="menu-content">
-                            <a href="#">La pizza Royale</a><div><span>10.9€ / 12.9€</span>(Maxi)</div>
-                        </div>
-
-                        <div class="menu-ingredients">
-                            Sauce tomate à l'origan, jambon, mozzarella et champignons frais.
-                        </div>
-                    </div>
-
-                    <div class="col-lg-6 menu-item filter-salads">
-                        <img src="img/pizzas/maroilles.jpg" class="menu-img" alt="">
-                        
-                        <div class="menu-content">
-                            <a href="#">La pizza Ch'ti</a><div><span>12.5€ / 14.5€</span>(Maxi)</div>
-                        </div>
-
-                        <div class="menu-ingredients">
-                            Crème fraiche, mozzarella, maroilles et lard fumé.
-                        </div>
-                    </div>
-
-                    <div class="col-lg-6 menu-item filter-specialty">
-                        <img src="img/menu/tuscan-grilled.jpg" class="menu-img" alt="">
-                        
-                        <div class="menu-content">
-                            <a href="#">Tuscan Grilled</a><span>$9.95</span>
-                        </div>
-
-                        <div class="menu-ingredients">
-                            Grilled chicken with provolone, artichoke hearts, and roasted red pesto
-                        </div>
-                    </div>
-
-                    <div class="col-lg-6 menu-item filter-starters">
-                        <img src="img/menu/mozzarella.jpg" class="menu-img" alt="">
-                        
-                        <div class="menu-content">
-                            <a href="#">Mozzarella Stick</a><span>$4.95</span>
-                        </div>
-
-                        <div class="menu-ingredients">
-                            Lorem, deren, trataro, filede, nerada
-                        </div>
-                    </div>
-
-                    <div class="col-lg-6 menu-item filter-salads">
-                        <img src="img/menu/greek-salad.jpg" class="menu-img" alt="">
-                        
-                        <div class="menu-content">
-                            <a href="#">Greek Salad</a><span>$9.95</span>
-                        </div>
-
-                        <div class="menu-ingredients">
-                            Fresh spinach, crisp romaine, tomatoes, and Greek olives
-                        </div>
-                    </div>
-
-                    <div class="col-lg-6 menu-item filter-salads">
-                        <img src="img/menu/spinach-salad.jpg" class="menu-img" alt="">
-                        
-                        <div class="menu-content">
-                            <a href="#">Spinach Salad</a><span>$9.95</span>
-                        </div>
-
-                        <div class="menu-ingredients">
-                            Fresh spinach with mushrooms, hard boiled egg, and warm bacon vinaigrette
-                        </div>
-                    </div>
-
-                    <div class="col-lg-6 menu-item filter-specialty">
-                        <img src="img/menu/lobster-roll.jpg" class="menu-img" alt="">
-                        
-                        <div class="menu-content">
-                            <a href="#">Lobster Roll</a><span>$12.95</span>
-                        </div>
-
-                        <div class="menu-ingredients">
-                            Plump lobster meat, mayo and crisp lettuce on a toasted bulky roll
-                        </div>
                     </div>
                 </div>
             </div>
@@ -328,7 +264,7 @@
 
                 <div class="section-title">
                     <h2>Lorenzo</h2>
-                    <p>A propos de nous</p>
+                    <p class="colorDore">A propos de nous</p>
                 </div>
 
                 <div class="row" data-aos="fade-up" data-aos-delay="100">
@@ -396,7 +332,7 @@
                                         <h3>Nous contacter :</h3>
 
                                         <p class="font-italic">tel: 09.49.05.49.72</p>
-                                        <p>mail: lorenzo.pizza@gmail.com</p>
+                                        <p class="colorDore">mail: lorenzo.pizza@gmail.com</p>
                                     </div>
 
                                     <div class="col-lg-4 text-center order-1 order-lg-2">
@@ -417,7 +353,7 @@
 
                 <div class="section-title">
                     <h2>Events</h2>
-                    <p>Organize Your Events in our Restaurant</p>
+                    <p class="colorDore">Organize Your Events in our Restaurant</p>
                 </div>
 
                 <div class="owl-carousel events-carousel" data-aos="fade-up" data-aos-delay="100">
@@ -431,7 +367,7 @@
                             <h3>Birthday Parties</h3>
 
                             <div class="price">
-                                <p><span>$189</span></p>
+                                <p class="colorDore"><span>$189</span></p>
                             </div>
 
                             <p class="font-italic">
@@ -459,7 +395,7 @@
                             <h3>Private Parties</h3>
 
                             <div class="price">
-                                <p><span>$290</span></p>
+                                <p class="colorDore"><span>$290</span></p>
                             </div>
 
                             <p class="font-italic">
@@ -489,7 +425,7 @@
                             <h3>Custom Parties</h3>
 
                             <div class="price">
-                                <p><span>$99</span></p>
+                                <p class="colorDore"><span>$99</span></p>
                             </div>
 
                             <p class="font-italic">
@@ -520,7 +456,7 @@
             <div class="container" data-aos="fade-up">
                 <div class="section-title">
                     <h2>Lorenzo</h2>
-                    <p>Gallerie photos</p>
+                    <p class="colorDore">Gallerie photos</p>
                 </div>
             </div>
 
@@ -602,7 +538,7 @@
             <div class="container" data-aos="fade-up">
                 <div class="section-title">
                     <h2>Lorenzo</h2>
-                    <p>Contactez-nous</p>
+                    <p class="colorDore">Contactez-nous</p>
                 </div>
 
                 <form action="forms/book-a-table.php" method="post" role="form" class="php-email-form" data-aos="fade-up" data-aos-delay="100">
@@ -647,7 +583,7 @@
 
 
 
-
+    <script src="js/carte.js"></script>
 
 </body>
 

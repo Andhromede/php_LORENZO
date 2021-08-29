@@ -38,7 +38,6 @@
 
 
 
-
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
@@ -299,7 +298,7 @@
         margin: 0 0 5px 0;
         letter-spacing: 2px;
         text-transform: uppercase;
-        color: #aaaaaa;
+        /* color: #aaaaaa; */
         font-family: "Poppins", sans-serif;
     }
     
@@ -318,6 +317,9 @@
         font-size: 36px;
         font-weight: 700;
         font-family: "Playfair Display", serif;
+    }
+
+    .colorDore{
         color: #cda45e;
     }
   
