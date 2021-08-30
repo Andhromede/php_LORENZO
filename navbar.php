@@ -21,7 +21,7 @@
 				</li>
 
 				<li class="nav-item mr-4 li">
-					<a class="nav-link a-class " href='<?= $linkAccueil ?>'>Notre Carte</a>
+					<a class="nav-link a-class " href='<?= $linkCarte ?>'>Notre Carte</a>
 				</li>
 
 				<?php

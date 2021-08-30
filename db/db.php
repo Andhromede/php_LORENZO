@@ -10,8 +10,9 @@
 
     // FONCTION DE CONNEXION A LA BDD
     function connexion(){
-        $dsn = 'mysql:dbname=' . dbName . ';host=' . dbHost . ';port=' . port . '';
-            
+        $dsn = 'mysql:dbname=' . dbName . ';dbHost=' . dbHost . ';port=' . port . '';        //Connexion AFPA
+        // $dsn = 'mysql:Host='.dbHost.';' .'dbname='.dbName .';'. username .';'. '' ;             //Connexion Nath
+        
             try {
                 //On se connecte à la base de donnée en instanciant PDO
                 $bdd = new PDO($dsn, username, password, array(
@@ -37,5 +38,14 @@
     //     print "Erreur !: " . $e->getMessage() . "<br/>";
     //     die();
     // } return($dbh);
+
+
+
+
+
+
+
+
+
 
 ?>

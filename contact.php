@@ -1,154 +1,114 @@
 <?php
-require_once ("MyData/data.php");
+    session_start();
+    require_once ("MyData/data.php");
     $titre= $titreContact;
-        include_once $linkHeader;
-        include_once $linkNavBar;
-        include_once $linkfooter;
+
+    include_once $linkHeader;
+    // include_once $linkNavBar;
+    include_once $linkfooter;
+
+    require_once("db/db.php");
+
+
+
+    if(isset($_GET["action"]) && $_GET["action"] == "envoyer" && !empty($_POST)){
+        $nom = $_POST["nom"];
+        $email = $_POST["email"];
+        $sujet = $_POST["sujet"];
+        $message = $_POST["message"];
+
+        try {
+            $bdh = connexion();
+            $insert = $bdh -> prepare("INSERT INTO contact (nom, email, sujet, message) VALUES (:nom, :email, :sujet, :message)");
+            $insert -> bindParam('nom',$nom,PDO::PARAM_STR);
+            $insert -> bindParam('email',$email,PDO::PARAM_STR);
+            $insert -> bindParam('sujet',$sujet,PDO::PARAM_STR);
+            $insert -> bindParam('message',$message,PDO::PARAM_STR);
+            $insert -> execute();
+
+            $_SESSION['msgContact'] = true;
+
+            echo("<script> 
+
+                    $('.modal').on('shown.bs.modal',function(){
+                        $('.btnModal').on('click',function(){
+                            window.location = 'accueil.php';
+                        });
+                    });
+
+                    $('.modal').modal('show');
+                    
+                </script>");
+            // header('location:accueil.php');
+
+            
+        }catch (Exception $e) {
+            echo('<div class="alert alert-danger mt-4" role="alert">
+                    Erreur lors de l\'envoi de votre message.
+                </div>');
+        }
+    }
         
 ?>
 
+<link rel="stylesheet" href="css/contact.css">
+
 <div class="container affichage">
-    <div class="row">
-        <div class="col contact contactTitre"><?= strtoupper($titrePourNousContacter) ?></div>
-    </div>
-    <div class="row">&nbsp;</div>
-    <div class="row">
-        <div class="col sousContactTitre contact">
-            <?= $sousTitrePourNousContacter?>
-        </div>
-    </div>
-    <div class="row">
-        <div class="col ">
-            <?= $descriptionPourNousContacter?>
-        </div>
-    </div>
+    
+    <!-- TITRE -->
+    <div class="contact contactTitre">Contactez-Nous</div>
 
-   <!--Section: Contact v.2-->
-<section class="mb-4 mt-5">
-    <div class="row">
-<form method="post" action="contact.php?action=envoyer">
-      
-        <div class="col-md-6">
-            <div class="md-form mb-0">
-                <input type="radio" class="mr-1 ml-2" name="genre" value="Madame">Madame</input>
-                <input type="radio" class="mr-1 ml-2" name="genre" value="Monsieur">Monsieur</input>
-            </div>
-        </div>
+    <!--FORMULAIRE-->
+    <section class="my-5 row">
+        <div class="col-7 bg-contact mx-auto mb-5">
 
-
-
-        <div class="col-md-6">
-            <div class="md-form mb-0">
-                <input type="text" id="txtEmail" name="email" class="form-control">
-                <label for="email" class="">Votre email *</label>
-            </div>
-        </div>
-    </div>
-
-                <!--Grid row-->
-    <div class="row">
-
-                    <!--Grid column-->
-                    <div class="col-md-6">
-                        <div class="md-form mb-0">
-                            <input type="text" id="txtNom" name="name" class="form-control">
-                            <label for="name" class="">Votre nom *</label>
-                        </div>
-                    </div>
-                    <!--Grid column-->
-
-                    <!--Grid column-->
-                    <div class="col-md-6">
-                        <div class="md-form mb-0">
-                            <input type="text" id="txtPhone" name="phone" class="form-control">
-                            <label for="phone" class="">Votre téléphone (optionnel)</label>
-                        </div>
-                    </div>
-                    <!--Grid column-->
-
+            <form method="post" action="contact.php?action=envoyer" class="row formPopUp">
+                <div class="md-form col-5">
+                    <label for="name" class="mt-4">Nom</label>
+                    <input type="text" id="txtNom" name="nom" class="form-control" require>
                 </div>
-                <!--Grid row-->
 
-                <!--Grid row-->
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="md-form mb-0">
-                            <input type="text" id="txtSujet" name="sujet" class="form-control">
-                            <label for="sujet" class="">Sujet *</label>
-                        </div>
-                    </div>
+                <div class="md-form col-7">
+                    <label for="email" class="mt-4">Email</label>
+                    <input type="email" id="txtEmail" name="email" class="form-control" require>
                 </div>
-                <!--Grid row-->
-
-                <!--Grid row-->
-                <div class="row">
-
-                    <!--Grid column-->
-                    <div class="col-md-12">
-
-                        <div class="md-form">
-                            <textarea type="text" id="message" name="message" rows="2" class="form-control md-textarea"></textarea>
-                            <label for="message">Votre message *</label>
-                        </div>
-
-                    </div>
+    
+                <div class="md-form col-12">
+                    <label for="sujet" class="mt-4">Sujet</label>
+                    <input type="text" id="txtSujet" name="sujet" class="form-control" require>
                 </div>
-                <!--Grid row-->
 
-           
+                <div class="md-form col-12">
+                    <label for="message" class="mt-4">Message</label>
+                    <textarea type="text" rows="10" id="message" name="message" class="form-control md-textarea" require></textarea>
+                </div>
 
-            <div class="text-center text-md-left">
-                <input type="submit" class="btn btn-primary" />
-            </div>
-         </form>
-            <div class="status"></div>
+                <div class="text-center mt-5 mx-auto">
+                    <input type="submit" class="btn btn-primary" />
+                </div>
+            </form>
+
         </div>
-        <!--Grid column-->
 
-      
 
-    </div>
 
-</section>
-<!--Section: Contact v.2-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </section>
 </div>
 
-<?php
-    if(isset($_GET["action"]) && $_GET["action"] == "envoyer"){
-
-
-    $civilite = $_POST["genre"];
-    //echo type_of($_POST["genre"]);
-    $nom = $_POST["name"];
-    $email = $_POST["email"];
-    $sujet = $_POST["sujet"];
-    $message = $_POST["message"];
-    $phone = $_POST["phone"];
-
-
-    try {
-
-
-        $dbh = connexion();
-        $insertContact = $dbh -> query("INSERT INTO `contact` (`civilite`, `nom`, `telephone`, `email`, `sujet`, `message`) VALUES (:civilite,:nom,:telephone, :email,:sujet,:message)");
-
-        $insertContact -> bindParam(':civilite',$civilite,PDO::PARAM_STR);
-        $insertContact -> bindParam(':nom',$nom,PDO::PARAM_STR);
-        $insertContact -> bindParam(':telephone',$phone,PDO::PARAM_STR);
-        $insertContact -> bindParam(':email',$email,PDO::PARAM_STR);
-        $insertContact -> bindParam(':sujet',$sujet,PDO::PARAM_STR);
-        $insertContact -> bindParam(':message',$message,PDO::PARAM_STR);
-
-        $insertContact -> execute();
-
-        $rst = "Donnée enregistrée";
-
-
-    } 
-    catch (Exception $e) {
-        $rst = "Erreur d'enregistrement";
-    }
-
-    }
-
-?>
