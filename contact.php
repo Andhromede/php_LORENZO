@@ -128,8 +128,9 @@ require_once ("MyData/data.php");
 
     try {
 
-        $bdh = connexion();
-        $insertContact = $bdh -> query("INSERT INTO `contact` (`civilite`, `nom`, `telephone`, `email`, `sujet`, `message`) VALUES (:civilite,:nom,:telephone, :email,:sujet,:message)");
+
+        $dbh = connexion();
+        $insertContact = $dbh -> query("INSERT INTO `contact` (`civilite`, `nom`, `telephone`, `email`, `sujet`, `message`) VALUES (:civilite,:nom,:telephone, :email,:sujet,:message)");
 
         $insertContact -> bindParam(':civilite',$civilite,PDO::PARAM_STR);
         $insertContact -> bindParam(':nom',$nom,PDO::PARAM_STR);
