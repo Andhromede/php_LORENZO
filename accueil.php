@@ -5,9 +5,6 @@
     include_once $linkHeader;
     include_once $linkNavBar;
 
-    // require_once("db/db.php");
-
-    var_dump($_SESSION['msgContact']);
 ?>
 
 <link rel="stylesheet" href="css/accueil.css">
