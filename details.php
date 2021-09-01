@@ -5,18 +5,12 @@
 
     $dbh = connexion();
     define ("id", $_GET["id"]);
+
     $sql =  'SELECT distinct p.id, p.nomProduit, p.prixMedium, p.prixLarge, p.descriptif, p.cheminImage, c.NomCategorie FROM produit AS p, categorie AS c WHERE c.id = p.categorie_id AND p.id='.id;
     $produits = $dbh -> query($sql);
     
     $sqlCat =  'SELECT * FROM categorie';
     $categories = $dbh -> query($sqlCat);
-
-
-
-
-
-
-    
 ?>
 
 <div class="container-fluid">
@@ -70,7 +64,7 @@
         </table>
 
         <div class="row">
-            <input class="col-2 mx-auto btn btn-success modifier" type="submit" name="modifier">Modifier</input>
+            <input class="col-2 mx-auto btn btn-success modifier" type="submit" name="modifier"></input>
             <a href="listeProduits.php" class="col-2 mx-auto btn btn-danger modifier">Retour à la liste</a>
         </div>
 
@@ -138,5 +132,7 @@
         }
 
     }
+
+
 
 ?>
