@@ -76,7 +76,22 @@
 					<a class="nav-link a-class" href="contact.php">Nous contacter</a>
 				</li>
 
+				<ul class="navbar-nav user">
+					<li class="nav-item dropdown dropdown li">
+						<a class="nav-link dropdown-toggle a-class" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+							Administration
+						</a>
+
+						<div class="dropdown-menu bgColor bgMini" aria-labelledby="navbarDropdown">
+							<a class="dropdown-item a-class" href="listeProduits.php">Modifier produits</a>
+							<a class="dropdown-item a-class" href="#"></a>
+						</div>
+					</li>
+				</ul>
+
 			</ul>
+
+			
 
 			<ul class="navbar-nav user">
 				<li class="nav-item dropdown dropleft li">

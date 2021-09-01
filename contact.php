@@ -1,10 +1,10 @@
 <?php
-    session_start();
+    // session_start();
     require_once ("MyData/data.php");
     $titre= $titreContact;
 
     include_once $linkHeader;
-    // include_once $linkNavBar;
+    include_once $linkNavBar;
     include_once $linkfooter;
 
     require_once("db/db.php");

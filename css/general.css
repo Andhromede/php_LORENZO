@@ -1,7 +1,8 @@
 /*********** general ***********/  
     body{
         --grisNavbar:#343B3E;
-        font-family: 'Halant', serif;
+        font-family: 'verdana', 'Halant', 'arial';
+        font-size: 0.7em;
     }
 
 /*********** margin sous navbar ***********/
@@ -24,3 +25,6 @@
         font-family: 'Courier New';
     }
 
+    .hidden{
+        display: none;
+    }

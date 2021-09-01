@@ -1,5 +1,5 @@
 <?php
-    session_start();
+    // session_start();
     require_once("MyData/data.php");
     $titre=$titreAccueil;
     include_once $linkHeader;

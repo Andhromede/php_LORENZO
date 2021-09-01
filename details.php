@@ -4,13 +4,17 @@
     include_once("footer.php");
 
     $dbh = connexion();
-    define ("id", $_GET["id"]);
+    $id = $_GET["id"] ?? 0;
+    // define ("id", $_GET["id"]);
 
-    $sql =  'SELECT distinct p.id, p.nomProduit, p.prixMedium, p.prixLarge, p.descriptif, p.cheminImage, c.NomCategorie FROM produit AS p, categorie AS c WHERE c.id = p.categorie_id AND p.id='.id;
+    $sql =  "SELECT DISTINCT p.id, p.nomProduit, p.prixMedium, p.prixLarge, p.descriptif, p.cheminImage, c.NomCategorie FROM produit AS p, categorie AS c WHERE c.id = p.categorie_id AND p.id=".$id;
     $produits = $dbh -> query($sql);
-    
+
     $sqlCat =  'SELECT * FROM categorie';
-    $categories = $dbh -> query($sqlCat);
+    $categories = $dbh -> query($sqlCat) ;
+
+
+    
 ?>
 
 <div class="container-fluid">
@@ -19,16 +23,16 @@
         <h1></h1>
     </div>
 
-    <form action="details.php?action=modifier&id=<?= id ?>" method="post">
+    <form action="details.php?action=modifier&id=<?= $id ?>" method="post">
         <table class="table mb-5">
             <thead class="thead-dark">
                 <tr>
-                    <th scope="col">Produit</th>
-                    <th scope="col">Prix Medium</th>
-                    <th scope="col">Prix Large</th>
-                    <th scope="col">Descriptif</th>
-                    <th scope="col">Categorie</th>
-                    <th scope="col">&nbsp;</th>
+                    <th class="text-center">Produit</th>
+                    <th class="text-center">Prix Medium / €</th>
+                    <th class="text-center">Prix Large / €</th>
+                    <th class="text-center">Descriptif</th>
+                    <th class="text-center">Categorie</th>
+                    <th class="text-center">&nbsp;</th>
                 </tr>
             </thead>
 
@@ -58,7 +62,8 @@
                             <input type="file" class="mt-3" name="cheminImage">
                         </td>
                     </tr>
-                <?php endforeach; ?>
+                <?php endforeach;  ?> 
+                
             </tbody>
 
         </table>
@@ -75,59 +80,64 @@
 // MODIFICATION PRODUIT
     if( isset($_POST["modifier"]) && !empty($_POST["modifier"]) ){
 
-        $nom = $_POST["nomProduit"];
-        $prixMedium = $_POST["prixMedium"];
-        $prixLarge = $_POST["prixLarge"];
-        $descriptif = $_POST["descriptif"];
-        $categorie_id = $_POST["categorie_id"];
+        $nom2 = $_POST["nomProduit"];
+        $prixMedium2 = $_POST["prixMedium"];
+        $prixLarge2 = $_POST["prixLarge"];
+        $descriptif2 = $_POST["descriptif"];
+        $categorie_id2 = $_POST["categorie_id"];
 
+        foreach($produits as $pdt){
+            $cheminImage = $pdt->cheminImage;
+            if($cheminImage != $cheminImage)
+        }
 
-        if(empty($_POST["cheminImage"]) || $_POST["cheminImage"] == null ){
-            $chemin = $pdt->cheminImage;
+        if(empty($_FILES["cheminImage"])){
+            $cheminImage = $pdt->cheminImage;
+
         }else{
             switch ((string)$categorie_id) {
                 case '1':
-                    $chemin = "img/pizzas/".$_POST["cheminImage"];
+                    $cheminImage = "img/pizzas/".$_POST["cheminImage"];
                     break;
 
                 case '4':
-                    $chemin = "img/entrees/".$_POST["cheminImage"];
+                    $cheminImage = "img/entrees/".$_POST["cheminImage"];
                     break;
 
                 case '2':
-                    $chemin = "img/boissons/".$_POST["cheminImage"];
+                    $cheminImage = "img/boissons/".$_POST["cheminImage"];
                     break;
 
                 case '3':
-                    $chemin = "img/desserts/".$_POST["cheminImage"];
+                    $cheminImage = "img/desserts/".$_POST["cheminImage"];
                     break; 
             }
         }
+        // var_dump($_POST);
 
         try {
-            $update = $dbh -> prepare(" UPDATE produit SET nomProduit = :nomProduit, prixMedium = :prixMedium, prixLarge = :prixLarge, descriptif = :descriptif, cheminImage = :cheminImage, categorie_id = :categorie_id WHERE id =".id);
-            
-            $update -> bindParam('nomProduit',$nom,PDO::PARAM_STR);
+            $update = $dbh -> prepare("UPDATE produit SET nomProduit = :nomProduit, prixMedium = :prixMedium, prixLarge = :prixLarge, descriptif = :descriptif, cheminImage = :cheminImage, categorie_id = :categorie_id WHERE id =".$id);
+            $update -> bindParam('nomProduit',$nom);
             $update -> bindParam('prixMedium',$prixMedium);
             $update -> bindParam('prixLarge',$prixLarge);
-            $update -> bindParam('descriptif',$descriptif,PDO::PARAM_STR);
-            $update -> bindParam('cheminImage',$chemin,PDO::PARAM_STR);
-            $update -> bindParam('categorie_id',$categorie_id,PDO::PARAM_INT);
+            $update -> bindParam('descriptif',$descriptif);
+            $update -> bindParam('cheminImage',$cheminImage);
+            $update -> bindParam('categorie_id',$categorie_id);
             $result = $update -> execute();
 
-            echo("<script> 
-                    $('.modal').on('shown.bs.modal',function(){
-                        $('.btnModal').on('click',function(){
-                            window.location = 'listeProduits.php';
-                        });
-                    });
+            // echo("<script> 
+            //         $('.modal').on('shown.bs.modal',function(){
+            //             $('.btnModal').on('click',function(){
+            //                 window.location = 'listeProduits.php';
+            //             });
+            //         });
 
-                    $('.modal').modal('show');
-                </script>");
+            //         $('.modal').modal('show');
+            //     </script>");
 
         }catch (PDOException $e) {
             echo('<div class="alert alert-danger mt-4" role="alert">
-                        Erreur lors de l\'envoi de votre message.
+                        Erreur lors de l\'envoi de votre message.<br>'.$e->getMessage().'
                     </div>');
         }
 
