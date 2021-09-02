@@ -42,7 +42,16 @@ $user = "Utilisateur";
 
 
 
+function modalMessage($link){
+    echo("<script> 
+            $('.modal').on('shown.bs.modal',function(){
+                $('.btnModal').on('click',function(){
+                    window.location =".$link.";
+                });
+            });
 
-
+            $('.modal').modal('show');
+        </script>");
+}
 ?>
 

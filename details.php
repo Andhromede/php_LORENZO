@@ -29,11 +29,11 @@
         <?php if(isset($_GET['action']) && $_GET['action'] == "ajouter"): ?>
                 <h1>Ajouter un nouveau produit</h1>
             </div>
-            <form action="details.php?action=ajouter" method="post"> 
+            <form action="details.php?action=ajouter" method="post" enctype="multipart/form-data"> 
         <?php else: ?>
             <h1>Modifier un nouveau produit</h1>
             </div>
-            <form action="details.php?action=modifier&id=<?= $id ?>" method="post"> 
+            <form action="details.php?action=modifier&id=<?= $id ?>" method="post" enctype="multipart/form-data"> 
         <?php endif; ?>
         
     <!-- </div> -->
@@ -143,38 +143,11 @@
             $prixMedium = $_POST["prixMedium"];
             $prixLarge = $_POST["prixLarge"];
             $descriptif = $_POST["descriptif"];
-            $categorie_id = $_POST["categorie_id"];
-
-            var_dump($cheminImage);
+            $categorie_id = $_POST['categorie_id'];
         }
-
         
-
-        
-        if(!isset($_POST["cheminImage"]) || empty($_POST["cheminImage"])){
-            $cheminImage = $produit->cheminImage;
-
-        }else{
-            switch ((string)$categorie_id) {
-                case '1':
-                    $cheminImage = "img/pizzas/".$_POST["cheminImage"];
-                    break;
-
-                case '4':
-                    $cheminImage = "img/entrees/".$_POST["cheminImage"];
-                    break;
-
-                case '2':
-                    $cheminImage = "img/boissons/".$_POST["cheminImage"];
-                    break;
-
-                case '3':
-                    $cheminImage = "img/desserts/".$_POST["cheminImage"];
-                    break; 
-            }
-        }
-        // var_dump($_POST);
-
+            $cheminImage = image($_FILES["cheminImage"], $cheminImage, $categorie_id );
+      
         try {
             $update = $dbh -> prepare("UPDATE produit SET nomProduit = :nomProduit, prixMedium = :prixMedium, prixLarge = :prixLarge, descriptif = :descriptif, cheminImage = :cheminImage, categorie_id = :categorie_id WHERE id =".$id);
             $update -> bindParam('nomProduit',$nom);
@@ -185,15 +158,15 @@
             $update -> bindParam('categorie_id',$categorie_id);
             $result = $update -> execute();
 
-            // echo("<script> 
-            //         $('.modal').on('shown.bs.modal',function(){
-            //             $('.btnModal').on('click',function(){
-            //                 window.location = 'listeProduits.php';
-            //             });
-            //         });
+            echo("<script> 
+                    $('.modal').on('shown.bs.modal',function(){
+                        $('.btnModal').on('click',function(){
+                            window.location = 'listeProduits.php';
+                        });
+                    });
 
-            //         $('.modal').modal('show');
-            //     </script>");
+                    $('.modal').modal('show');
+                </script>");
 
         }catch (PDOException $e) {
             echo('<div class="alert alert-danger mt-4" role="alert">
@@ -203,7 +176,6 @@
 
     }
 
-
 // AJOUT DE PRODUIT
     if(isset($_GET["action"]) && $_GET["action"] == "ajouter" && !empty($_POST)){
 
@@ -211,8 +183,8 @@
         $prixMedium = $_POST['prixMedium'];
         $prixLarge = $_POST['prixLarge'];
         $descriptif = $_POST['descriptif'];
-        $cheminImage = $_POST['cheminImage'];
         $categorie_id = $_POST['categorie_id'];
+        $cheminImage = image($_FILES["cheminImage"], $produits, $categorie_id );
         $actif = 1;
 
         $insert = $dbh -> prepare("INSERT INTO produit(nomProduit, prixMedium, prixLarge, descriptif, cheminImage, actif, categorie_id) VALUES (:nomProduit,:prixMedium,:prixLarge,:descriptif,:cheminImage,:actif,:categorie_id)");
@@ -225,8 +197,49 @@
         $insert -> bindParam('categorie_id',$categorie_id);
         $result = $insert -> execute();
 
+        
+        echo("<script> 
+                $('.modal').on('shown.bs.modal',function(){
+                    $('.btnModal').on('click',function(){
+                        window.location = 'listeProduits.php';
+                    });
+                });
+
+                $('.modal').modal('show');
+            </script>");
+
     }
 
+
+    function image($newFiles, $oldChemin, $categorie_id){
+        if( !isset($newFiles["name"]) || !is_uploaded_file($newFiles['tmp_name']) ){
+            $cheminImage = $oldChemin;
+
+        }else{
+            switch ((string)$categorie_id) {
+                case '1':
+                    $cheminImage = "img/pizzas/".$newFiles["name"];
+                    break;
+
+                case '4':
+                    $cheminImage = "img/entrees/".$newFiles["name"];
+                    break;
+
+                case '2':
+                    $cheminImage = "img/boissons/".$newFiles["name"];
+                    break;
+
+                case '3':
+                    $cheminImage = "img/desserts/".$newFiles["name"];
+                    break; 
+            }
+
+            $origine = $newFiles['tmp_name'];
+            $destination = $cheminImage;
+            move_uploaded_file($origine,$destination);
+        }
+        return $cheminImage;
+    }
 
 
 ?>
