@@ -3,18 +3,16 @@
     include_once("navbar.php");
     include_once("header.php");
     include_once("footer.php");
+    include_once("dao/Produits.php");
 
     $dbh = connexion();
-    $sql =  'SELECT p.id, p.nomProduit, p.prixMedium, p.prixLarge, p.descriptif, c.NomCategorie FROM `produit` AS p, `categorie` AS c WHERE c.id = p.categorie_id ORDER BY p.nomProduit' ;
-    $produits = $dbh -> query($sql);
-
-   
+    $sql =  "SELECT p.id, p.nomProduit, p.prixMedium, p.prixLarge, p.descriptif, c.NomCategorie FROM `produit` AS p, `categorie` AS c WHERE c.id = p.categorie_id ORDER BY p.nomProduit";
+    $produits = $dbh -> query($sql)->fetchAll (PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, "Produits");
 
 ?>
 
 
 <div class="container-fluid affichage">
-
     <?php 
          if(isset($_SESSION['message']) && !empty($_SESSION['message'])){
             $message = $_SESSION['message'];
@@ -27,8 +25,7 @@
         <h1>Liste des produits</h1>
     </div>
 
-
-    <a href="details.php" class="btn btn-warning mb-4 font-weight-bolder" >
+    <a href="details.php?action=ajouter" class="btn btn-warning mb-4 font-weight-bolder" >
         Ajouter un nouveau produit
     </a>
 
@@ -54,7 +51,7 @@
                     <td><?= $pdt->descriptif ?></td>
                     <td><?= $pdt->NomCategorie ?></td>
                     <td>
-                        <a href="details.php?id=<?= $pdt->id ?>" class="btn modifier">
+                        <a href="details.php?action=modifier&id=<?= $pdt->id ?>" class="btn modifier">
                             <i class="bi bi-pencil-square text-primary"></i>
                         </a>
                     </td>

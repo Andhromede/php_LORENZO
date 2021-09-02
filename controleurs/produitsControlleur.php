@@ -1,5 +1,5 @@
-<?php session_start();
-
+<?php 
+    session_start();
     require_once("../db/db.php");
 
     define ("id", $_GET["id"]);

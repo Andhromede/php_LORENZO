@@ -1,24 +1,22 @@
 <?php
 
-class Categories
-{
-    public $categorie;
+class Categories {
+
+    // public $categorie;
     
-/**
- * Undocumented function
- *
- * @param string $category
- */
-    public function __construct(string $category)
-    {
-        $this->categorie = $category;
+    // public function __construct(string $category) {
 
+    //     $this->categorie = $category;
+
+    // }
+
+    public function __construct($fields = null) {
+        if(isset($fields)){
+            foreach($fields as $k => $v){
+                $this->{$k} = $v;
+            }
+        }
     }
-
-
-
-
-
 
 }
 
