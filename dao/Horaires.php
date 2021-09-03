@@ -1,28 +1,12 @@
 <?php
 
-class Horaires
-{
-    public $jour;
-    public $heureAM;
-    public $heurePM;
-    public $ouverture;
-
-
-    public function __construct(string $day, string $hourAM, string $hourPM, bool $open)
-    {
-        $this->jour = $day;
-        $this->
-        $this->heureAM = $hourAM;
-        $this->heurePM = $hourPM;
-        $this->ouverture = $open;
-
+ class Horaire {
+    public function __construct($fields = null) {
+        if(isset($fields)){
+            foreach($fields as $k => $v){
+                $this->{$k} = $v;
+            }
+        }
     }
-
-
-
-
-
-
 }
-
 ?>
