@@ -1,12 +1,13 @@
 /*********** general ***********/  
     body{
         --grisNavbar:#343B3E;
-        font-family: 'Halant', serif;
+        font-family: 'verdana', 'Halant', 'arial';
+        font-size: 0.7em;
     }
 
 /*********** margin sous navbar ***********/
     .affichage{
-        margin-top: 4.65em;
+        margin-top: 9em;
     }
 
 /*********** Page contact ***********/
@@ -24,3 +25,6 @@
         font-family: 'Courier New';
     }
 
+    .hidden{
+        display: none;
+    }

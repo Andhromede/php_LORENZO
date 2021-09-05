@@ -1,32 +1,6 @@
 
 
-            <div class="modal" tabindex="-1" role="dialog">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title">Modal title</h5>
-                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-
-                        <div class="modal-body">
-                            <p>Modal body text goes here.</p>
-                        </div>
-                        
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-success btnModal" data-dismiss="modal">OK</button>
-                            <!-- <button type="button" class="btn btn-danger">Cancel</button> -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-
-
-
-        
+        <!-- FOOTER -->
         <footer class="fixed-bottom row mt-5 justify-content-center bg-dark">
             <div class="text-light font-weight-bolder py-1">
                 <span class="mr-5">© Lorenzo Pizza</span>
@@ -37,6 +11,8 @@
             </div>
         </footer>
 
+
+       
 
 
         <script src="js/footer.js"></script>

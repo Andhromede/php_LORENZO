@@ -74,3 +74,7 @@
     .bgColor{
         background-color: var(--grisNavbar) !important;
     }
+
+    .bgGrey{
+        background-color: silver;
+    }
