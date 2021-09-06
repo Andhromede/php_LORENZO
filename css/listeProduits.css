@@ -1,0 +1,67 @@
+body{
+    background-color: var(--noir);
+    font-family: "Playfair Display", serif;
+}
+    
+.tableau{
+    background-color: var(--noirClair);
+}
+
+.bgDore{
+    background-color: var(--dore);
+}
+
+td, th, .borderColor{
+    border-color: var(--dore) !important;
+    /* border-bottom: solid 2px var(--dore) !important; */
+}
+
+.icons{
+    font-weight: bolder;
+    font-size: 1.5em;
+
+   
+}
+
+.colorRed{
+    color:rgb(255, 66, 66);
+}
+
+.color{
+    color: rgb(103, 101, 255);
+}
+
+.color:hover, .colorRed:hover{
+    color: white;
+}
+
+
+.btnAjout{
+    background: #cda45e;
+    color: white;
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    display: inline-block;
+    padding: 12px 30px;
+    border-radius: 50px;
+    transition: 0.3s;
+    line-height: 1;
+    color: white;
+    border: 2px solid #cda45e;
+    border-color: white 2px solid;
+}
+
+.btnAjout:hover{
+    color: black;
+    text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: white;
+}
+
+.fontSizeTxt{
+    font-size: 1.6em;
+}

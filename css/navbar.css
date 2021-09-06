@@ -12,7 +12,7 @@
 /*********** liens (accueil, contact etc) ***********/
     .li .a-class{
         color: white !important;
-        font-size: 1.3em;
+        font-size: 1.7em !important;
     }
 
     .li .a-class:hover{

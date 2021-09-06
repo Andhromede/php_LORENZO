@@ -1,8 +1,17 @@
 /*********** general ***********/  
     body{
         --grisNavbar:#343B3E;
-        font-family: 'verdana', 'Halant', 'arial';
+        font-family: 'verdana', 'Halant', 'arial' !important;
         font-size: 0.7em;
+
+
+        --noir:#111111;
+        --noirClair:#1A1814;
+        --dore:#CDA45E;
+
+
+
+
     }
 
 /*********** margin sous navbar ***********/

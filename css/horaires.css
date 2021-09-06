@@ -1,0 +1,82 @@
+body{
+    background-color: var(--noir);
+    font-family: "Playfair Display", serif !important;
+}
+
+.cadre{
+    background-color: var(--noirClair);
+    border: var(--dore) solid 3px;
+    margin-bottom: 150px;
+    margin-top: 50px;
+    color: white;
+    /* border-radius: 1em; */
+}
+
+h1, h2, h3, h4, h5{
+    color: var(--dore);
+    font-weight: bolder;
+    font-size: 3em;
+}
+
+.txtJour{
+    font-size: 2em;
+    text-align: center;
+}
+
+.bgDore{
+    background-color: var(--dore);
+    color: black;
+    text-transform: uppercase !important;
+}
+
+.momentJournee{
+    font-size: 0.7em;
+}
+
+.colorDore{
+    color: var(--dore);
+}
+
+
+
+
+
+.section-title {
+    padding-bottom: 40px;
+}
+
+.section-title h2 {
+    font-size: 14px;
+    font-weight: 500;
+    padding: 0;
+    line-height: 1px;
+    margin: 0 0 5px 0;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    /* color: #aaaaaa; */
+    font-family: "Poppins", sans-serif;
+}
+
+.section-title h2::after {
+    content: "";
+    width: 120px;
+    height: 1px;
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.2);
+    margin: 4px 10px;
+}
+
+.section-title p {
+    margin: 0;
+    margin: 0;
+    font-size: 36px;
+    font-weight: 700;
+    font-family: "Playfair Display", serif;
+}
+
+
+
+
+
+
+

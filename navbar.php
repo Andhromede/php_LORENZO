@@ -85,7 +85,7 @@
 						</a>
 
 						<div class="dropdown-menu bgColor bgMini" aria-labelledby="navbarDropdown">
-							<a class="dropdown-item a-class" href="listeProduits.php">Modifier produits</a>
+							<a class="dropdown-item a-class" href="listeProduits.php">Liste des produits</a>
 							<a class="dropdown-item a-class" href="#"></a>
 						</div>
 					</li>
