@@ -1,9 +1,9 @@
 <?php 
-    require_once("db/db.php");
-    include_once("header.php");
-    include_once("footer.php");
-    include_once("dao/Produits.php");
-    include_once("dao/Categories.php");
+    require_once("../../db/db.php");
+    include_once("../header.php");
+    include_once("../footer.php");
+    include_once("../../dao/Produits.php");
+    include_once("../../dao/Categories.php");
 
     $dbh = connexion();
     $id = $_GET["id"] ?? 0;
@@ -16,11 +16,10 @@
     // RECHERCHER CATEGORIE
     $sqlCat =  'SELECT * FROM categorie'; 
     $categories = $dbh -> query($sqlCat)->fetchAll (PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, "Categories");
-
-    
-        
-    
 ?>
+
+<!-- <link rel="stylesheet" href="../../css/general.css"> -->
+<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
 
 
 <div class="container-fluid">
@@ -46,7 +45,8 @@
                         <th class="text-center">Prix Large / €</th>
                         <th class="text-center">Descriptif</th>
                         <th class="text-center">Categorie</th>
-                        <th class="text-center">&nbsp;</th>
+                        <th class="text-center">Actif</th>
+                        <th class="text-center">Image</th>
                     </tr>
                 </thead>
 
@@ -58,7 +58,7 @@
                         <td class="col-2"><input class="form-control" type="text" name="nomProduit" value=""/></td> 
                         <td class="col-1"><input class="form-control col-8" type="text" name="prixMedium" value=""/></td>
                         <td class="col-1"><input class="form-control col-8" type="text" name="prixLarge" value=""/></td>
-                        <td class="col-4"><textarea class="form-control" type="text" name="descriptif" rows="5"></textarea></td>
+                        <td class="col-3"><textarea class="form-control" type="text" name="descriptif" rows="5"></textarea></td>
                         
                         <td class="col-1">
                             <select class="form-control" type="text" value="" name="categorie_id"> 
@@ -68,7 +68,15 @@
                             </select>
                         </td> 
 
-                        <td class="col-3 text-center">
+                        <td class="text-center col-2">
+                            <?php if($pdt->actif != 0): ?>
+                                <input type="checkbox" checked data-toggle="toggle" data-onstyle="success" data-onstyle="danger">
+                            <?php else : ?>
+                                <input type="checkbox" data-toggle="toggle" data-offstyle="danger" data-onstyle="success">
+                            <?php endif; ?>
+                        </td>
+
+                        <td class="col-2 text-center">
                             <img src="" class="w-50" alt="">
                             <br>
                             <input type="file" class="mt-3" name="cheminImage">
@@ -92,9 +100,9 @@
                             <td class="col-2"><input class="form-control" type="text" name="nomProduit" value="<?= $pdt->nomProduit ?>"/></td> 
                             <td class="col-1"><input class="form-control col-8" type="text" name="prixMedium" value="<?= $pdt->prixMedium ?>"/></td>
                             <td class="col-1"><input class="form-control col-8" type="text" name="prixLarge" value="<?= $pdt->prixLarge ?>"/></td>
-                            <td class="col-4"><textarea class="form-control" type="text" name="descriptif" rows="5"><?= $pdt->descriptif ?></textarea></td>
+                            <td class="col-3"><textarea class="form-control" type="text" name="descriptif" rows="5"><?= $pdt->descriptif ?></textarea></td>
                             
-                            <td class="col-1">
+                            <td class="col-2">
                                 <select class="form-control" type="text" value="<?= $pdt->NomCategorie ?>" name="categorie_id"> 
                                     <?php foreach($categories as $cat): ?>
                                         <?php if($pdt -> NomCategorie == $cat -> NomCategorie): ?>
@@ -106,8 +114,12 @@
                                 </select>
                             </td> 
 
-                            <td class="col-3 text-center">
-                                <img src="<?= $pdt->cheminImage ?>" class="w-50" alt="image">
+                            <td class="text-center col-2">
+                                <input type="checkbox"  <?php if($pdt->actif != 0): ?>checked<?php endif; ?> data-toggle="toggle" data-onstyle="success" data-onstyle="danger" id="cbActif" value="" name="checkBox">
+                            </td>
+
+                            <td class="col-2 text-center">
+                                <img src="../<?= $pdt->cheminImage ?>" class="w-50" alt="image">
                                 <br>
                                 <input type="file" class="mt-3" name="cheminImage">
                             </td>
@@ -155,7 +167,7 @@
     
 //MODIFICATION PRODUIT
     if( isset($_GET['action']) && $_GET['action'] == "modifier" && !empty($_POST) ){
-        
+       
         foreach($produits as $produit){
             $cheminImage = $produit->cheminImage;
             $nom = $_POST["nomProduit"];
@@ -163,17 +175,26 @@
             $prixLarge = $_POST["prixLarge"];
             $descriptif = $_POST["descriptif"];
             $categorie_id = $_POST['categorie_id'];
+            $actif = "";
+
+            if(isset($_POST['checkBox'])){
+                $actif = 1;
+            }else{
+                $actif = 0;
+            }
+
         }
         
             $cheminImage = image($_FILES["cheminImage"], $cheminImage, $categorie_id );
       
         try {
-            $update = $dbh -> prepare("UPDATE produit SET nomProduit = :nomProduit, prixMedium = :prixMedium, prixLarge = :prixLarge, descriptif = :descriptif, cheminImage = :cheminImage, categorie_id = :categorie_id WHERE id =".$id);
+            $update = $dbh -> prepare("UPDATE produit SET nomProduit = :nomProduit, prixMedium = :prixMedium, prixLarge = :prixLarge, descriptif = :descriptif, cheminImage = :cheminImage, actif = :actif, categorie_id = :categorie_id WHERE id =".$id);
             $update -> bindParam('nomProduit',$nom);
             $update -> bindParam('prixMedium',$prixMedium);
             $update -> bindParam('prixLarge',$prixLarge);
             $update -> bindParam('descriptif',$descriptif);
             $update -> bindParam('cheminImage',$cheminImage);
+            $update -> bindParam('actif',$actif);
             $update -> bindParam('categorie_id',$categorie_id);
             $result = $update -> execute();
 
@@ -198,6 +219,7 @@
 
 //AJOUT DE PRODUIT
     if(isset($_GET["action"]) && $_GET["action"] == "ajouter" && !empty($_POST)){
+    
 
         $nomProduit = $_POST['nomProduit'];
         $prixMedium = $_POST['prixMedium'];
@@ -239,25 +261,25 @@
         }else{
             switch ((string)$categorie_id) {
                 case '1':
-                    $cheminImage = "img/pizzas/".$newFiles["name"];
+                    $cheminImage = "../img/pizzas/".$newFiles["name"];
                     break;
 
                 case '4':
-                    $cheminImage = "img/entrees/".$newFiles["name"];
+                    $cheminImage = "../img/entrees/".$newFiles["name"];
                     break;
 
                 case '2':
-                    $cheminImage = "img/boissons/".$newFiles["name"];
+                    $cheminImage = "../img/boissons/".$newFiles["name"];
                     break;
 
                 case '3':
-                    $cheminImage = "img/desserts/".$newFiles["name"];
+                    $cheminImage = "../img/desserts/".$newFiles["name"];
                     break; 
             }
 
             $origine = $newFiles['tmp_name'];
-            $destination = $cheminImage;
-            move_uploaded_file($origine,$destination);
+            $destination = "../".$cheminImage;
+            move_uploaded_file($origine, $destination);
         }
         return $cheminImage;
     }
@@ -265,15 +287,23 @@
 
 ?>
 
+<script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
 
 
 <script>
+
     $('#myModal').on('shown.bs.modal', function () {
         $('#myInput').trigger('focus')
     })
 
     $('.btnValider').click(function(){
-        console.log("clicked");
         window.location = "listeProduits.php";
     });
+
+   
+//    $('input[type="checkbox"]').change(function () {
+//         var check = $(this).prop('checked');
+//         console.log("Change: " + check);
+//     });
+
 </script>

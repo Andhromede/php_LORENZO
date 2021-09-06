@@ -3,11 +3,11 @@
         $titre = "Carte";
         include_once("header.php");
         include_once("navbar.php");
-        require_once("db/db.php");   
+        require_once("../db/db.php");   
     ?>
 
-    <link rel="stylesheet" href="css/carte.css">
-    <link rel="stylesheet" href="css/accueil.css">
+    <link rel="stylesheet" href="../css/carte.css">
+    <link rel="stylesheet" href="../css/accueil.css">
 
     <div class="container-fluid affichage">
         <div class="row">

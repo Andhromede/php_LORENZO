@@ -1,5 +1,5 @@
 <?php
-    include_once("header.php");
+    include_once("../header.php");
 //on vérifie si on a un id
 
 if(!isset($_GET["id"]) || empty($_GET["id"]))
@@ -12,7 +12,7 @@ exit;
 
 $id = $_GET["id"];
 
-require_once("db/db.php");
+require_once("../../db/db.php");
 
 //on va chercher l'id dans la base
 
@@ -41,7 +41,7 @@ if(!$produit)
     echo "Le produit demandé n'existe pas";
     exit;
 }
-include_once("footer.php");
+include_once("../footer.php");
 ?>
 
 <h1>Modifier le produit <?= $id ?> </h1>

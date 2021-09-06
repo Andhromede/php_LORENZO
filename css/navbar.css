@@ -78,3 +78,7 @@
     .bgGrey{
         background-color: silver;
     }
+
+    body{
+        font-family: "Playfair Display", serif !important;
+    }

@@ -10,6 +10,7 @@ $linkHoraire = "horaire.php";
 $linkNavBar = "navbar.php";
 $linkLogin = "login.php";
 $linkContact = "contact.php";
+$myData = "../MyData/data.php";
 
 /**
  * PAGE ACCUEIL

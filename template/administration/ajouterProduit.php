@@ -5,11 +5,11 @@ use dao\Produits;
 $p = new Produits();
 
 $titre = "Ajouter un produit";
-include_once("MyData/data.php");
+include_once("../../MyData/data.php");
 
-include_once($linkHeader);
+include_once("../".$linkHeader);
 
-require_once("db/db.php");
+require_once("../../db/db.php");
 
 
 $sql = "SELECT distinct * FROM `categorie` ";
