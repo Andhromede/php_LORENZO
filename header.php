@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="css/general.css">
   <link rel="stylesheet" href="css/navbar.css">
 
+
   <title><?= $titre ?? "Accueil" ?></title>
   <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
 

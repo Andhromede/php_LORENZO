@@ -26,6 +26,7 @@
 <div class="container-fluid">
     <div class="text-center my-5">
 
+    <!-- CONDITION DE FORM DYNAMIQUE (MODIF OU AJOUT) -->
         <?php if(isset($_GET['action']) && $_GET['action'] == "ajouter"): ?>
                 <h1>Ajouter un nouveau produit</h1>
             </div>
@@ -35,11 +36,8 @@
             </div>
             <form action="details.php?action=modifier&id=<?= $id ?>" method="post" enctype="multipart/form-data"> 
         <?php endif; ?>
-        
-    <!-- </div> -->
+    <!-- FIN DE CONDITION DU FORM DYNAMIQUE-->
 
-    
-        <!-- <form action="details.php?action=modifier&id=<?= $id ?>" method="post"> -->
             <table class="table mb-5">
                 <thead class="thead-dark">
                     <tr>
@@ -69,13 +67,13 @@
                                 <?php endforeach ?>
                             </select>
                         </td> 
+
                         <td class="col-3 text-center">
                             <img src="" class="w-50" alt="">
                             <br>
                             <input type="file" class="mt-3" name="cheminImage">
                         </td>
                     </tr>
- 
                 </tbody>
             </table>
 
@@ -122,19 +120,40 @@
                 <input class="col-2 mx-auto btn btn-success modifier" type="submit" name="modifier" value="Enregistrer">
                 <a href="listeProduits.php" class="col-2 mx-auto btn btn-danger modifier">Retour à la liste</a>
             </div>
-        <?php endif; ?>
+
+            <?php endif; ?>
         <!-- FIN MODIFICATION DE PRODUIT --> 
-
-
-            
         </form>
 
-                                           
+
+
+    <!-- MODAL DE MODIFICATION -->
+        <div class="modal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Votre produit à bien été modifié</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+
+                    <div class="modal-body">
+                        <p>Retour à la liste des produits</p>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary btnValider">Valider</button>
+                        <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button> -->
+                    </div>
+                </div>
+            </div>
+        </div>    
+    <!-- FIN DE MODAL -->
 <?php
     
     
-
-// MODIFICATION PRODUIT
+//MODIFICATION PRODUIT
     if( isset($_GET['action']) && $_GET['action'] == "modifier" && !empty($_POST) ){
         
         foreach($produits as $produit){
@@ -173,10 +192,11 @@
                         Erreur lors de l\'envoi de votre message.<br>'.$e->getMessage().'
                     </div>');
         }
-
     }
+// FIN MODIFICATION PRODUIT
 
-// AJOUT DE PRODUIT
+
+//AJOUT DE PRODUIT
     if(isset($_GET["action"]) && $_GET["action"] == "ajouter" && !empty($_POST)){
 
         $nomProduit = $_POST['nomProduit'];
@@ -207,10 +227,11 @@
 
                 $('.modal').modal('show');
             </script>");
-
     }
+//FIN AJOUT DE PRODUIT
 
 
+//FONCTION DE MODIFICATION DE L'IMAGE
     function image($newFiles, $oldChemin, $categorie_id){
         if( !isset($newFiles["name"]) || !is_uploaded_file($newFiles['tmp_name']) ){
             $cheminImage = $oldChemin;
@@ -240,6 +261,19 @@
         }
         return $cheminImage;
     }
-
+//FIN MODIFICATION IMAGE
 
 ?>
+
+
+
+<script>
+    $('#myModal').on('shown.bs.modal', function () {
+        $('#myInput').trigger('focus')
+    })
+
+    $('.btnValider').click(function(){
+        console.log("clicked");
+        window.location = "listeProduits.php";
+    });
+</script>
