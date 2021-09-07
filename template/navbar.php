@@ -98,7 +98,13 @@
 			<ul class="navbar-nav user">
 				<li class="nav-item dropdown dropleft li">
 					<a class="nav-link dropdown-toggle a-class" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						Utilisateur
+						<?php 
+							if(isset($_SESSION['login']) && !empty($_SESSION['login'])): 
+								echo($_SESSION['login']);
+							else:
+								echo("Utilisateur"); 
+							endif;
+						?>
 					</a>
 
 					<div class="dropdown-menu bgColor bgMini" aria-labelledby="navbarDropdown">

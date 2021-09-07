@@ -2,7 +2,7 @@
      require_once("../../db/db.php");
      include_once("../../dao/Utilisateurs.php");
      include_once("../../dao/Role.php");
-    
+     session_start();
      
      
     if(isset($_POST) && !empty($_POST)){
@@ -95,7 +95,7 @@
 
                     <div class="card-footer">
                         <div class="d-flex justify-content-center links">
-                            Pas encore de compte ?<a href="#">Inscription</a>
+                            Pas encore de compte ?<a href="inscription.php">Inscription</a>
                         </div>
 
                         <!-- <div class="d-flex justify-content-center">
