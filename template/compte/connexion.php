@@ -30,6 +30,7 @@
 
                 if(password_verify($password, $hash)){
                     $_SESSION['login'] = $utilisateur[0]->login;
+                    $_SESSION['role'] = $utilisateur[0]->role_id;
                     header('Location: ../accueil.php');
                 }
             }

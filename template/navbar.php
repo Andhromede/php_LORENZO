@@ -82,9 +82,12 @@
 
 				<ul class="navbar-nav user">
 					<li class="nav-item dropdown dropdown li">
-						<a class="nav-link dropdown-toggle a-class" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							Administration
-						</a>
+
+						<?php if(isset($_SESSION['login']) && !empty($_SESSION['login']) && $_SESSION['role'] == 1 ): ?> 
+							<a class="nav-link dropdown-toggle a-class" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								Administration
+							</a>
+						<?php endif; ?>
 
 						<div class="dropdown-menu bgColor bgMini" aria-labelledby="navbarDropdown">
 							<a class="dropdown-item a-class" href="administration/listeProduits.php">Liste des produits</a>
