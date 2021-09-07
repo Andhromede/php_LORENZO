@@ -108,10 +108,15 @@
 					</a>
 
 					<div class="dropdown-menu bgColor bgMini" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item a-class" href="#">Mon profil</a>
-						<a class="dropdown-item a-class" href="compte/inscription.php">Inscription</a>
-						<a class="dropdown-item a-class" href="compte/connexion.php">Connexion</a>
-						<a class="dropdown-item a-class" href="compte/deconnexion.php">Deconnexion</a>
+						<?php if(isset($_SESSION['login']) && !empty($_SESSION['login'])): ?>
+							<a class="dropdown-item a-class" href="#">Mon profil</a>
+							<a class="dropdown-item a-class" href="compte/deconnexion.php">Deconnexion</a>
+						<?php endif; ?>
+
+						<?php if(!isset($_SESSION['login']) || empty($_SESSION['login'])): ?> 
+								<a class="dropdown-item a-class" href="compte/inscription.php">Inscription</a>
+								<a class="dropdown-item a-class" href="compte/connexion.php">Connexion</a>
+						<?php endif; ?>
 					</div>
 				</li>
 			</ul>
