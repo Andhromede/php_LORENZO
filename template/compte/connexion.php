@@ -115,5 +115,5 @@
 <script>
     setTimeout(function(){ 
         $('.messageConnexion').addClass('d-none');
-    }, 3000);
+    }, 5000);
 </script>

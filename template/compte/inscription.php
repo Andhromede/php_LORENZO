@@ -4,10 +4,6 @@
     include_once("../../dao/Role.php");
     session_start();
 
-    
-   
-
-    
     if(isset($_POST['txtEmail'], $_POST['txtLogin'], $_POST['txtPassword'], $_POST['txtConfirmPassword']) &&
         !empty($_POST['txtEmail']) && 
         !empty( $_POST['txtLogin']) && 
@@ -32,18 +28,31 @@
             ]);
             
             $utilisateur=$newUser->searchBy($email);
-            var_dump($utilisateur);
 
             if(!$utilisateur){
                 $newUser->saveUser('add', $newUser);
+                header("Location: ../accueil.php");
+            }else{
+                echo('<div class="alert alert-danger mt-4 fixed-top messageConnexion" role="alert">
+                        Cette adresse mail est déjà utilisée !
+                    </div>');
             }
 
         }else{
-            echo'<label class="form-control">Veuillez entrer deux mots de passe identiques !</label>';
+            echo'<div class="alert alert-danger mt-4 fixed-top messageConnexion" role="alert">
+                    Les deux mots de passe doivent être identiques !
+                </div>';
         }
 
+    }else{
+        echo'<div class="alert alert-danger mt-4 fixed-top messageConnexion" role="alert">
+                Tous les champs doivent être remplis !
+            </div>';
     }
 
+
+
+    
 ?>
 
 <!DOCTYPE html>
@@ -83,7 +92,7 @@
                                     <span class="input-group-text"><i class="fas fa-user"></i></span>
                                 </div>
 
-                                <input type="text" class="form-control" placeholder="Login" name="txtLogin" require>
+                                <input type="text" class="form-control" placeholder="Login" name="txtLogin" required>
                             </div>
 
                             <!-- Email -->
@@ -92,7 +101,7 @@
                                     <span class="input-group-text"><i class="fas fa-key"></i></span>
                                 </div>
 
-                                <input type="email" class="form-control" placeholder="Email" name="txtEmail" require>
+                                <input type="email" class="form-control" placeholder="Email" name="txtEmail" required>
                                 <!-- <input type="email" class="form-control" placeholder="email" disabled> -->
                             </div>
 
@@ -102,7 +111,7 @@
                                     <span class="input-group-text"><i class="fas fa-key"></i></span>
                                 </div>
 
-                                <input type="password" class="form-control" placeholder="Mots de passe" name="txtPassword" require>
+                                <input type="password" class="form-control" placeholder="Mots de passe" name="txtPassword" required>
                                 <!-- <input type="password" class="form-control" placeholder="Mots de passe" disabled> -->
                             </div>
 
@@ -112,13 +121,13 @@
                                     <span class="input-group-text"><i class="fas fa-key"></i></span>
                                 </div>
 
-                                <input type="password" class="form-control" placeholder="Mots de passe" name="txtConfirmPassword" require>
+                                <input type="password" class="form-control" placeholder="Mots de passe" name="txtConfirmPassword" required>
                                 <!-- <input type="password" class="form-control" placeholder="Confirmation" disabled> -->
                             </div>
 
                             <!-- Btn -->
                             <div class="form-group mx-auto">
-                                <button type="submit" value="Valider" class="btn login_btn">
+                                <button type="submit" value="Valider" class="btn login_btn">Valider</button>
                             </div>
 
                         </form>
@@ -133,12 +142,8 @@
 </html>
 
 
-<?php 
-
-
-// function generatePW($value){
-    
-
-// }
-
-?>
+<script>
+    setTimeout(function(){ 
+        $('.messageConnexion').addClass('d-none');
+    }, 5000);
+</script>
