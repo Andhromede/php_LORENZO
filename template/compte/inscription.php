@@ -5,43 +5,43 @@
     session_start();
 
     
-    $dbh = connexion();
-    $sql =  "SELECT * FROM utilisateur";
-    $utilisateurs = $dbh -> query($sql)->fetchAll (PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, "Utilisateurs");
+   
 
-    if(isset($_POST) && !empty($_POST)){
+    
+    if(isset($_POST['txtEmail'], $_POST['txtLogin'], $_POST['txtPassword'], $_POST['txtConfirmPassword']) &&
+        !empty($_POST['txtEmail']) && 
+        !empty( $_POST['txtLogin']) && 
+        !empty( $_POST['txtPassword']) && 
+        !empty($_POST['txtConfirmPassword']) ){
 
-        $login = $_POST['txtLogin'];
-        $email = $_POST['txtEmail'];
-        $password = $_POST['txtPassword'];
-        $confirmPassword = $_POST['txtConfirmPassword'];
+        //Pour nettoyer les donnees entrées par l'user et eviter les xss injections
+        $login = htmlspecialchars(strip_tags(stripslashes(trim($_POST['txtLogin']))));
+        $email = htmlspecialchars(strip_tags(stripslashes(trim($_POST['txtEmail']))));
+        $password = htmlspecialchars(strip_tags(stripslashes(trim($_POST['txtPassword']))));
+        $confirmPassword = htmlspecialchars(strip_tags(stripslashes(trim($_POST['txtConfirmPassword']))));
         $roleId = intval("3");
 
         if($_POST['txtPassword'] == $_POST['txtConfirmPassword']){
-            // $options=['memory_cost' => 1<<17,'time_cost' => 1024,'threads' =>3];
             $newPassword = password_hash($password, PASSWORD_ARGON2ID);
-            // var_dump(password_hash($password,PASSWORD_ARGON2ID,$options));
+
+            $newUser = new Utilisateurs([
+                'login' => $login, 
+                'email' => $email, 
+                'password' => $newPassword, 
+                'role_id' => $roleId
+            ]);
             
-            try {
-                $insert = $dbh -> prepare("INSERT INTO utilisateur(login, email, password, role_id) VALUES (:login,:email,:newPassword, :roleId)");
-                $insert -> bindParam('login', $login);
-                $insert -> bindParam('email', $email);
-                $insert -> bindParam('newPassword', $newPassword);
-                $insert -> bindParam('roleId', $roleId);
-                $result = $insert -> execute();
+            $utilisateur=$newUser->searchBy($email);
+            var_dump($utilisateur);
 
-                header('Location: ../accueil.php');
-
-            }catch (PDOException $e) {
-                echo('<div class="alert alert-danger mt-4 fixed-top" role="alert">
-                            Erreur lors de l\'inscription
-                        </div>');
+            if(!$utilisateur){
+                $newUser->saveUser('add', $newUser);
             }
+
         }else{
             echo'<label class="form-control">Veuillez entrer deux mots de passe identiques !</label>';
         }
-           
-        
+
     }
 
 ?>

@@ -3,61 +3,39 @@
      include_once("../../dao/Utilisateurs.php");
      include_once("../../dao/Role.php");
     
-     $email = $_POST['txtEmail'];
-     $dbh = connexion();
-     $sql =  "SELECT * FROM utilisateur where email=".$email;
-     $utilisateurs = $dbh -> query($sql)->fetchAll (PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, "Utilisateurs");
-
-
-
+     
+     
     if(isset($_POST) && !empty($_POST)){
+
         if( isset($_POST['txtEmail']) && !empty($_POST['txtEmail']) && 
             isset($_POST['txtPassword']) && !empty($_POST['txtPassword'])){
+
+            $email = htmlentities( $_POST['txtEmail']);
+            $dbh = connexion();
+            $sql =  "SELECT * FROM utilisateur where email = :email";
+            $query = $dbh -> prepare($sql);
+            $query->bindValue("email", $email);
+            $query->execute();
+            $utilisateur = $query->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, "utilisateurs");
+   
+            if(!$utilisateur) {
+                echo('<div class="alert alert-danger mt-4 fixed-top messageConnexion" role="alert">
+                        Erreur d\'authentification !
+                    </div>');
+            }
             
-            $email = htmlentities($_POST['txtEmail']);
-            $password = htmlentities($_POST['txtPassword']);
+            else {
+                $password = $_POST['txtPassword'];
+                $hash = $utilisateur[0]->password;
 
-            foreach($utilisateurs as $utilisateur){
-                if($email == $utilisateur->email){
-                    $hash = $utilisateur->password;
-
-                    if(password_verify($password, $hash)){
-                        // echo("autentification ok");
-                        $_SESSION['login'] = $utilisateur->login;
-                        header('Location: ../accueil.php');
-                        
-                    }else{
-                        $flag = "mauvais password";
-                    }
-                }else{
-                    $flag = "mauvais mail";
-
+                if(password_verify($password, $hash)){
+                    $_SESSION['login'] = $utilisateur[0]->login;
+                    header('Location: ../accueil.php');
                 }
             }
-
+            
         }
-
-        if($flag == "mauvais password"){
-            echo('<div class="messageConnexion alert alert-danger mt-4 fixed-top" role="alert">
-                    Le mot de passe ne correspond pas à cette adresse mail !
-                </div>');
-        }elseif($flag == "mauvais mail"){
-            echo('<div class="messageConnexion alert alert-danger mt-4 fixed-top" role="alert">
-                    Désolé, cette adresse mail n\'existe pas!
-                </div>');
-        }
-
-    } 
-    // echo("a cote y'a du paté");
-
-
-
-
-    
-    
-
-
-
+    }    
 ?>
 
 <!DOCTYPE html>
