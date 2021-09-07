@@ -1,13 +1,13 @@
 <?php
     // session_start();
-    require_once ("MyData/data.php");
+    require_once ("../MyData/data.php");
     $titre= $titreContact;
 
     include_once $linkHeader;
     include_once $linkNavBar;
     include_once $linkfooter;
 
-    require_once("db/db.php");
+    require_once("../db/db.php");
 
 
 
@@ -51,7 +51,7 @@
         
 ?>
 
-<link rel="stylesheet" href="css/contact.css">
+<link rel="stylesheet" href="../css/contact.css">
 
 <div class="container affichage">
     

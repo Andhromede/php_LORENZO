@@ -1,13 +1,12 @@
 <?php
     // session_start();
-    require_once("MyData/data.php");
+    require_once("../MyData/data.php");
     $titre=$titreAccueil;
     include_once $linkHeader;
     include_once $linkNavBar;
-
 ?>
 
-<link rel="stylesheet" href="css/accueil.css">
+<link rel="stylesheet" href="../css/accueil.css">
 
 <body>
 
@@ -245,7 +244,7 @@
                                     </div>
 
                                     <div class="col-lg-4 text-center order-1 order-lg-2">
-                                        <img src="img/specials-1.png" alt="" class="img-fluid">
+                                        <img src="../img/specials-1.png" alt="" class="img-fluid">
                                     </div>
                                 </div>
                             </div>
@@ -261,7 +260,7 @@
                                     </div>
 
                                     <div class="col-lg-4 text-center order-1 order-lg-2">
-                                        <img src="img/specials-2.png" alt="" class="img-fluid">
+                                        <img src="../img/specials-2.png" alt="" class="img-fluid">
                                     </div>
                                 </div>
                             </div>
@@ -276,7 +275,7 @@
                                     </div>
 
                                     <div class="col-lg-4 text-center order-1 order-lg-2">
-                                        <img src="img/specials-3.png" alt="" class="img-fluid">
+                                        <img src="../img/specials-3.png" alt="" class="img-fluid">
                                     </div>
                                 </div>
                             </div>
@@ -300,7 +299,7 @@
 
                     <div class="row event-item">
                         <div class="col-lg-6">
-                            <img src="img/event-birthday.jpg" class="img-fluid" alt="">
+                            <img src="../img/event-birthday.jpg" class="img-fluid" alt="">
                         </div>
                         
                         <div class="col-lg-6 pt-4 pt-lg-0 content">
@@ -328,7 +327,7 @@
 
                     <div class="row event-item">
                         <div class="col-lg-6">
-                            <img src="img/event-private.jpg" class="img-fluid" alt="">
+                            <img src="../img/event-private.jpg" class="img-fluid" alt="">
                         </div>
 
                         <div class="col-lg-6 pt-4 pt-lg-0 content">
@@ -358,7 +357,7 @@
 
                     <div class="row event-item">
                         <div class="col-lg-6">
-                            <img src="img/event-custom.jpg" class="img-fluid" alt="">
+                            <img src="../img/event-custom.jpg" class="img-fluid" alt="">
                         </div>
 
                         <div class="col-lg-6 pt-4 pt-lg-0 content">
@@ -404,64 +403,64 @@
                 <div class="row no-gutters">
                     <div class="col-lg-3 col-md-4">
                         <div class="gallery-item">
-                            <a href="img/gallery/gallery-1.jpg" class="venobox" data-gall="gallery-item">
-                                <img src="img/gallery/gallery-1.jpg" alt="" class="img-fluid">
+                            <a href="../img/gallery/gallery-1.jpg" class="venobox" data-gall="gallery-item">
+                                <img src="../img/gallery/gallery-1.jpg" alt="" class="img-fluid">
                             </a>
                         </div>
                     </div>
 
                     <div class="col-lg-3 col-md-4">
                         <div class="gallery-item">
-                            <a href="img/gallery/gallery-2.jpg" class="venobox" data-gall="gallery-item">
-                                <img src="img/gallery/gallery-2.jpg" alt="" class="img-fluid">
+                            <a href="../img/gallery/gallery-2.jpg" class="venobox" data-gall="gallery-item">
+                                <img src="../img/gallery/gallery-2.jpg" alt="" class="img-fluid">
                             </a>
                         </div>
                     </div>
 
                     <div class="col-lg-3 col-md-4">
                         <div class="gallery-item">
-                            <a href="img/gallery/gallery-3.jpg" class="venobox" data-gall="gallery-item">
-                                <img src="img/gallery/gallery-3.jpg" alt="" class="img-fluid">
+                            <a href="../img/gallery/gallery-3.jpg" class="venobox" data-gall="gallery-item">
+                                <img src="../img/gallery/gallery-3.jpg" alt="" class="img-fluid">
                             </a>
                         </div>
                     </div>
 
                     <div class="col-lg-3 col-md-4">
                         <div class="gallery-item">
-                            <a href="img/gallery/gallery-4.jpg" class="venobox" data-gall="gallery-item">
-                                <img src="img/gallery/gallery-4.jpg" alt="" class="img-fluid">
+                            <a href="../img/gallery/gallery-4.jpg" class="venobox" data-gall="gallery-item">
+                                <img src="../img/gallery/gallery-4.jpg" alt="" class="img-fluid">
                             </a>
                         </div>
                     </div>
 
                     <div class="col-lg-3 col-md-4">
                         <div class="gallery-item">
-                            <a href="img/gallery/gallery-5.jpg" class="venobox" data-gall="gallery-item">
-                                <img src="img/gallery/gallery-5.jpg" alt="" class="img-fluid">
+                            <a href="../img/gallery/gallery-5.jpg" class="venobox" data-gall="gallery-item">
+                                <img src="../img/gallery/gallery-5.jpg" alt="" class="img-fluid">
                             </a>
                         </div>
                     </div>
 
                     <div class="col-lg-3 col-md-4">
                         <div class="gallery-item">
-                            <a href="img/gallery/gallery-6.jpg" class="venobox" data-gall="gallery-item">
-                                <img src="img/gallery/gallery-6.jpg" alt="" class="img-fluid">
+                            <a href="../img/gallery/gallery-6.jpg" class="venobox" data-gall="gallery-item">
+                                <img src="../img/gallery/gallery-6.jpg" alt="" class="img-fluid">
                             </a>
                         </div>
                     </div>
 
                     <div class="col-lg-3 col-md-4">
                         <div class="gallery-item">
-                            <a href="img/gallery/gallery-7.jpg" class="venobox" data-gall="gallery-item">
-                                <img src="img/gallery/gallery-7.jpg" alt="" class="img-fluid">
+                            <a href="../img/gallery/gallery-7.jpg" class="venobox" data-gall="gallery-item">
+                                <img src="../img/gallery/gallery-7.jpg" alt="" class="img-fluid">
                             </a>
                         </div>
                     </div>
 
                     <div class="col-lg-3 col-md-4">
                         <div class="gallery-item">
-                            <a href="img/gallery/gallery-8.jpg" class="venobox" data-gall="gallery-item">
-                                <img src="img/gallery/gallery-8.jpg" alt="" class="img-fluid">
+                            <a href="../img/gallery/gallery-8.jpg" class="venobox" data-gall="gallery-item">
+                                <img src="../img/gallery/gallery-8.jpg" alt="" class="img-fluid">
                             </a>
                         </div>
                     </div>
@@ -527,4 +526,8 @@
 
 </body>
 
-<?php include("footer.php") ?>
+<?php 
+    // var_dump($_SESSION);
+    include("footer.php") 
+    
+?>

@@ -1,5 +1,5 @@
 <?php
-    require_once("MyData/data.php");
+    require_once("../MyData/data.php");
     $titre = $titreHoraire;
     include_once $linkHeader;
     include_once $linkNavBar;
@@ -10,7 +10,7 @@
     $horaires = $dbh -> query($sql)->fetchAll (PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, "horaire");
 ?>
 
-<link rel="stylesheet" href="css/horaires.css">
+<link rel="stylesheet" href="../css/horaires.css">
 	
 <div class="container affichage">
 	<div class="section-title">
@@ -32,4 +32,6 @@
 			</div>
 			<?php endforeach ?>
 		</div>
+	</div>
+    
 </div>

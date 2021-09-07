@@ -1,16 +1,18 @@
 <?php 
-    include_once("header.php");
-    require_once("db/db.php");
-    include_once("navbar.php");
-    include_once("footer.php");
-    include_once("dao/Produits.php");
+    include_once("../header.php");
+    require_once("../../db/db.php");
+    require_once("navbar.php");
+    include_once("../footer.php");
+    include_once("../../dao/Produits.php");
+
 
     $dbh = connexion();
-    $sql =  "SELECT p.id, p.nomProduit, p.prixMedium, p.prixLarge, p.descriptif, p.cheminImage, c.NomCategorie FROM `produit` AS p, `categorie` AS c WHERE c.id = p.categorie_id ORDER BY p.nomProduit";
+    $sql =  "SELECT p.*, c.NomCategorie FROM `produit` AS p, `categorie` AS c WHERE c.id = p.categorie_id ORDER BY p.nomProduit";
     $produits = $dbh -> query($sql)->fetchAll (PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, "Produits");
 ?>
 
-<link rel="stylesheet" href="css/listeProduits.css">
+<link rel="stylesheet" href="../../css/listeProduits.css">
+<link rel="stylesheet" href="../../css/general.css">
 
 <div class="container affichage ">
     <?php 
@@ -42,6 +44,7 @@
                 <th class="col-1 ">Prix Large</th>
                 <th class="col-4 ">Descriptif</th>
                 <th class="col-1 ">Categorie</th>
+                <th class="col-1 ">Actif</th>
                 <th class="col-1 ">Editer</th>
                 <th class="col-1 ">Supprimer</th>
             </tr>
@@ -51,12 +54,21 @@
         <!-- AFFICHAGE DE TOUS LES PRODUITS -->
             <?php foreach($produits as $pdt): ?>
                 <tr class="text-light fontSizeTxt">
-                    <td class="text-center"><img src="<?= $pdt->cheminImage ?>" class="w-50" alt="image"> </td>
+                    <td class="text-center"><img src="../<?= $pdt->cheminImage ?>" class="w-50" alt="image"> </td>
                     <td class="text-center"><?= $pdt->nomProduit ?></td>
                     <td class="text-center"><?= $pdt->prixMedium ?> €</td>
                     <td class="text-center"><?= $pdt->prixLarge ?> €</td>
                     <td><?= $pdt->descriptif ?></td>
                     <td class="text-center"><?= $pdt->NomCategorie ?></td>
+
+                    <td class="text-center">
+                        <?php if($pdt->actif != 0): ?>
+                            <input type="checkbox" checked data-toggle="toggle" data-onstyle="success" disabled>
+                        <?php else : ?>
+                            <input type="checkbox" data-toggle="toggle" data-offstyle="danger" disabled>
+                        <?php endif; ?>
+                    </td>
+
                     <td class="text-center">
                         <a href="details.php?action=modifier&id=<?= $pdt->id ?>" class="btn modifier">
                             <i class="bi bi-pencil-square icons color"></i>
@@ -64,7 +76,7 @@
                     </td>
                     <td class="text-center"> 
                         <form action="" method="post"> 
-                            <a href="controleurs/produitsControlleur.php?id=<?= $pdt->id ?>&action=supprimer" class="btn px-3 supprimer" type="submit" name="supprimer" onclick="confirm('etes-vous sure ?')">
+                            <a href="../../controleurs/produitsControlleur.php?id=<?= $pdt->id ?>&action=supprimer" class="btn px-3 supprimer" type="submit" name="supprimer" onclick="confirm('etes-vous sure ?')">
                                 <i class="bi bi-trash icons colorRed"></i>
                             </a>
                         </form>
@@ -82,7 +94,11 @@
     </div>
 </div>
 
-<script src="js/carte.js"></script>
+<link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
+<script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
+
+<script src="../../js/carte.js"></script>
+
 
 <script>
 

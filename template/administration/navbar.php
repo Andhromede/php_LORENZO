@@ -1,10 +1,13 @@
 
 	<?php
-		require_once("MyData/data.php");
-		require_once("db/db.php");
-		include_once("dao/Horaires.php");
-		// session_start();
+		// require_once($_SERVER["DOCUMENT_ROOT"]."/MyData/data.php");
+		require_once("../../MyData/data.php");
+		require_once("../../db/db.php");
+		include_once("../../dao/Horaires.php");
 	?>
+
+	<link rel="stylesheet" href="../../css/navbar.css">
+	<link rel="stylesheet" href="../../css/general.css">
 
 
 	<nav class="navbar navbar-expand-lg bgColor navbar-dark container-fluid fixed-top">
@@ -19,11 +22,11 @@
 			<ul class="navbar-nav ml-5">
 
 				<li class="nav-item mr-4 li">
-					<a class="nav-link a-class " href='<?= $linkAccueil ?>'>Accueil</a>
+					<a class="nav-link a-class " href='../<?= $linkAccueil ?>'>Accueil</a>
 				</li>
 
 				<li class="nav-item mr-4 li">
-					<a class="nav-link a-class " href='<?= $linkCarte ?>'>Notre Carte</a>
+					<a class="nav-link a-class " href='../<?= $linkCarte ?>'>Notre Carte</a>
 				</li>
 
 				<?php
@@ -67,7 +70,7 @@
 				?>
 
 				<li class="nav-item mr-4 li">
-					<a class="nav-link a-class" href="<?= $linkHoraire ?>">Nos horaires</a>
+					<a class="nav-link a-class" href="../<?= $linkHoraire ?>">Nos horaires</a>
 				</li>
 				
 				<li class="nav-item mr-4 li">
@@ -75,7 +78,7 @@
 				</li>
 
 				<li class="nav-item mr-4 li">
-					<a class="nav-link a-class" href="contact.php">Nous contacter</a>
+					<a class="nav-link a-class" href="../<?= $linkContact ?>">Nous contacter</a>
 				</li>
 
 				<ul class="navbar-nav user">
@@ -100,7 +103,9 @@
 					</a>
 
 					<div class="dropdown-menu bgColor bgMini" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item a-class" href="{{path('profil')}}">Mon profil</a>
+						<a class="dropdown-item a-class" href="#">Mon profil</a>
+						<a class="dropdown-item a-class" href="../compte/inscription.php">Inscription</a>
+						<a class="dropdown-item a-class" href="../compte/connexion.php">Connexion</a>
 						<a class="dropdown-item a-class" href="#">Deconnexion</a>
 					</div>
 				</li>

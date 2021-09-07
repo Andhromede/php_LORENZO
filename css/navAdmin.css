@@ -1,0 +1,86 @@
+/*********** Background ***********/
+/* modifie le dropdown en petit format */
+@media (max-width: 991px) {
+    .bgMini{
+        background-color: var(--grisNavbar) !important;
+        border: 1.5px white solid;
+        border-radius: 10px;
+        box-shadow: 3px 3px 3px 3px inset #141414;
+    }
+}
+
+/*********** liens (accueil, contact etc) ***********/
+.li .a-class{
+    color: white !important;
+    font-size: 1.7em !important;
+    font-family: "Playfair Display", serif !important;
+}
+
+.li .a-class:hover{
+    color: var(--grisNavbar) !important;
+    background-color: white;
+    border-radius: 5px; 
+}
+
+
+/*********** dropdown de droite (user) ***********/
+.li div .a-class{
+    color: white;
+}
+
+.li div a:hover{
+    color: var(--grisNavbar);
+    background-color: white;
+    border-radius: 5px; 
+}
+
+.user {
+    margin-left: auto;
+}
+
+    @media (max-width: 991px) {
+        .user{
+            text-align: left;
+            justify-content: left;
+            align-items: left;
+            margin-right: auto;
+        }
+    }
+
+
+/*********** Titres à gauche ***********/
+.title{
+    color: white;
+    font-size: 2em;
+}
+
+.title:hover{
+    text-decoration: none;
+    color: white;
+}
+
+/*********** trait de séparation ***********/
+.separateur{
+    background-color: white;
+    height: 3em;
+    width: 1px;
+}
+
+@media (max-width: 991px) {
+    .separateur{
+    display: none;
+    }
+}
+
+.bgColor{
+    background-color: var(--grisNavbar) !important;
+}
+
+.bgGrey{
+    background-color: silver;
+}
+
+body{
+    font-family: "Playfair Display", serif !important;
+}
+
