@@ -10,8 +10,8 @@
 
     // FONCTION DE CONNEXION A LA BDD
     function connexion(){
-        $dsn = 'mysql:dbname=' . dbName . ';dbHost=' . dbHost . ';port=' . port . '';        //Connexion AFPA
-        // $dsn = 'mysql:dbname=pizza;dbHost=localhost;port=3306';             //Connexion Nath
+        // $dsn = 'mysql:dbname=' . dbName . ';dbHost=' . dbHost . ';port=' . port . '';        //Connexion AFPA
+        $dsn = 'mysql:dbname=pizza;dbHost=localhost;port=3306';             //Connexion Nath
         
             try {
                 //On se connecte à la base de donnée en instanciant PDO

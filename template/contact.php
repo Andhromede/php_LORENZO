@@ -28,22 +28,25 @@
 
             $_SESSION['msgContact'] = true;
 
-            echo("<script> 
+            // echo("<script> 
+            //         $('.modal').on('shown.bs.modal',function(){
+            //             $('.btnModal').on('click',function(){
+            //                 window.location = 'accueil.php';
+            //             });
+            //         });
 
-                    $('.modal').on('shown.bs.modal',function(){
-                        $('.btnModal').on('click',function(){
-                            window.location = 'accueil.php';
-                        });
-                    });
-
-                    $('.modal').modal('show');
+            //         $('.modal').modal('show');
                     
-                </script>");
-            // header('location:accueil.php');
+            //     </script>");
+
+            echo('<div class="alert alert-success mt-5" role="alert" id="messageSuccess">
+                    Votre message à bien été envoyé !
+                </div>');
+
 
             
         }catch (Exception $e) {
-            echo('<div class="alert alert-danger mt-4" role="alert">
+            echo('<div class="alert alert-danger mt-4" role="alert" id="messageSuccess">
                     Erreur lors de l\'envoi de votre message.
                 </div>');
         }
@@ -93,3 +96,9 @@
     </section>
 </div>
 
+
+<script>
+    setTimeout(function(){ 
+        $('#messageSuccess').addClass('d-none');
+    }, 5000);
+</script>

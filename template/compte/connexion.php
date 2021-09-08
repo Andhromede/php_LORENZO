@@ -2,7 +2,7 @@
      require_once("../../db/db.php");
      include_once("../../dao/Utilisateurs.php");
      include_once("../../dao/Role.php");
-    
+     session_start();
      
      
     if(isset($_POST) && !empty($_POST)){
@@ -30,6 +30,7 @@
 
                 if(password_verify($password, $hash)){
                     $_SESSION['login'] = $utilisateur[0]->login;
+                    $_SESSION['role'] = $utilisateur[0]->role_id;
                     header('Location: ../accueil.php');
                 }
             }
@@ -95,7 +96,7 @@
 
                     <div class="card-footer">
                         <div class="d-flex justify-content-center links">
-                            Pas encore de compte ?<a href="#">Inscription</a>
+                            Pas encore de compte ?<a href="inscription.php">Inscription</a>
                         </div>
 
                         <!-- <div class="d-flex justify-content-center">
