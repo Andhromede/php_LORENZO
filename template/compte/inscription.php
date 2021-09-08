@@ -46,11 +46,12 @@
                 </div>';
         }
 
-    }else{
-        echo'<div class="alert alert-danger mt-4 fixed-top messageConnexion" role="alert">
-                Tous les champs doivent être remplis !
-            </div>';
     }
+    // else{
+    //     echo'<div class="alert alert-danger mt-4 fixed-top messageConnexion" role="alert">
+    //             Tous les champs doivent être remplis !
+    //         </div>';
+    // }
 
 
 
@@ -128,12 +129,19 @@
                             </div>
 
                             <!-- Btn -->
-                            <div class="form-group mx-auto">
-                                <button type="submit" value="Valider" class="btn login_btn">Valider</button>
+                            <div class="form-group mx-auto row">
+                                <button type="submit" value="Valider" class="btn login_btn col-4">Valider</button>
+
+                                <div class="d-flex justify-content-center links col-8 mt-2">
+                                    Page de <a href="connexion.php">Connexion</a>
+                                </div>
                             </div>
 
                         </form>
                     </div>
+
+                   
+
                 </div>
             </div>
         </div>
