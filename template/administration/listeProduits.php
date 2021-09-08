@@ -1,9 +1,11 @@
 <?php 
-    include_once("../header.php");
-    require_once("../../db/db.php");
-    require_once("navbar.php");
-    include_once("../footer.php");
-    include_once("../../dao/Produits.php");
+    $page = getPage();
+
+    // include_once("../header.php");
+    // require_once("../../db/db.php");
+    // require_once("../navbar.php");
+    // include_once("../footer.php");
+    // include_once("../../dao/Produits.php");
 
 
     $dbh = connexion();
@@ -14,7 +16,7 @@
 <link rel="stylesheet" href="../../css/listeProduits.css">
 <link rel="stylesheet" href="../../css/general.css">
 
-<div class="container affichage ">
+<div class="container-fluid affichage ">
     <?php 
          if(isset($_SESSION['message']) && !empty($_SESSION['message'])){
             $message = $_SESSION['message'];
@@ -54,10 +56,11 @@
         <!-- AFFICHAGE DE TOUS LES PRODUITS -->
             <?php foreach($produits as $pdt): ?>
                 <tr class="text-light fontSizeTxt">
-                    <td class="text-center"><img src="../<?= $pdt->cheminImage ?>" class="w-50" alt="image"> </td>
+                    <td class="text-center"><img src="../<?= $pdt->cheminImage ?>" class="w-75" alt="image"> </td>
                     <td class="text-center"><?= $pdt->nomProduit ?></td>
-                    <td class="text-center"><?= $pdt->prixMedium ?> €</td>
-                    <td class="text-center"><?= $pdt->prixLarge ?> €</td>
+                    <!-- number_format = format le prix dans le format 15,50 (1er argument =nbr de chiffre apres la virgule / 2eme = remplace le . par , / 3ème separateur de millier ) -->
+                    <td class="text-center"><?= number_format($pdt->prixMedium,2,",",' ') ?> €</td>
+                    <td class="text-center"><?= number_format($pdt->prixLarge,2,",",' ') ?> €</td>
                     <td><?= $pdt->descriptif ?></td>
                     <td class="text-center"><?= $pdt->NomCategorie ?></td>
 
@@ -90,7 +93,7 @@
     <hr>
 
     <div class="btns">
-        <a href="details.php?action=ajouter" class="btn-menu animated fadeInUp scrollto btnAjout mb-4">Ajouter un produit</a>
+        <a href="details.php?action=ajouter" class="btn-menu animated fadeInUp scrollto btnAjout mb-5">Ajouter un produit</a>
     </div>
 </div>
 

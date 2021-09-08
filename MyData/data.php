@@ -43,16 +43,31 @@ $user = "Utilisateur";
 
 
 
-function modalMessage($link){
-    echo("<script> 
-            $('.modal').on('shown.bs.modal',function(){
-                $('.btnModal').on('click',function(){
-                    window.location =".$link.";
+    function modalMessage($link){
+        echo("<script> 
+                $('.modal').on('shown.bs.modal',function(){
+                    $('.btnModal').on('click',function(){
+                        window.location =".$link.";
+                    });
                 });
-            });
 
-            $('.modal').modal('show');
-        </script>");
-}
+                $('.modal').modal('show');
+            </script>");
+    }
+
+    
+
+    // function getPage($value){
+       
+    //     $chemin = posix_getcwd();
+        
+    //     return ($chemin);
+    // }
+
+
+
+
+
+
 ?>
 

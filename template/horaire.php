@@ -1,13 +1,16 @@
 <?php
-    require_once("../MyData/data.php");
-    $titre = $titreHoraire;
-    include_once $linkHeader;
-    include_once $linkNavBar;
-    include_once $linkfooter;
-
+	require_once("../MyData/data.php");
+	require_once("../db/db.php");
+	include_once("../dao/Horaires.php");
+	include_once("navbar.php");
+	include_once("header.php");
+	include_once("footer.php");
+	$titre = $titreHoraire;
+	
 	$dbh = connexion();
 	$sql =  "SELECT * FROM horaire";
     $horaires = $dbh -> query($sql)->fetchAll (PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, "horaire");
+
 ?>
 
 <link rel="stylesheet" href="../css/horaires.css">
@@ -35,3 +38,5 @@
 	</div>
     
 </div>
+
+

@@ -1,5 +1,5 @@
 <?php
-    include_once("../header.php");
+    // include_once("../header.php");
 //on vérifie si on a un id
 
 if(!isset($_GET["id"]) || empty($_GET["id"]))

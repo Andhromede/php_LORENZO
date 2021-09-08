@@ -1,9 +1,12 @@
 
     <?php 
-        $titre = "Carte";
-        include_once("header.php");
+       	require_once("../MyData/data.php");
+        require_once("../db/db.php");
+        include_once("../dao/Produits.php");
         include_once("navbar.php");
-        require_once("../db/db.php");   
+        include_once("header.php");
+        include_once("footer.php");
+        $titre = "Carte";  
     ?>
 
     <link rel="stylesheet" href="../css/carte.css">

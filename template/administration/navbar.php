@@ -11,6 +11,7 @@
 
 
 	<nav class="navbar navbar-expand-lg bgColor navbar-dark container-fluid fixed-top">
+		
 		<span class="navbar-brand title font-weight-bolder" href="#">Pizzeria Lorenzo</span>
 		<span class="separateur ml-5"></span>
 
@@ -29,7 +30,7 @@
 					<a class="nav-link a-class " href='../<?= $linkCarte ?>'>Notre Carte</a>
 				</li>
 
-				<?php
+				<?php 
 					date_default_timezone_set('Europe/Paris'); //evite le decalage horraire
 					
 					function convertHeure($value){
@@ -111,6 +112,6 @@
 				</li>
 			</ul>
 		</div>
-	
+
 	</nav>
 

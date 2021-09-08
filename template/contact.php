@@ -1,15 +1,11 @@
 <?php
-    // session_start();
-    require_once ("../MyData/data.php");
-    $titre= $titreContact;
-
-    include_once $linkHeader;
-    include_once $linkNavBar;
-    include_once $linkfooter;
-
+   	require_once("../MyData/data.php");
     require_once("../db/db.php");
-
-
+    include_once("../dao/Contacts.php");
+    include_once("navbar.php");
+    include_once("header.php");
+    include_once("footer.php");
+    $titre= $titreContact;
 
     if(isset($_GET["action"]) && $_GET["action"] == "envoyer" && !empty($_POST)){
         $nom = $_POST["nom"];

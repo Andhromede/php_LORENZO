@@ -1,9 +1,9 @@
 <?php 
-    require_once("../../db/db.php");
-    include_once("../header.php");
-    include_once("../footer.php");
-    include_once("../../dao/Produits.php");
-    include_once("../../dao/Categories.php");
+    // require_once("../../db/db.php");
+    // include_once("../header.php");
+    // include_once("../footer.php");
+    // include_once("../../dao/Produits.php");
+    // include_once("../../dao/Categories.php");
 
     $dbh = connexion();
     $id = $_GET["id"] ?? 0;
