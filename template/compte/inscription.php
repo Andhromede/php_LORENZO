@@ -31,6 +31,8 @@
 
             if(!$utilisateur){
                 $newUser->saveUser('add', $newUser);
+                $_SESSION['login'] = $newUser[0]->login;
+                $_SESSION['role'] = $newUser[0]->role_id;
                 header("Location: ../accueil.php");
             }else{
                 echo('<div class="alert alert-danger mt-4 fixed-top messageConnexion" role="alert">
@@ -52,7 +54,7 @@
 
 
 
-    
+
 ?>
 
 <!DOCTYPE html>
