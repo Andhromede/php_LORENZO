@@ -1,11 +1,10 @@
 <?php
-    session_start();
-    require_once("../../db/db.php");
-    require_once("../../MyData/data.php");
-    include_once("../../dao/Utilisateurs.php");
-    include_once("../../dao/Role.php");
-
-
+     require_once("../../db/db.php");
+     include_once("../../dao/Utilisateurs.php");
+     include_once("../../dao/Role.php");
+     session_start();
+     
+     
     if(isset($_POST) && !empty($_POST)){
 
         if( isset($_POST['txtEmail']) && !empty($_POST['txtEmail']) && 
@@ -35,33 +34,20 @@
                     header('Location: ../accueil.php');
                 }
             }
+            
         }
     }    
-
-    // $chemin = $_SERVER["REQUEST_URI"];
-    // $explode = explode("/", $chemin);
-    // $count = count($explode);
-    // $result = $explode[$count-2];
-    // var_dump($result);
 ?>
 
 <!DOCTYPE html>
-
-<html lang="fr">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
-        <link rel="stylesheet" href="../css/general.css">
-        <link rel="stylesheet" href="../../css/connexion.css">
-        <link rel="stylesheet" type="text/css" href="../../css/styles.css">
-        <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
-
-        <title><?= $titre ?? "Accueil" ?></title>
-    </head>
+    <html>
+        <head>
+            <title>Login Page</title>
+            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+            <link rel="stylesheet" href="../../css/connexion.css">
+            <link rel="stylesheet" type="text/css" href="../../css/styles.css">
+        </head>
 
     <body>
         <div class="container">
@@ -126,7 +112,6 @@
         <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     </body>
 </html>
-
 
 <script>
     setTimeout(function(){ 

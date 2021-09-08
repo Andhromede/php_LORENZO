@@ -1,12 +1,13 @@
 
 	<?php
+		session_start();
+		// require_once($_SERVER["DOCUMENT_ROOT"]."/MyData/data.php");
 		require_once("../MyData/data.php");
 		require_once("../db/db.php");
 		include_once("../dao/Horaires.php");
 	?>
 
-	<link rel="stylesheet" href="../css/navbar.css">
-
+	<!-- <link rel="stylesheet" href="../css/navbar.css"> -->
 
 	<nav class="navbar navbar-expand-lg bgColor navbar-dark container-fluid fixed-top">
 		<span class="navbar-brand title font-weight-bolder" href="#">Pizzeria Lorenzo</span>

@@ -1,10 +1,9 @@
 <?php
-	require_once("../MyData/data.php");
-	require_once("../db/db.php");
-    include_once("header.php");
-    include_once("navbar.php");
-    include_once("footer.php");
+    // session_start();
+    require_once("../MyData/data.php");
     $titre=$titreAccueil;
+    include_once $linkHeader;
+    include_once $linkNavBar;
 ?>
 
 <link rel="stylesheet" href="../css/accueil.css">
@@ -469,7 +468,9 @@
             </div>
         </section>
 
-        <?php var_dump(getPage()); ?>
+
+       
+
 
         <!-- ======= Book A Table Section ======= -->
         <section id="book-a-table" class="book-a-table">

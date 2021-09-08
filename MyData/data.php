@@ -55,12 +55,9 @@ $user = "Utilisateur";
             </script>");
     }
 
-    
-
-    // function getPage($value){
-       
-    //     $chemin = posix_getcwd();
-        
+    // function getPage(){
+    //     $chemin = $_SERVER["PHP_SELF"];
+    //     var_dump($chemin); 
     //     return ($chemin);
     // }
 

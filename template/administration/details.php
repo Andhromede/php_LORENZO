@@ -1,9 +1,19 @@
 <?php 
+    session_start();
+
+    if(!isset($_SESSION['login']) || empty($_SESSION['login']) || $_SESSION['role'] != 1 ){
+        header("Location: ../accueil.php");
+        return;
+    }
+
     // require_once("../../db/db.php");
-    // include_once("../header.php");
-    // include_once("../footer.php");
-    // include_once("../../dao/Produits.php");
-    // include_once("../../dao/Categories.php");
+    require_once("../../dao/Produits.php");
+    require_once("../../dao/Categories.php");
+
+    include_once("navbar.php");
+    include_once("../header.php");
+    include_once("../footer.php");
+    
 
     $dbh = connexion();
     $id = $_GET["id"] ?? 0;
@@ -18,11 +28,11 @@
     $categories = $dbh -> query($sqlCat)->fetchAll (PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, "Categories");
 ?>
 
-<!-- <link rel="stylesheet" href="../../css/general.css"> -->
+<link rel="stylesheet" href="../../css/general.css">
 <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
 
 
-<div class="container-fluid">
+<div class="container-fluid affichage">
     <div class="text-center my-5">
 
     <!-- CONDITION DE FORM DYNAMIQUE (MODIF OU AJOUT) -->
@@ -50,7 +60,6 @@
                     </tr>
                 </thead>
 
-
         <!-- AJOUT DE PRODUIT -->
             <?php if(isset($_GET['action']) && $_GET['action'] == "ajouter"): ?>
                 <tbody>
@@ -58,7 +67,7 @@
                         <td class="col-2"><input class="form-control" type="text" name="nomProduit" value=""/></td> 
                         <td class="col-1"><input class="form-control col-8" type="text" name="prixMedium" value=""/></td>
                         <td class="col-1"><input class="form-control col-8" type="text" name="prixLarge" value=""/></td>
-                        <td class="col-3"><textarea class="form-control" type="text" name="descriptif" rows="5"></textarea></td>
+                        <td class="col-4"><textarea class="form-control" type="text" name="descriptif" rows="5"></textarea></td>
                         
                         <td class="col-1">
                             <select class="form-control" type="text" value="" name="categorie_id"> 
@@ -68,12 +77,9 @@
                             </select>
                         </td> 
 
-                        <td class="text-center col-2">
-                            <?php if($pdt->actif != 0): ?>
-                                <input type="checkbox" checked data-toggle="toggle" data-onstyle="success" data-onstyle="danger">
-                            <?php else : ?>
-                                <input type="checkbox" data-toggle="toggle" data-offstyle="danger" data-onstyle="success">
-                            <?php endif; ?>
+                        <td class="text-center col-1">
+                            <input type="checkbox" checked data-toggle="toggle" data-onstyle="success" data-onstyle="danger">
+                            <!-- <input type="checkbox" data-toggle="toggle" data-offstyle="danger" data-onstyle="success"> -->
                         </td>
 
                         <td class="col-2 text-center">
@@ -219,7 +225,6 @@
 
 //AJOUT DE PRODUIT
     if(isset($_GET["action"]) && $_GET["action"] == "ajouter" && !empty($_POST)){
-    
 
         $nomProduit = $_POST['nomProduit'];
         $prixMedium = $_POST['prixMedium'];
@@ -239,7 +244,6 @@
         $insert -> bindParam('categorie_id',$categorie_id);
         $result = $insert -> execute();
 
-        
         echo("<script> 
                 $('.modal').on('shown.bs.modal',function(){
                     $('.btnModal').on('click',function(){
