@@ -76,15 +76,16 @@
                             </div>
 
                             
-                            <div class="mt-5 row mr-4">
-                                <select name="taille" class="form-control d-line col-8 test" id="exampleFormControlSelect1">
-                                    <option name="taille" value="medium">Normal</option>
-                                    <option name="taille" value="large">Grande</option>
-                                </select>
-                                    
-
-                                <form action="carte.php?action=ajout&id=<?= $data['id'] ?>" method="post" class="col-2">
-                                    <button class="btnPanier" action="ajouter" type="submit"><i class="bi bi-basket2 test" ></i></button>
+                            <div class="mt-5 mr-4">
+                                <form action="carte.php?action=ajout&id=<?= $data['id'] ?>" method="post" class="row">
+                                    <select name="taille" class="form-control d-line col-8 test" id="exampleFormControlSelect1">
+                                        <option name="taille" value="medium">Medium</option>
+                                        <option name="taille" value="large">Large</option>
+                                    </select>
+                                        
+                                    <div class="col-2">
+                                        <button class="btnPanier" action="ajouter" type="submit"><i class="bi bi-basket2 test" ></i></button>
+                                    </div>
                                 </form>
                             </div>
                             
@@ -125,15 +126,16 @@
                                 </div>
                             </div>
 
-                            <div class="mt-5 row mr-4">
-                                <select name="taille" class="form-control d-line col-8 test" id="exampleFormControlSelect1">
-                                    <option name="taille" value="medium">Normal</option>
-                                    <option name="taille" value="large">Grande</option>
-                                </select>
-                                    
-
-                                <form action="carte.php?ajout&id=<?= $data['id'] ?>" method="post" class="col-2">
-                                    <button class="btnPanier" action="ajouter" type="submit"><i class="bi bi-basket2 test" ></i></button>
+                            <div class="mt-5 mr-4">
+                                <form action="carte.php?action=ajout&id=<?= $data['id'] ?>" method="post" class="row">
+                                    <select name="taille" class="form-control d-line col-8 test" id="exampleFormControlSelect1">
+                                        <option name="taille" value="medium">Medium</option>
+                                        <option name="taille" value="large">Large</option>
+                                    </select>
+                                        
+                                    <div class="col-2">
+                                        <button class="btnPanier" action="ajouter" type="submit"><i class="bi bi-basket2 test" ></i></button>
+                                    </div>
                                 </form>
                             </div>
 
@@ -173,15 +175,16 @@
                                 </div>
                             </div>
 
-                            <div class="mt-5 row mr-4">
-                                <select name="taille" class="form-control d-line col-8 test" id="exampleFormControlSelect1">
-                                    <option name="taille" value="medium">Normal</option>
-                                    <option name="taille" value="large">Grande</option>
-                                </select>
-                                    
-
-                                <form action="carte.php?ajout&id=<?= $data['id'] ?>" method="post" class="col-2">
-                                    <button class="btnPanier" action="ajouter" type="submit"><i class="bi bi-basket2 test" ></i></button>
+                            <div class="mt-5 mr-4">
+                                <form action="carte.php?action=ajout&id=<?= $data['id'] ?>" method="post" class="row">
+                                    <select name="taille" class="form-control d-line col-8 test" id="exampleFormControlSelect1">
+                                        <option name="taille" value="medium">Medium</option>
+                                        <option name="taille" value="large">Large</option>
+                                    </select>
+                                        
+                                    <div class="col-2">
+                                        <button class="btnPanier" action="ajouter" type="submit"><i class="bi bi-basket2 test" ></i></button>
+                                    </div>
                                 </form>
                             </div>
 
@@ -221,15 +224,16 @@
                                 </div>
                             </div>
 
-                            <div class="mt-5 row mr-4">
-                                <select name="taille" class="form-control d-line col-8 test" id="exampleFormControlSelect1">
-                                    <option name="taille" value="medium">Normal</option>
-                                    <option name="taille" value="large">Grande</option>
-                                </select>
-                                    
-
-                                <form action="carte.php?ajout&id=<?= $data['id'] ?>" method="post" class="col-2">
-                                    <button class="btnPanier" action="ajouter" type="submit"><i class="bi bi-basket2 test" ></i></button>
+                            <div class="mt-5 mr-4">
+                                <form action="carte.php?action=ajout&id=<?= $data['id'] ?>" method="post" class="row">
+                                    <select name="taille" class="form-control d-line col-8 test" id="exampleFormControlSelect1">
+                                        <option name="taille" value="medium">Medium</option>
+                                        <option name="taille" value="large">Large</option>
+                                    </select>
+                                        
+                                    <div class="col-2">
+                                        <button class="btnPanier" action="ajouter" type="submit"><i class="bi bi-basket2 test" ></i></button>
+                                    </div>
                                 </form>
                             </div>
 
@@ -304,89 +308,100 @@
     // var_dump($_SESSION['panier']);
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-    if(!isset($_SESSION['panier'])){
-        $_SESSION['panier'] = array();
-        $_SESSION['panier']['id_produit'] = array();
-        $_SESSION['panier']['qte'] = array();
-    }
-
+   $flag = false;
+   $nbCmd = 0;
 
     if(isset($_GET['action']) && $_GET['action'] == "ajout"){
-        if($_SESSION['panier']['id_produit'] == $_GET['id']){
-           $_SESSION['panier']['qte'] ++ ;
+        
+        if(!isset($_SESSION['panier'])){
+            $_SESSION['panier'] = [];
+        }
+
+        if(!isset($tab)){
+            $tab = $_SESSION['panier'];
+        }
+
+        $id = $_GET['id'];
+        $taille = $_POST['taille'];
+
+        if(isset($tab) && empty($tab) ){
+            $object = new stdClass();
+            $object->id= $_GET['id'];
+            $object->qte= 1;
+            $object->taille= $_POST['taille'];
+            array_push($tab, $object);
+            $_SESSION['panier'] = $tab;
         }
         
         else{
-            array_push($_SESSION['panier']['id_produit'] = $_GET['id']);
-            array_push($_SESSION['panier']['qte'] = 1);
+            foreach($tab as $obj){
+
+                if( $obj->id == $_GET['id'] && $obj->taille == $_POST['taille'])
+                {
+                     $flag = true;
+                } 
+            }
+            
+            if($flag == true){
+                $obj->qte++ ;
+            }
+            else
+            {
+            
+            
+              //  if($obj->id == $_GET['id'] && $obj->taille != $_POST['taille'] || $obj->id != $_GET['id']){
+                    $object = new stdClass();
+                    $object->id= $_GET['id'];
+                    $object->qte= 1;
+                    $object->taille= $_POST['taille'];
+                    array_push($tab, $object);
+                    $_SESSION['panier'] = $tab;
+                  
+                //}
+              }    
+                
+                
+            
         }
+       
+        foreach($tab as $count)
+        {
+            $nbCmd += $count->qte; 
+
+        }
+
+        var_dump($tab);
+        var_dump('Dans mon panier j\'ai '. $nbCmd . ' produits');
     }
-
-    var_dump($_SESSION['panier']['id_produit']);
-    var_dump($_SESSION['panier']['qte']);
-
-
-
-
-
-
-
-
-
-
-
-
-
-    // if(!isset($_SESSION['panier']['id_produit']) || $_SESSION['panier']['id_produit'] != $_GET['id']){
-    //     $sql =  (' SELECT * FROM produit WHERE id = $_GET["id"] ');
-    //     $produit = $dbh->query($sql)->fetchAll(PDO::FETCH_CLASS | PDO::FETCH_PROPS_LATE, "Produits");
-    // }else{
-    //     $_SESSION['panier']['quantite'] ++ ;
-    // }
     
-
-    // $commande = [
-    //     'id_produit' => $_GET['id'],
-    //     'nomProduit' => $produit->nomProduit,
-
-    // ];
-
-    // $commande = new Commande(
-    //    'detailCommande' -> json_encode(),
-    //    'datePaiment' -> date("d-m-Y H:i:s"),
-    //    'utilisateur_id' -> null
-    // );
-
+     
    
    
-    // array_push($_SESSION['panier']['taille'],"MEDIUM");
-
-    
-
-    
 
 
 
+    // if(isset($tab)){
+    //     foreach($tab as $obj){
 
-    // }
+    //         if( $obj->id == $_GET['id'] && $obj->taille == $_POST['taille']){
+    //             $flag = true;
+    //         } 
 
-// var_dump($_SESSION['panier']);
-    
-    // include("footer.php"); 
+    //         if($flag){
+    //             $obj->qte++ ;
+    //         }
 
+    //         else{
+    //             $object = new stdClass();
+    //             $object->id= $_GET['id'];
+    //             $object->qte= 1;
+    //             $object->taille= $_POST['taille'];
+    //             array_push($tab, $object);
+    //             $_SESSION['panier'] = $tab;
+    //         }    
+    //             // $obj->id != $_GET['id']){       
+    //     }
+    // }  
     ?>
 
 
