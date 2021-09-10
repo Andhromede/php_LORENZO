@@ -295,19 +295,6 @@
     <?php 
 
 
-    // if(!isset($_SESSION['panier'])){
-    //     $_SESSION['panier'] = array();
-    //     $_SESSION['panier']['qte'] = array();
-    //     $_SESSION['panier']['id_produit'] = array();
-    // }
-
-    // if(isset($_GET['action']) && $_GET['action']=="ajout"){
-    //     array_push($_SESSION['panier']['id_article'],$_GET['id']);
-    // }
-
-    // var_dump($_SESSION['panier']);
-
-
    $flag = false;
    $nbCmd = 0;
 
@@ -345,23 +332,16 @@
             if($flag == true){
                 $obj->qte++ ;
             }
-            else
-            {
-            
-            
-              //  if($obj->id == $_GET['id'] && $obj->taille != $_POST['taille'] || $obj->id != $_GET['id']){
-                    $object = new stdClass();
-                    $object->id= $_GET['id'];
-                    $object->qte= 1;
-                    $object->taille= $_POST['taille'];
-                    array_push($tab, $object);
-                    $_SESSION['panier'] = $tab;
-                  
-                //}
-              }    
-                
-                
-            
+
+            else {
+
+                $object = new stdClass();
+                $object->id= $_GET['id'];
+                $object->qte= 1;
+                $object->taille= $_POST['taille'];
+                array_push($tab, $object);
+                $_SESSION['panier'] = $tab;
+              }     
         }
        
         foreach($tab as $count)
@@ -377,31 +357,6 @@
      
    
    
-
-
-
-    // if(isset($tab)){
-    //     foreach($tab as $obj){
-
-    //         if( $obj->id == $_GET['id'] && $obj->taille == $_POST['taille']){
-    //             $flag = true;
-    //         } 
-
-    //         if($flag){
-    //             $obj->qte++ ;
-    //         }
-
-    //         else{
-    //             $object = new stdClass();
-    //             $object->id= $_GET['id'];
-    //             $object->qte= 1;
-    //             $object->taille= $_POST['taille'];
-    //             array_push($tab, $object);
-    //             $_SESSION['panier'] = $tab;
-    //         }    
-    //             // $obj->id != $_GET['id']){       
-    //     }
-    // }  
     ?>
 
 
