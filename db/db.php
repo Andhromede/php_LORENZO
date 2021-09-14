@@ -10,8 +10,8 @@
 
     // FONCTION DE CONNEXION A LA BDD
     function connexion(){
-        // $dsn = 'mysql:dbname=' . dbName . ';dbHost=' . dbHost . ';port=' . port . '';        //Connexion AFPA
-        $dsn = 'mysql:dbname=pizza;dbHost=localhost;port=3306';             //Connexion Nath
+        $dsn = 'mysql:dbname=' . dbName . ';dbHost=' . dbHost . ';port=' . port . '';        //Connexion AFPA
+        // $dsn = 'mysql:dbname=pizza;dbHost=localhost;port=3306';             //Connexion Nath
         
             try {
                 //On se connecte à la base de donnée en instanciant PDO
@@ -26,27 +26,6 @@
             }
             return($bdd);
     }
-
-
-
-
-    // try {
-    //     $dbh = new PDO('mysql:host=localhost;dbname=pizza;port=3307', 'root', '', array(
-    //         PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES utf8"
-    //     ));
-
-    // } catch (PDOException $e) {
-    //     print "Erreur !: " . $e->getMessage() . "<br/>";
-    //     die();
-    // } return($dbh);
-
-
-
-
-
-
-
-
 
 
 ?>

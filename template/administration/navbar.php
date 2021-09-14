@@ -1,13 +1,35 @@
 
 	<?php
 		// require_once($_SERVER["DOCUMENT_ROOT"]."/MyData/data.php");
+		// session_start();
 		require_once("../../MyData/data.php");
 		require_once("../../db/db.php");
 		include_once("../../dao/Horaires.php");
 	?>
 
-	<link rel="stylesheet" href="../../css/navbar.css">
+	<!DOCTYPE html>
+
+	<html lang="fr">
+
+	<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	
 	<link rel="stylesheet" href="../../css/general.css">
+	<link rel="stylesheet" href="../../css/navbar.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+	
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
+
+
+	<title><?= $titre ?? "Accueil" ?></title>
+	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+
+	</head>
+
+	<body>
 
 
 	<nav class="navbar navbar-expand-lg bgColor navbar-dark container-fluid fixed-top">
@@ -83,12 +105,15 @@
 
 				<ul class="navbar-nav user">
 					<li class="nav-item dropdown dropdown li">
-						<a class="nav-link dropdown-toggle a-class" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-							Administration
-						</a>
+
+						<?php if(isset($_SESSION['login']) && !empty($_SESSION['login']) && $_SESSION['role'] == 1 ): ?> 
+							<a class="nav-link dropdown-toggle a-class" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+								Administration
+							</a>
+						<?php endif; ?>
 
 						<div class="dropdown-menu bgColor bgMini" aria-labelledby="navbarDropdown">
-							<a class="dropdown-item a-class" href="listeProduits.php">Liste des produits</a>
+							<a class="dropdown-item sousMenu text-white" href="listeProduits.php">Liste des produits</a>
 							<a class="dropdown-item a-class" href="#"></a>
 						</div>
 					</li>
@@ -99,14 +124,25 @@
 			<ul class="navbar-nav user">
 				<li class="nav-item dropdown dropleft li">
 					<a class="nav-link dropdown-toggle a-class" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						Utilisateur
+						<?php 
+							if(isset($_SESSION['login']) && !empty($_SESSION['login'])): 
+								echo($_SESSION['login']);
+							else:
+								echo("Utilisateur"); 
+							endif;
+						?>
 					</a>
 
 					<div class="dropdown-menu bgColor bgMini" aria-labelledby="navbarDropdown">
-						<a class="dropdown-item a-class" href="#">Mon profil</a>
-						<a class="dropdown-item a-class" href="../compte/inscription.php">Inscription</a>
-						<a class="dropdown-item a-class" href="../compte/connexion.php">Connexion</a>
-						<a class="dropdown-item a-class" href="#">Deconnexion</a>
+						<?php if(isset($_SESSION['login']) && !empty($_SESSION['login'])): ?>
+							<a class="dropdown-item sousMenu text-white" href="#">Mon profil</a>
+							<a class="dropdown-item sousMenu text-white" href="../compte/deconnexion.php">Deconnexion</a>
+						<?php endif; ?>
+
+						<?php if(!isset($_SESSION['login']) || empty($_SESSION['login'])): ?> 
+								<a class="dropdown-item sousMenu text-white" href="../compte/inscription.php">Inscription</a>
+								<a class="dropdown-item sousMenu text-white" href="../compte/connexion.php">Connexion</a>
+						<?php endif; ?>
 					</div>
 				</li>
 			</ul>

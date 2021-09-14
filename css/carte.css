@@ -102,3 +102,18 @@
     .colorDore{
         color: #cda45e !important;
     }
+
+    .btnPanier{
+        background-color: var(--dore) !important;
+        border-radius: 5em;
+    }
+
+    .btnPanier:hover{
+        background-color: white !important;
+        color: black !;
+        transition: 0.5s;
+    }
+
+.test{
+    height: 30px;
+}
